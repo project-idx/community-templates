@@ -1,0 +1,21 @@
+{
+  "name": "Vite Vanilla",
+  "description": "Build a new web app using Vite",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "",
+  "publisher": "David East",
+  "params": [
+    {
+      "id": "language",
+      "name": "Language",
+      "type": "enum",
+      "default": "js",
+      "options": {
+        "js": "JavaScript",
+        "ts": "TypeScript"
+      }
+    }
+  ]
+}
