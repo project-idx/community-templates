@@ -1,0 +1,22 @@
+{
+  "name": "Hono",
+  "description": "Fast, lightweight, built on Web Standards. Support for any JavaScript runtime.",
+  "categories": [
+    "Web app",
+    "Backend"
+  ],
+  "icon": "",
+  "publisher": "David East",
+  "params": [
+    {
+      "id": "manager",
+      "name": "Package Manager / Runtime",
+      "type": "enum",
+      "default": "npm",
+      "options": {
+        "npm": "npm",
+        "bun": "bun"
+      }
+    }
+  ]
+}

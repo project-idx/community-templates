@@ -1,3 +1,12 @@
+/*
+  idx-template \
+  --output-dir /home/user/idx/laravel-tailwind-vite-test \
+  -a '{}' \
+  --workspace-name 'app' \
+  /home/user/idx/laravel-tailwind-vite \
+  --failure-report
+
+*/
 { pkgs, language ? "js", ... }: {
   packages = [
     pkgs.nodejs_20
