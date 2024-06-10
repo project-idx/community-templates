@@ -1,7 +1,7 @@
 /*
 idx-template \
 --output-dir /home/user/idx/hono-test \
--a '{ "manager": "npm" }' \
+-a '{ "manager": "bun" }' \
 --workspace-name 'app' \
 /home/user/idx/hono \
 --failure-report
@@ -14,7 +14,7 @@ idx-template \
   bootstrap = ''
     ${
       if manager == "npm" then "npm create hono@latest \"$WS_NAME\" -- --template nodejs --pm npm --install"
-      else if manager == "bun" then "bun create hono@latest \"$WS_NAME\" --template bun --pm bun --install"
+      else if manager == "bun" then "bun create hono@latest \"$WS_NAME\" --template nodejs --pm bun --install"
       else "npm create hono@latest \"$WS_NAME\" -- --template nodejs --pm npm --install"
     }
     
