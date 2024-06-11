@@ -5,6 +5,7 @@
     "Web app"
   ],
   "icon": "",
+  "website": "https://vitejs.dev/",
   "publisher": "David East",
   "params": [
     {
