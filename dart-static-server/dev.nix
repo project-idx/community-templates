@@ -12,7 +12,7 @@
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
+      "dart-code.dart-code"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -28,7 +28,7 @@
         web = {
           command = [
             "dart"
-            "server.dart"
+            "main.dart"
           ];
           manager = "web";
         };
