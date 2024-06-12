@@ -5,8 +5,6 @@
     "Web app",
     "Backend"
   ],
-  "icon": "",
   "website": "https://dart.dev/",
-  "publisher": "David East",
-  "params": []
+  "publisher": "David East"
 }
