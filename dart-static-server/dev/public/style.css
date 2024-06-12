@@ -4,6 +4,10 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  margin: 0 16px;
+}
+
 a, a:visited {
   color: #fff;
 }
@@ -44,13 +48,13 @@ p {
 }
 
 main {
-  margin-block: 64px;
+  width: min(100%, 720px);
+  margin: 64px auto;
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
   gap: 40px 20px;
 
   & div {
-    grid-column: 3/-4;
+    grid-column: 2/-2;
     display: grid;
     gap: 12px;
   }
