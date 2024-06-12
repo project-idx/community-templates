@@ -1,0 +1,11 @@
+{
+  "name": "Dart static web server",
+  "description": "An approachable, portable, and productive language for high-quality apps on any platform",
+  "categories": [
+    "Web app",
+    "Backend"
+  ],
+  "icon": "",
+  "website": "https://dart.dev/",
+  "publisher": "David East"
+}

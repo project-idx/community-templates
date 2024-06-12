@@ -1,0 +1,65 @@
+html {
+  background: linear-gradient(360deg, #2E537A 0%, #121A26 100%);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0 16px;
+}
+
+a, a:visited {
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 6rem);
+}
+
+h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+
+.dart-in-idx {
+  display: grid;
+  align-items: center;
+
+  & img, h1 {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  & img {
+    position: relative;
+    left: -42px;
+  }
+}
+
+main {
+  width: min(100%, 720px);
+  margin: 64px auto;
+  display: grid;
+  gap: 40px 20px;
+
+  & div {
+    grid-column: 2/-2;
+    display: grid;
+    gap: 12px;
+  }
+
+  & img {
+    border-radius: 8px;
+  }
+}
