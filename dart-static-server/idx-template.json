@@ -7,5 +7,6 @@
   ],
   "icon": "",
   "website": "https://dart.dev/",
-  "publisher": "David East"
+  "publisher": "David East",
+  "params": []
 }
