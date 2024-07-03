@@ -18,12 +18,6 @@
     enable = true;
   };
 
-  processes = {
-    postgresRun = {
-      command = "postgres -D local";
-    };
-  };
-
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -35,16 +29,21 @@
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
+        default.openFiles = [
+          "create.sql" "example.sql"
+        ];
         # Example: install JS dependencies from NPM
         setup = ''
-        psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
-        psql --dbname=postgres -c "CREATE DATABASE youtube;"
+          initdb -D local
+          psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
+          psql --dbname=postgres -c "CREATE DATABASE youtube;"
+          psql --dbname=youtube -f create.sql
+          psql --dbname=youtube -f example.sql
         '';
       };
       # Runs when the workspace is (re)started
       onStart = {
-        # Example: start a background task to watch and re-build backend code
-        # watch-backend = "npm run watch-backend";
+        # typescript-build = "tsc";
       };
     };
 

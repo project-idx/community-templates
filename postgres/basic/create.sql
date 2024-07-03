@@ -13,7 +13,7 @@ CREATE TABLE videos (
   published_at TIMESTAMP,
   like_count INTEGER,
   view_count INTEGER,
-  thumbnail_highres VARCHAR(255);
+  thumbnail_highres VARCHAR(255)
 );
 
 -- Insert YouTube Channels
@@ -27,24 +27,24 @@ INSERT INTO channels (id, title) VALUES
   ('UCbn1OgGei-DV7aSRo_HaAiw', 'Angular'),
   ('UCO3LEtymiLrgvpb59cNsb8A', 'Go');
 
--- Read the JSON file into a variable (assuming your JSON file is 'videos.json')
+-- Read the JSON file into a variable
 \set videos_json `cat videos.json`
 
 -- Iterate over each video object in the JSON array
-INSERT INTO videos (id, channel_id, title, published_at, view_count, like_count)
+INSERT INTO videos (id, channel_id, title, published_at, view_count, like_count, thumbnail_highres)
 SELECT
-  video->>'resourceId'->>'videoId' AS id,
-  video->>'channelId' AS channel_id,
-  video->>'title' AS title,
-  (video->>'publishedAt')::TIMESTAMP AS published_at,
-  (video->>'statistics'->>'viewCount')::INTEGER AS view_count,
-  (video->>'statistics'->>'likeCount')::INTEGER AS like_count,
-  video->'thumbnails'->'maxres'->>'url' AS thumbnail_highres
-FROM jsonb_array_elements(:'videos_json');
+  j_video->'resourceId'->>'videoId' AS id, 
+  j_video->>'channelId' AS channel_id,
+  j_video->>'title' AS title,
+  (j_video->>'publishedAt')::TIMESTAMP AS published_at,
+  (j_video->'statistics'->'viewCount')::INTEGER AS view_count,
+  (j_video->'statistics'->'likeCount')::INTEGER AS like_count,
+  COALESCE(
+      j_video->'thumbnails'->'maxres'->>'url', 
+      j_video->'thumbnails'->'standard'->>'url',  
+      j_video->'thumbnails'->'high'->>'url'       
+  ) AS thumbnail_highres
+FROM jsonb_array_elements(:'videos_json') j_video;
 
--- Commit the transaction if successful
+-- Commit the transaction if successful (only if no errors occurred)
 COMMIT;
-
--- Rollback if an error occurs
-EXCEPTION WHEN OTHERS THEN
-ROLLBACK;
