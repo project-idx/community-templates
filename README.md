@@ -1,5 +1,5 @@
-# Project IDX Community Templates
-<div style="text-align: center; padding-block-end: 20px;">A library of templates to get you started faster and explore tools, frameworks, and runtimes.</div>
+<h1 align="center">Project IDX Community Templates</h1>
+<div align="center">A library of templates to get you started faster and explore tools, frameworks, and runtimes.</div>
 
 ![Project IDX Community Templates](./community-templates.png)
 
