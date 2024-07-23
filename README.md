@@ -3,7 +3,11 @@
 
 ![Project IDX Community Templates](./community-templates.png)
 
-**Note:** This repository is stores non-official, non-supported, templates for IDX workspaces.
+**Note:** This repository is for non-official, non-supported, templates for IDX workspaces.
+
+<a href="https://idx.google.com/import?url=https://github.com/project-idx/community-templates">
+  <img height="32" alt="Open in IDX" src="https://cdn.idx.dev/btn/open_dark_32.svg">
+</a>
 
 ## Add your custom IDX template
 Project IDX allows anyone [to make custom workspaces through custom templates](https://developers.google.com/idx/guides/custom-templates). They require a few specific files that instruct Project IDX what to do when a workspace is being created.
