@@ -1,0 +1,64 @@
+query ListUsers @auth(level: NO_ACCESS) {
+  users { uid, name, email: address }
+}
+
+query GetUidByEmail($emails: [String!]) @auth(level: PUBLIC) {
+  users(where: { address: { in: $emails } }, limit: 4, orderBy: { name: ASC }) {
+    uid email: address
+  }
+}
+
+query SearchEmail(
+  $query: String,
+  $uid: String
+) @auth(level: PUBLIC) {
+  emails(where: {
+    text: { contains: $query },
+    users_via_Recipient: { 
+      exist: { uid: { eq: $uid }
+    }}
+  }) {
+    id subject date 
+    content: text 
+    sender: from { name email: address uid }
+    to: recipients_on_email {
+      user { name email: address uid }
+    }
+  }
+}
+
+query ListInbox(
+  $uid: String
+) @auth(level: PUBLIC) {
+  emails(where: {
+    users_via_Recipient: { 
+      exist: { uid: { eq: $uid }
+    }}
+  }) {
+    id subject date 
+    content: text 
+    sender: from { name email: address uid }
+    to: recipients_on_email {
+      user { name email: address uid }
+    }
+  }
+}
+
+query ListSent(
+  $uid: String
+) @auth(level: PUBLIC) {
+  emails(where: { 
+    fromUid: { eq: $uid }
+  }) {
+    id subject date 
+    content: text 
+    sender: from { name email: address uid }
+    to: recipients_on_email {
+      user { name email: address uid }
+    }
+  }
+}
+
+query GetStats @auth(level: PUBLIC) {
+  emailStats { count }
+}

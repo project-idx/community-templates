@@ -1,0 +1,167 @@
+#
+# Run the _insert files in this order:
+# 1. User_insert.gql
+# 2. Email_insert.gql
+# 3. Recipient_insert.gql
+# 4. EmailMeta_insert.gql
+#
+# This is one of many ways to run data seeds. You can create one large mutation or
+# have separate smaller files like this. You can also use the generated SDK to seed data as well.
+mutation {
+	tyler: recipient_insert(data: {
+		emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a" # EmailId
+		userUid: "user_tyler" # UserId
+	})
+	bleigh: recipient_insert(data: {
+		emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a" # EmailId
+		userUid: "user_bleigh" # UserId
+	})
+	gesly: recipient_insert(data: {
+		emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a" # EmailId
+		userUid: "user_gesly" # UserId
+	})
+	puf: recipient_insert(data: {
+		emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a" # EmailId
+		userUid: "user_puf" # UserId
+	})
+	kara: recipient_insert(data: {
+		emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a" # EmailId
+		userUid: "user_kara" # UserId
+	})
+	blog_tyler: recipient_insert(data: {
+		emailId: "e0b6e4f6-050c-4846-a3fe-6c6b056f5f63",
+		userUid: "user_tyler"
+	})
+	# Recipients for 'sql_experiment_results' email 
+  sql_results_tyler: recipient_insert(data: { 
+    emailId: "8eb6df3a-c56f-48bb-b610-a050e050fa65",
+    userUid: "user_tyler" 
+  })
+  sql_results_jana: recipient_insert(data: { 
+    emailId: "8eb6df3a-c56f-48bb-b610-a050e050fa65",
+    userUid: "user_jana"     
+  })
+
+  # Recipients for 'ai_model_suggestion' email
+  ai_model_tyler: recipient_insert(data: { 
+    emailId: "a016ef90-9096-4695-9606-66dd6da6166d",
+    userUid: "user_tyler"
+  })
+  ai_model_bleigh: recipient_insert(data: { 
+    emailId: "a016ef90-9096-4695-9606-66dd6da6166d",
+    userUid: "user_bleigh"   
+  })
+  ai_model_pankaj: recipient_insert(data: { # Assuming Pankaj is interested in AI
+    emailId: "a016ef90-9096-4695-9606-66dd6da6166d",
+    userUid: "user_pankaj"   
+  })
+
+  # Recipients for 'bigquery_anomaly' email
+  anomaly_tyler: recipient_insert(data: { 
+    emailId: "a05069fa-b056-4a61-a561-96da06da96da",
+    userUid: "user_tyler" 
+  })
+  anomaly_jana: recipient_insert(data: {
+    emailId: "a05069fa-b056-4a61-a561-96da06da96da",
+    userUid: "user_jana" 
+  })
+  anomaly_seba: recipient_insert(data: { # Assuming Seba is on a related team
+    emailId: "a05069fa-b056-4a61-a561-96da06da96da",
+    userUid: "user_seba"
+  })
+
+  # ... Add recipients for other emails based on relevance...
+	# Recipients for 'new_dataset' email
+  dataset_tyler: recipient_insert(data: { 
+    emailId: "6a69df9a-6619-46fa-9a90-90ad6df0a09a",
+    userUid: "user_tyler" 
+  })
+  dataset_kj: recipient_insert(data: { # Assuming KJ works with data
+    emailId: "6a69df9a-6619-46fa-9a90-90ad6df0a09a",
+    userUid: "user_kj"  
+  })
+  dataset_gesly: recipient_insert(data: { # Potentially interested in NLP
+    emailId: "6a69df9a-6619-46fa-9a90-90ad6df0a09a",
+    userUid: "user_gesly"  
+  })
+
+  # Recipients for 'training_job_complete' email
+  training_tyler: recipient_insert(data: { 
+    emailId: "d0fa6d06-0a05-46af-90ae-fafa6fa005fa",
+    userUid: "user_tyler" 
+  })
+  training_gesly: recipient_insert(data: { 
+    emailId: "d0fa6d06-0a05-46af-90ae-fafa6fa005fa",
+    userUid: "user_gesly"   
+  })
+  training_pankaj: recipient_insert(data: { 
+    emailId: "d0fa6d06-0a05-46af-90ae-fafa6fa005fa",
+    userUid: "user_pankaj"   
+  }) 
+
+  # Recipients for 'feature_request' email
+  feature_tyler: recipient_insert(data: { 
+    emailId: "5aa59699-96ae-40af-5ab4-fa6ad0ad6060",
+    userUid: "user_tyler" 
+  })
+  feature_kara: recipient_insert(data: {  # Likely the owner of tooling 
+    emailId: "5aa59699-96ae-40af-5ab4-fa6ad0ad6060",
+    userUid: "user_kara"   
+  }) 
+  feature_seba: recipient_insert(data: { # Might be impacted by the feature
+    emailId: "5aa59699-96ae-40af-5ab4-fa6ad0ad6060",
+    userUid: "user_seba"   
+  }) 
+
+  # Recipients for 'conference_update' email
+  conference_tyler: recipient_insert(data: {
+    emailId: "0aa6ef66-6fa6-4a16-afa9-a9ad6df9a9ae",
+    userUid: "user_tyler"
+  })
+  conference_david: recipient_insert(data: { # David submitted the proposal
+    emailId: "0aa6ef66-6fa6-4a16-afa9-a9ad6df9a9ae",
+    userUid: "user_david"
+  })  
+
+  # Recipients for 'blog_post_draft' email
+  blog_draft_tyler: recipient_insert(data: { 
+    emailId: "123abc0a-bc6d-40ae-b0ca-0aa590ab6c90",
+    userUid: "user_tyler" 
+  })
+  blog_draft_pankaj: recipient_insert(data: { # Pankaj authored the post
+    emailId: "123abc0a-bc6d-40ae-b0ca-0aa590ab6c90",
+    userUid: "user_pankaj"  
+  })
+  blog_draft_sujatha: recipient_insert(data: { # Assuming Sujatha is a tech editor 
+    emailId: "123abc0a-bc6d-40ae-b0ca-0aa590ab6c90",
+    userUid: "user_sujatha"  
+  })
+
+  # Recipients for 'internal_tool_bug' email
+  bug_tyler: recipient_insert(data: { 
+    emailId: "fa65ab6c-0aa6-45ca-b0fa-0a6d0ad0ae69",
+    userUid: "user_tyler" 
+  })
+  bug_seba: recipient_insert(data: { # Seba reported the bug
+    emailId: "fa65ab6c-0aa6-45ca-b0fa-0a6d0ad0ae69",
+    userUid: "user_seba"   
+  }) 
+  bug_kara: recipient_insert(data: { # Kara likely owns the tool
+    emailId: "fa65ab6c-0aa6-45ca-b0fa-0a6d0ad0ae69",
+    userUid: "user_kara" 
+  }) 
+
+  # Recipients for 'dataset_access_request' email
+  access_tyler: recipient_insert(data: { 
+    emailId: "4ab6ef69-aa16-4a66-96fa-9aef6ad0fa6d",
+    userUid: "user_tyler" 
+  })
+  access_jeanine: recipient_insert(data: { # Jeanine requested access
+    emailId: "4ab6ef69-aa16-4a66-96fa-9aef6ad0fa6d",
+    userUid: "user_jeanine" 
+  })
+  access_jana: recipient_insert(data: { # Assuming Jana manages data access
+    emailId: "4ab6ef69-aa16-4a66-96fa-9aef6ad0fa6d",
+    userUid: "user_jana"   
+  }) 
+}

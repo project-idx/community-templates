@@ -1,0 +1,15 @@
+# Required. The connector name of the Firebase Data Connect connector resource.
+connectorId: email
+# Required. Accepted values are either "PUBLIC" or "ADMIN" (only "PUBLIC" for gated private
+# preview). If "ADMIN", the connector in this directory is an AdminConnector and its operations
+# are gated by IAM.
+authMode: PUBLIC
+generate:
+  javascriptSdk:
+    # Create a custom package name for your generated SDK
+    package: "@email-app/email"
+    # Tells Data Connect where to store the generated SDK code, this should be in the same
+    # directory as your app code
+    outputDir: "../../email-app/email-generated"
+    # This property tells Data Connect what directory to install the generated SDK to
+    # packageJsonDir: "../../email-app"

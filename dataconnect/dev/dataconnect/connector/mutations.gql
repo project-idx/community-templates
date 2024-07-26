@@ -1,0 +1,27 @@
+mutation CreateUser($uid: String, $name: String, $address: String) @auth(level: NO_ACCESS) {
+  user_insert(data: {
+    uid: $uid,
+    name: $name,
+    address: $address
+  })
+}
+
+mutation CreateEmail($content: String, $subject: String, $fromUid: String) @auth(level: PUBLIC) {
+  email_insert(data: {
+    text: $content,
+    subject: $subject,
+    fromUid: $fromUid,
+    date_date: { today: true }
+  })
+}
+
+mutation CreateRecipient($emailId: UUID, $uid: String) @auth(level: PUBLIC) {
+  recipient_insert(data: {
+    emailId: $emailId,
+    userUid: $uid
+  })
+}
+
+mutation DeleteEmail($emailId: UUID, $uid: String) @auth(level: PUBLIC) {
+  recipient_delete(key: {emailId: $emailId, userUid: $uid})
+}

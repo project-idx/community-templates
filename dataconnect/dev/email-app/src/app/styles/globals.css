@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		@apply antialiased bg-[#eee];
+	}
+}
+
+@layer components {
+	.button {
+		@apply px-3 py-2 rounded-md transition-colors duration-300 ease-in-out;
+		&:hover {
+			@apply bg-gray-100;
+		}
+	}
+
+	.button-primary {
+		@apply bg-gray-100 text-black hover:bg-gray-200; 
+
+	}
+
+	.header-bar {
+		@apply border-b px-2 py-1 flex;
+	}
+
+	.search::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+		height: 16px;
+    width: 16px;
+    background: url('/close.svg') no-repeat center center;
+    background-size: contain;
+		opacity: 0;
+    transition: opacity 0.3s ease-out;
+		cursor: pointer;
+	}
+
+	.search:focus::-webkit-search-cancel-button {
+    opacity: 1;
+	}
+
+	.email-list-item {
+		@apply block p-4 rounded-md;
+		transition: background-color 0.3s;
+		&.selected {
+			@apply bg-gray-100;
+		}
+	}
+
+	@import './modal.css';
+	@import './compose-form.css';
+	@import './reply-form.css';
+	@import './spinner.css';
+}
+
+@layer utilities {
+	.title {
+		@apply font-display;
+	}
+}

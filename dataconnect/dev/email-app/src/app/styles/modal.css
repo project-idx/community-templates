@@ -1,0 +1,30 @@
+.modal {
+  @apply absolute inset-0 z-10 flex justify-center;
+}
+
+.modal-backdrop {
+  @apply absolute inset-0 bg-black bg-opacity-50 
+    flex items-center justify-center 
+    transition-opacity duration-500 ease-out 
+    opacity-0;
+
+  .modal-open & {
+    @apply opacity-100;
+  }
+}
+
+.modal-panel {
+  @apply absolute 
+    bottom-0 translate-y-full
+    origin-bottom
+    bg-white p-5 rounded-t h-[500px] w-full max-w-[700px]
+    transition duration-300 ease-m-ease;
+    
+  .modal-open & {
+    @apply translate-y-0 ease-m-ease;
+  }
+
+}
+.animate-up {
+  @apply rounded -translate-y-[calc(100%_+_120px)] ease-custom-in;
+}

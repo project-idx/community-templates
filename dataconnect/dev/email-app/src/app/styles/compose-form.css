@@ -1,0 +1,30 @@
+.compose-form {
+  @apply flex flex-col w-full h-[90%] gap-2;
+}
+
+input, textarea {
+  @apply outline-none;
+}
+
+.form-label {
+  @apply flex items-center border rounded-lg px-3 gap-2 py-2 border-gray-200
+  transition-colors duration-300 ease-out;
+  
+  &:focus-within {
+    @apply border-b border-gray-400;
+
+    .form-label-span {
+      @apply text-gray-800;
+    }
+  }
+}
+
+.form-label-span {
+  @apply text-gray-500 whitespace-nowrap text-sm;
+}
+
+.form-body {
+  @apply w-full rounded-lg flex-grow mb-4 px-3 py-2 resize-none
+    border border-gray-200 focus:border-gray-400 
+    transition-colors duration-300 ease-out;
+}

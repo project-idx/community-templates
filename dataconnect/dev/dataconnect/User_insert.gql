@@ -1,0 +1,76 @@
+#
+# Run the _insert files in this order:
+# 1. User_insert.gql
+# 2. Email_insert.gql
+# 3. Recipient_insert.gql
+# 4. EmailMeta_insert.gql
+#
+# This is one of many ways to run data seeds. You can create one large mutation or
+# have separate smaller files like this. You can also use the generated SDK to seed data as well.
+mutation {
+  david: user_insert(data: {
+    uid: "user_david",
+    name: "David Smith",
+    address: "dsmith123@example.com"
+  })
+  jeanine: user_insert(data: {
+    uid: "user_jeanine",
+    name: "Jeanine Johnson",
+    address: "jejohnson@example.com"
+  })
+  tyler: user_insert(data: {
+    uid: "user_tyler",
+    name: "Tyler Williams",
+    address: "twilliams72@example.com"
+  })
+  bleigh: user_insert(data: {
+    uid: "user_bleigh",
+    name: "Michael Brown",
+    address: "mbrown.work@example.com"
+  })
+  kara: user_insert(data: {
+    uid: "user_kara",
+    name: "Kara Lee",
+    address: "karalee.info@example.com"
+  })
+  jana: user_insert(data: {
+    uid: "user_jana",
+    name: "Jana Rodriguez",
+    address: "jrodriguez2023@example.com"
+  })
+  seba: user_insert(data: {
+    uid: "user_seba",
+    name: "Seba Martin",
+    address: "smartin.dev@example.com"
+  })
+  puf: user_insert(data: {
+    uid: "user_puf",
+    name: "Frank Miller",
+    address: "frank.miller@example.com"
+  })
+  pankaj: user_insert(data: {
+    uid: "user_pankaj",
+    name: "Pankaj Davis",
+    address: "pdavis.work1@example.com"
+  })
+  gesly: user_insert(data: {
+    uid: "user_gesly",
+    name: "Gesly Anderson",
+    address: "gesly.anderson20@example.com"
+  })
+  kj: user_insert(data: {
+    uid: "user_kj",
+    name: "KJ Jackson",
+    address: "kylejackson@example.com" 
+  })
+  malcom: user_insert(data: {
+    uid: "user_malcom",
+    name: "Malcolm Thomas",
+    address: "malcolmthomas44@example.com"
+  })
+  sujatha: user_insert(data: {
+    uid: "user_sujatha",
+    name: "Sujatha Garcia",
+    address: "sgarcia22@example.com"
+  })
+}

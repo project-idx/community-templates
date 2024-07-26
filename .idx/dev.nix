@@ -24,6 +24,7 @@
   packages = [
     pkgs.python311
     pkgs.nodejs_20
+    pkgs.unzip
   ];
 
   # Sets environment variables in the workspace

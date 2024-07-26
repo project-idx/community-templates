@@ -1,0 +1,32 @@
+.spinner-container {
+  @apply -translate-x-px -translate-y-[1.5px];
+}
+
+.spinner {
+  border: 2px solid #EAF0F6;
+  border-radius: 50%;
+  border-top: 2px solid #FF7A59; 
+  width: 20px; 
+  height: 20px;
+  animation: spinner-animation 4s linear infinite;
+}
+
+@keyframes spinner-animation {
+  0% { 
+    transform: rotate(0deg); 
+    @apply border-t-google-yellow;
+  }
+  25% { 
+    @apply border-t-google-blue;
+  }
+  50% { 
+    @apply border-t-google-red;
+  }
+  75% { 
+    @apply border-t-google-green;
+  }
+  100% { 
+    transform: rotate(1080deg); 
+    @apply border-t-google-yellow;
+  }
+}

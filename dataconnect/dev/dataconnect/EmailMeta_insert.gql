@@ -1,0 +1,117 @@
+#
+# Run the _insert files in this order:
+# 1. User_insert.gql
+# 2. Email_insert.gql
+# 3. Recipient_insert.gql
+# 4. EmailMeta_insert.gql
+#
+# This is one of many ways to run data seeds. You can create one large mutation or
+# have separate smaller files like this. You can also use the generated SDK to seed data as well.
+mutation {
+	demo: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
+		labels: ["important", "work"],
+    read: false,
+    starred: false,
+    muted: false,
+	})
+	launch_blog: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "e0b6e4f6-050c-4846-a3fe-6c6b056f5f63",
+		labels: ["important", "work"],
+    read: false,
+    starred: false,
+    muted: false,
+	})
+
+  sql_experiment_results: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "8eb6df3a-c56f-48bb-b610-a050e050fa65", 
+    labels: ["important"],
+    read: true, 
+    starred: false,
+    muted: false,
+  }) 
+
+  ai_model_suggestion: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "a016ef90-9096-4695-9606-66dd6da6166d", 
+    labels: ["work", "follow-up"], 
+    read: false, 
+    starred: true,
+    muted: false,
+  })
+
+  bigquery_anomaly: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "a05069fa-b056-4a61-a561-96da06da96da", 
+    labels: ["urgent", "billing"], 
+    read: false, 
+    starred: true,
+    muted: false,
+  })
+
+  new_dataset: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "6a69df9a-6619-46fa-9a90-90ad6df0a09a", 
+    labels: ["data"], 
+    read: true, 
+    starred: false,
+    muted: false,
+  })
+
+  training_job_complete: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "d0fa6d06-0a05-46af-90ae-fafa6fa005fa", 
+    labels: ["ML", "work"], 
+    read: false, 
+    starred: false,
+    muted: false,
+  })
+
+  feature_request: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "5aa59699-96ae-40af-5ab4-fa6ad0ad6060",
+    labels: ["tools", "follow-up"],
+    read: true, 
+    starred: false,
+    muted: false,
+  })
+
+  conference_update: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "0aa6ef66-6fa6-4a16-afa9-a9ad6df9a9ae", 
+    labels: ["work"], 
+    read: false, 
+    starred: true,
+    muted: false,
+  })
+
+  blog_post_draft: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "123abc0a-bc6d-40ae-b0ca-0aa590ab6c90", 
+    labels: ["review"], 
+    read: false, 
+    starred: false,
+    muted: false,
+  })
+
+  internal_tool_bug: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "fa65ab6c-0aa6-45ca-b0fa-0a6d0ad0ae69", 
+    labels: ["bug", "urgent"], 
+    read: false, 
+    starred: false,
+    muted: false,
+  })
+
+ dataset_access_request: emailMeta_insert(data: {
+    userUid: "user_tyler",
+    emailId: "4ab6ef69-aa16-4a66-96fa-9aef6ad0fa6d",
+    labels: ["access"],
+    read: true, 
+    starred: false,
+    muted: false,
+  })
+}

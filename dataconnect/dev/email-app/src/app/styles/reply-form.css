@@ -1,0 +1,34 @@
+@property --bg-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@keyframes spin {
+  to {
+    --bg-angle: 360deg;
+  }
+}
+
+.animated-border {
+  animation: spin 2.5s infinite linear;
+  @apply border border-gray-200 hover:border-google-blue
+    transition-all duration-150;
+  
+  &:focus, &.lock-animated-border {
+    @apply border-2 border-transparent;
+    background:
+      linear-gradient(
+        to bottom,
+        white,
+        white
+      ) padding-box,
+      conic-gradient(
+        from var(--bg-angle),
+        theme(colors.google-blue),
+        theme(colors.google-red),
+        theme(colors.google-yellow),
+        theme(colors.google-green)
+      ) border-box;
+    }
+}
