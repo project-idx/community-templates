@@ -6,17 +6,14 @@
     name = "firebase.vsix";
   };
   in {
-    channel = "stable-23.11";
+    channel = "stable-24.05";
     packages = [
-      (pkgs.postgresql_15.withPackages (p: [ p.pgvector ]))
       pkgs.nodejs_20
-      pkgs.python3
       pkgs.nodePackages.pnpm
     ];
     
     env = {
       POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
-      FIRESQL_PORT = "9939";
     };
   
     idx.extensions = [
@@ -25,11 +22,10 @@
       "GraphQL.vscode-graphql-syntax"
       "${firebase-ext}"
     ];
-  
-    processes = {
-      postgresRun = {
-        command = "postgres -D local -k /tmp";
-      };
+
+    services.postgres = {
+      extensions = ["pgvector"];
+      enable = true;
     };
 
     idx = {
@@ -37,9 +33,10 @@
         onCreate = {
           setup = "node download.mjs";
           postgres = ''
-            PGHOST=/tmp psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
-            PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
-            PGHOST=/tmp psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
+            initdb -D local
+            psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
+            psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
+            psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
           npm-install = "pnpm i --prefix=./email-app";
         };

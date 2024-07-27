@@ -3,17 +3,14 @@
 rm -rf ./test && \
 idx-template \
   /home/user/community-templates/dataconnect \
-  --output-dir /home/user/community-templates/test -a '{}'
+  --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
 {pkgs, ... }: {
-  packages = [
-    pkgs.postgresql
-  ];
+  packages = [];
 
   bootstrap = ''
     mkdir "$out"
-    initdb -D "$out"/local
     mkdir "$out"/.idx
     cp -r ${./dev}/* "$out"
     cp ${./dev}/.firebaserc "$out"/.firebaserc
