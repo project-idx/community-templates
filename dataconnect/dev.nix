@@ -17,8 +17,8 @@
     };
   
     idx.extensions = [
-      "mtxr.sqltools-driver-pg"
       "mtxr.sqltools"
+      "mtxr.sqltools-driver-pg"
       "GraphQL.vscode-graphql-syntax"
       "${firebase-ext}"
     ];
