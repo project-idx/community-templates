@@ -9,6 +9,7 @@
     channel = "stable-24.05";
     packages = [
       pkgs.nodejs_20
+      pkgs.nodePackages.pnpm
     ];
     
     env = {
@@ -30,14 +31,13 @@
     idx = {
       workspace = {
         onCreate = {
-          setup = "node download.mjs";
           postgres = ''
             initdb -D local
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "npm i --prefix=./webapp";
+          npm-install = "pnpm i --prefix=./webapp";
         };
       };
       previews = {
