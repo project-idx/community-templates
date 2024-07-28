@@ -9,7 +9,6 @@
     channel = "stable-24.05";
     packages = [
       pkgs.nodejs_20
-      pkgs.nodePackages.pnpm
     ];
     
     env = {
@@ -38,7 +37,7 @@
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "pnpm i --prefix=./webapp";
+          npm-install = "npm i --prefix=./webapp";
         };
       };
       previews = {
