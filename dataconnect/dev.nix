@@ -38,14 +38,14 @@
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "pnpm i --prefix=./email-app";
+          npm-install = "pnpm i --prefix=./webapp";
         };
       };
       previews = {
         enable = true;
         previews = {
           web = {
-            command = ["npm" "run" "dev" "--prefix" "./email-app" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
+            command = ["npm" "run" "dev" "--prefix" "./webapp" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
             manager = "web";
           };
         };
