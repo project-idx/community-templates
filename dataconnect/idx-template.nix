@@ -19,6 +19,7 @@ idx-template \
     }
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
+    cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
   '';
 }
