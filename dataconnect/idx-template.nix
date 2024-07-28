@@ -17,8 +17,8 @@ idx-template \
       if sample == "nextjs-email-app" then "cp -r ${./nextjs-email-app}/* \"$out\""
       else "cp -r ${./nextjs-blank}/* \"$out\""
     }
-    cp ${./firebaserc} "$out"/.firebaserc
-    cp ${./graphqlrc.yaml} "$out"/.graphqlrc.yaml
+    cp ${./.firebaserc} "$out"/.firebaserc
+    cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     chmod -R u+w "$out"
   '';
 }
