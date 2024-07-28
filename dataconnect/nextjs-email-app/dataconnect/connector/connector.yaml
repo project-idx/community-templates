@@ -10,6 +10,6 @@ generate:
     package: "@email-app/email"
     # Tells Data Connect where to store the generated SDK code, this should be in the same
     # directory as your app code
-    outputDir: "../../email-app/email-generated"
+    outputDir: "../../webapp/email-generated"
     # This property tells Data Connect what directory to install the generated SDK to
-    # packageJsonDir: "../../email-app"
+    # packageJsonDir: "../../webapp"
