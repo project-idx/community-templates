@@ -14,8 +14,8 @@ idx-template \
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     ${
-      if sample == "nextjs-email-app" then "cp -r ${./nextjs-email-app}/* "$out""
-      else "cp -r ${./nextjs-blank}/* "$out""
+      if sample == "nextjs-email-app" then "cp -r ${./nextjs-email-app}/* \"$out\""
+      else "cp -r ${./nextjs-blank}/* \"$out\""
     }
     cp ${./firebaserc} "$out"/.firebaserc
     cp ${./graphqlrc.yaml} "$out"/.graphqlrc.yaml
