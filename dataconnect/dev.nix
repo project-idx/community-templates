@@ -32,7 +32,6 @@
       workspace = {
         onCreate = {
           postgres = ''
-            initdb -D local
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
