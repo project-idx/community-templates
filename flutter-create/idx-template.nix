@@ -1,4 +1,4 @@
-{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android" ...}: let
+{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", ...}: let
   flutter = pkgs.fetchzip {
     url = "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.3-stable.tar.xz";
     hash = "sha256-j+Jl8Q8Qaj9oJVZ1LNuTuIVxX7ba0f8w38OdS/vvqtA=";
