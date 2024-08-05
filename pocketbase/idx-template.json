@@ -1,0 +1,21 @@
+{
+  "name": "PocketBase",
+  "description": "Open Source backend for your next SaaS and Mobile app in 1 file",
+  "categories": [
+    "Web app",
+    "Backend",
+    "CMS"
+  ],
+  "icon": "",
+  "website": "https://pocketbase.io/",
+  "publisher": "Rody Davis",
+  "params": [
+    {
+      "id": "module",
+      "name": "Module Name",
+      "type": "text",
+      "default": "example.com",
+      "required": true
+    }
+  ]
+}
