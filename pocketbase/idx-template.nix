@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-{ pkgs, module ? "example.com" ... }: {
+{ pkgs, module ? "example.com", ... }: {
   packages = [
     pkgs.go
     pkgs.python3
