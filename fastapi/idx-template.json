@@ -1,0 +1,11 @@
+{
+    "name": "FastAPI",
+    "description": "A python framework for building rest api's",
+    "categories": [
+      "Web app",
+      "Backend"
+    ],
+    "icon": "",
+    "website": "https://fastapi.tiangolo.com/",
+    "publisher": "Srivats Venkataraman"
+  }
