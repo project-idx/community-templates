@@ -6,7 +6,7 @@ Created By: Srivats Venkataraman
 This repo is a template for bootstrapping a python FastAPI on project IDX
 
 # Try it out
-<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2Fsrivats22%2Ffastapi-idx">
+<a href="https://idx.google.com/new?template=https://github.com/project-idx/community-templates/tree/main/fastapi">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"

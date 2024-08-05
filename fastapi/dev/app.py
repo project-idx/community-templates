@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-
+import os
 
 origins = ["*"]
 
@@ -20,4 +20,4 @@ def read_root():
     return {"message": "Hello, FastAPI!"}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=4000)  # Replace 8000 with your desired port
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
