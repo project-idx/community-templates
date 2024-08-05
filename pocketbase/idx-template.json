@@ -8,5 +8,14 @@
   ],
   "icon": "",
   "website": "https://pocketbase.io/",
-  "publisher": "Rody Davis"
+  "publisher": "Rody Davis",
+  "params": [
+    {
+      "id": "module",
+      "name": "Module Name",
+      "type": "text",
+      "default": "example.com",
+      "required": true
+    }
+  ]
 }
