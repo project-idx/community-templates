@@ -8,7 +8,7 @@
     pkgs.nodePackages.firebase-tools
     pkgs.jdk17
     pkgs.unzip
-    pkgs.flutter
+    pkgs.flutter319
   ];
   # Sets environment variables in the workspace
   env = {};
