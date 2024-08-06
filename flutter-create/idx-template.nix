@@ -1,7 +1,7 @@
 {pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", ...}: let 
   flutter = pkgs.fetchgit {
     url = "https://github.com/flutter/flutter.git";
-    hash = "80c2e84975bbd28ecf5f8d4bd4ca5a2490bfc819";
+    rev = "80c2e84975bbd28ecf5f8d4bd4ca5a2490bfc819";
   };
   in {
     packages = [
