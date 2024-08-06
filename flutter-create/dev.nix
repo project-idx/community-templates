@@ -20,7 +20,7 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        installDependencies = "flutter pub get";
+        installDependencies = "./.flutter-sdk/flutter/bin/flutter pub get";
         build-flutter = ''
           cd /home/user/myapp/android
 
