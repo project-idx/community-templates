@@ -1,10 +1,4 @@
-{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", ...}: let 
-  flutter = pkgs.fetchgit {
-    url = "https://github.com/flutter/flutter.git";
-    rev = "80c2e84975bbd28ecf5f8d4bd4ca5a2490bfc819";
-    hash = "sha256-4SV1AR8qfhZFBk2gNZQ9ysoB+gQU/NaI+j0DMYOdqcE=";
-  };
-  in {
+{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", ...}: {
     packages = [
         pkgs.curl
         pkgs.gnutar
@@ -13,7 +7,7 @@
         pkgs.busybox
     ];
     bootstrap = ''
-        cp -rf ${flutter} flutter
+        git clone -b stable https://github.com/flutter/flutter.git
         chmod -R u+w flutter
         PUB_CACHE=/tmp/pub-cache ./flutter/bin/flutter create "$out" --template="${template}" --platforms="${platforms}" ${if sample == "none" then "" else "--sample=${sample}"} ${if blank then "-e" else ""}
         mkdir -p "$out"/.{flutter-sdk,idx}
