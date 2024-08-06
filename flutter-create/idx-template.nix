@@ -2,6 +2,7 @@
   flutter = pkgs.fetchgit {
     url = "https://github.com/flutter/flutter.git";
     rev = "80c2e84975bbd28ecf5f8d4bd4ca5a2490bfc819";
+    hash = "sha256-4SV1AR8qfhZFBk2gNZQ9ysoB+gQU/NaI+j0DMYOdqcE=";
   };
   in {
     packages = [
