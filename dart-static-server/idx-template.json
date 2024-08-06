@@ -1,6 +1,7 @@
 {
   "name": "Dart static web server",
   "description": "An approachable, portable, and productive language for high-quality apps on any platform",
+  "icon": "https://www.gstatic.com/images/branding/productlogos/flutter/v6/192px.svg",
   "categories": [
     "Web app",
     "Backend"

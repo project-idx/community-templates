@@ -1,4 +1,4 @@
-# Fluter Create Template
+# Flutter Create Template
 
 Most options available in the `flutter create` cli.
 

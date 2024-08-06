@@ -4,7 +4,7 @@
  "categories": [
   "Mobile"
  ],
- "icon": "https://storage.googleapis.com/cms-storage-bucket/4fd5520fe28ebf839174.svg",
+ "icon": "https://www.gstatic.com/images/branding/productlogos/flutter/v6/192px.svg",
  "publisher": "Rody Davis",
  "host": {
   "virtualization": true
@@ -954,7 +954,7 @@
   },
   {
    "id": "blank",
-   "name": "Empty",
+   "name": "Skip comments",
    "type": "boolean",
    "default": "false"
   },
