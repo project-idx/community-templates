@@ -1,5 +1,5 @@
-{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", builtins, ...}: let 
-  flutter = builtins.fetchGit {
+{pkgs, sample ? "none", template ? "app", blank ? false, platforms ? "web,android", ...}: let 
+  flutter = pkgs.fetchgit {
     url = "https://github.com/flutter/flutter.git";
     ref = "stable";
   };
