@@ -11,7 +11,6 @@
         pkgs.xz
         pkgs.git
         pkgs.busybox
-        pkgs.flutter
     ];
     bootstrap = ''
         cp -rf ${flutter} flutter
