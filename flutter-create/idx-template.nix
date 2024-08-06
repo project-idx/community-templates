@@ -7,8 +7,10 @@
         pkgs.busybox
     ];
     bootstrap = ''
-        git clone -b stable https://github.com/flutter/flutter.git
-        rm -rf ./flutter/bin/cache
+        git clone --depth 1 -b stable https://github.com/flutter/flutter.git
+        yes | ./flutter/bin/flutter doctor --android-licenses
+        ./flutter/bin/flutter doctor
+        chown -R root:root flutter
         chmod -R u+w flutter
         PUB_CACHE=/tmp/pub-cache ./flutter/bin/flutter create "$out" --template="${template}" --platforms="${platforms}" ${if sample == "none" then "" else "--sample=${sample}"} ${if blank then "-e" else ""}
         mkdir -p "$out"/.{flutter-sdk,idx}
