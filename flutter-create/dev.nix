@@ -8,6 +8,7 @@
     pkgs.nodePackages.firebase-tools
     pkgs.jdk17
     pkgs.unzip
+    pkgs.flutter
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -20,7 +21,7 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        installDependencies = "./.flutter-sdk/flutter/bin/flutter pub get";
+        installDependencies = "flutter pub get";
         build-flutter = ''
           cd /home/user/myapp/android
 
@@ -40,7 +41,7 @@
           # TODO: Execute web build in debug mode.
           # flutter run does this transparently either way
           # https://github.com/flutter/flutter/issues/96283#issuecomment-1144750411
-          # ./.flutter-sdk/flutter/bin/flutter build web --profile --dart-define=Dart2jsOptimization=O0 
+          # flutter build web --profile --dart-define=Dart2jsOptimization=O0 
 
           adb -s localhost:5555 wait-for-device
         '';
@@ -53,11 +54,11 @@
       enable = true;
       previews = {
         web = {
-          command = ["./.flutter-sdk/flutter/bin/flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "$PORT"];
+          command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "$PORT"];
           manager = "flutter";
         };
         android = {
-          command = ["./.flutter-sdk/flutter/bin/flutter" "run" "--machine" "-d" "android" "-d" "localhost:5555"];
+          command = ["flutter" "run" "--machine" "-d" "android" "-d" "localhost:5555"];
           manager = "flutter";
         };
       };
