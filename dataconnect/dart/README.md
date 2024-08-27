@@ -15,7 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-<a href="https://idx.google.com/new?template=https://github.com/project-idx/community-templates/tree/mtewani-flutter-template/dataconnect/dart_movie_app">
+<a href="https://idx.google.com/new?template=https://github.com/project-idx/community-templates/tree/mtewani-flutter-template/dataconnect/dart">
   <img height="32" alt="Try in IDX" src="https://cdn.idx.dev/btn/try_dark_32.svg">
 </a>
 
