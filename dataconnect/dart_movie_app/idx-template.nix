@@ -17,6 +17,7 @@ idx-template \
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     mkdir "$out"/.vscode
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
+    cp -r ${./dart_movie_app} "$out"
     chmod -R u+w "$out"
   '';
 }
