@@ -1,0 +1,7 @@
+{
+    "name": "@firebase/dart-sample",
+    "dependencies": {
+      "decompress": "^4.2.1"
+    }
+  }
+  
