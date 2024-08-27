@@ -52,20 +52,23 @@ services = {
          dart pub global activate flutterfire_cli
           export PATH="$PATH:/home/user/.pub-cache/bin"
         '';
-        installDependencies = "flutter pub get";
+        installDependencies = ''
+        cd dart_movie_app
+        flutter pub get
+        ''
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
         build-flutter = ''
-          cd /home/user/myapp/android
+          cd /home/user/dart_movie_app/android
 
           ./gradlew \
             --parallel \
             -Pverbose=true \
             -Ptarget-platform=android-x86 \
-            -Ptarget=/home/user/myapp/lib/main.dart \
+            -Ptarget=/home/user/dart_movie_app/lib/main.dart \
             -Pbase-application-name=android.app.Application \
             -Pdart-defines=RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC85NzU1MDkwN2I3MGY0ZjNiMzI4YjZjMTYwMGRmMjFmYWMxYTE4ODlhLw== \
             -Pdart-obfuscation=false \

@@ -21,6 +21,7 @@ idx-template \
     cp -r ${./dataconnect} "$out/dataconnect"
     cp ${./package.json} "$out/package.json"
     cp ${./download.js} "$out/download.js"
+    cp -r ${./proxy-web} "$out/proxy-web"
     chmod -R u+w "$out"
   '';
 }
