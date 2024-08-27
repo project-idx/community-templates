@@ -18,6 +18,7 @@ idx-template \
     mkdir "$out"/.vscode
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     cp -r ${./dart_movie_app} "$out"
+    cp -r ${./dataconnect} "$out"
     chmod -R u+w "$out"
   '';
 }
