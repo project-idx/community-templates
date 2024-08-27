@@ -17,7 +17,7 @@ idx-template \
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     mkdir "$out"/.vscode
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
-    cp -r ${./dart_movie_app} "$out/dart_movie_app"
+    cp -r ${./dart_movie_app/\*} "$out"
     cp -r ${./dataconnect} "$out/dataconnect"
     cp ${./package.json} "$out/package.json"
     cp ${./download.js} "$out/download.js"

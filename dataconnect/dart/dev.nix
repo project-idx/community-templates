@@ -55,7 +55,7 @@ services = {
         installDependencies = ''
         cd dart_movie_app
         flutter pub get
-        ''
+        '';
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
