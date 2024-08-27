@@ -1,0 +1,15 @@
+{
+  "name": "Flutter for Data Connect",
+  "description": "Build a new web app using Data Connect",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
+  "publisher": "Google LLC",
+  "params": [{
+    "id": "sample",
+    "description": "Build a new flutter app using Data Connect",
+    "type": "enum",
+    "required": true
+  }]
+}
