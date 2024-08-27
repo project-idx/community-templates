@@ -5,11 +5,5 @@
     "Web app"
   ],
   "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
-  "publisher": "Google LLC",
-  "params": [{
-    "id": "sample",
-    "description": "Build a new flutter app using Data Connect",
-    "type": "enum",
-    "required": true
-  }]
+  "publisher": "Google LLC"
 }
