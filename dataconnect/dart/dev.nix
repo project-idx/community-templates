@@ -48,6 +48,10 @@ services = {
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
+        installSdk = ''
+          npm install
+          node download.js
+        '';
         setupFlutterfire =''
          dart pub global activate flutterfire_cli
           export PATH="$PATH:/home/user/.pub-cache/bin"
