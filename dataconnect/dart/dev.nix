@@ -37,10 +37,10 @@ services = {
     hash = "sha256-/3ltrQCiwYm8WnOmNEGLwwOsli0broJhuR7hFKNGAMI=";
     name = "firebase.vsix";
   }; in [
+      "mtxr.sqltools"
       "Dart-Code.flutter"
       "Dart-Code.dart-code"
       "mtxr.sqltools-driver-pg"
-      "mtxr.sqltools"
       "GraphQL.vscode-graphql-syntax"
       "${firebaseExt}"
     ];
