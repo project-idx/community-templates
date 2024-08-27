@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './generated/movies.dart';
+// TODO: Remove the following line when your SDK has been generated
+//import './generated/movies.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,19 +56,30 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class FakeMovie {
+  FakeMovie(this.title);
+  String title;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
-  ListMoviesMovies _movies = [];
+  final List<FakeMovie> _movies = [FakeMovie("The Mat-Rix")];
+  // TODO: Replace the line above with
+  // ListMoviesMovies _movies = [];
   @override
   void initState() {
     super.initState();
-    MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
-      _movies = res.data.movies;
-    });
+
+    /// TODO: Uncomment the following lines to update the movies state when data
+    /// comes back from the server.
+    // MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
+    //   _movies = res.data.movies;
+    // });
   }
 
   void _refreshData() {
     // Gets the data, then notifies the subscriber(s) of the new data.
-    MoviesConnector.instance.listMovies.ref().execute();
+    // TODO: Uncomment the following line to execute the query
+    // MoviesConnector.instance.listMovies.ref().execute();
   }
 
   @override
@@ -107,6 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Center(
+              child: Text(
+                  "If you're seeing this, open lib/main.dart and implement the TODOs"),
+            ),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
