@@ -29,6 +29,8 @@
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         installSdk = ''
+        npm install
+        node download.js
         '';
         installDependencies = "flutter pub get";
         build-flutter = ''
