@@ -39,8 +39,8 @@ services = {
   }; in [
       "Dart-Code.flutter"
       "Dart-Code.dart-code"
-      "mtxr.sqltools"
       "mtxr.sqltools-driver-pg"
+      "mtxr.sqltools"
       "GraphQL.vscode-graphql-syntax"
       "${firebaseExt}"
     ];

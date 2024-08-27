@@ -119,7 +119,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Center(
+            FloatingActionButton(
+              onPressed: _refreshData,
+              tooltip: 'Refresh',
+              child: const Icon(Icons.refresh),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+            Center(
               child: Text(
                   "If you're seeing this, open lib/main.dart and implement the TODOs"),
             ),
@@ -141,11 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _refreshData,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
