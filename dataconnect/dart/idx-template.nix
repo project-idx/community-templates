@@ -10,7 +10,6 @@ idx-template \
   packages = [];
 
   bootstrap = ''
-    echo $out >> $out/out.txt
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc

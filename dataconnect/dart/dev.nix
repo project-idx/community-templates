@@ -25,7 +25,7 @@ services = {
   # Sets environment variables in the workspace
   env = {
     POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
-        PATH = ["/home/user/.pub-cache/bin"];
+    PATH = ["/home/user/.pub-cache/bin"];
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
@@ -65,29 +65,6 @@ services = {
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-        build-flutter = ''
-          cd /home/user/dart_movie_app/android
-
-          ./gradlew \
-            --parallel \
-            -Pverbose=true \
-            -Ptarget-platform=android-x86 \
-            -Ptarget=/home/user/dart_movie_app/lib/main.dart \
-            -Pbase-application-name=android.app.Application \
-            -Pdart-defines=RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC85NzU1MDkwN2I3MGY0ZjNiMzI4YjZjMTYwMGRmMjFmYWMxYTE4ODlhLw== \
-            -Pdart-obfuscation=false \
-            -Ptrack-widget-creation=true \
-            -Ptree-shake-icons=false \
-            -Pfilesystem-scheme=org-dartlang-root \
-            assembleDebug
-
-          # TODO: Execute web build in debug mode.
-          # flutter run does this transparently either way
-          # https://github.com/flutter/flutter/issues/96283#issuecomment-1144750411
-          # flutter build web --profile --dart-define=Dart2jsOptimization=O0 
-
-          adb -s localhost:5555 wait-for-device
-        '';
       };
       onStart = {
         start = ''
