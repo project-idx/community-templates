@@ -29,7 +29,7 @@
     shopt -s dotglob; cp -r ${./dev}/* "$out"
     chmod -R +w "$out"
     npm install nativescript
-    ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path "$out"
+    ./node_modules/nativescript/bin/ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path "$out"
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
 }
