@@ -1,0 +1,25 @@
+{
+  "name": "NativeScript",
+  "description": "Liberate your development by using platform APIs directly without leaving your ❤️ of JavaScript.",
+  "categories": [
+    "Web app",
+    "Mobile"
+  ],
+  "icon": "https://avatars.githubusercontent.com/u/7392261?v=4",
+  "website": "https://nativescript.org/",
+  "publisher": "Rody Davis",
+  "params": [
+    {
+      "id": "template",
+      "name": "Template",
+      "type": "enum",
+      "default": "js",
+      "options": {
+       "js": "JavaScript",
+       "ts": "TypeScript",
+       "ng": "Angular",
+       "vue": "Vue"
+      }
+     }
+  ]
+}
