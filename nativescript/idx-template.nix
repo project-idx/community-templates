@@ -26,10 +26,10 @@
     mkdir "$out"
     mkdir -p "$out/.idx/"
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
-    shopt -s dotglob; cp -r ${./dev}/* "$out"
-    chmod -R +w "$out"
     npm install nativescript
-    ./node_modules/nativescript/bin/ns create app --${template} ${if ts then "--ts" else ""} --path "$out"
+    ./node_modules/nativescript/bin/ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path ${./dev}
+    shopt -s dotglob; cp -r ${./dev}/app/* "$out"
+    chmod -R +w "$out"
     cd "$out"; npm install -D nativescript
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
