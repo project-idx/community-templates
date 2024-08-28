@@ -28,7 +28,7 @@
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
     shopt -s dotglob; cp -r ${./dev}/* "$out"
     chmod -R +w "$out"
-    npm i -g nativescript
+    npm install -g nativescript
     ns create "$WS_NAME" --${template} --path "$out"
   '';
 }
