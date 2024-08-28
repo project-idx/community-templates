@@ -29,6 +29,6 @@
     shopt -s dotglob; cp -r ${./dev}/* "$out"
     chmod -R +w "$out"
     npm i -g nativescript
-    ns create ${WS_NAME} --${template} --path "$out"
+    ns create "$WS_NAME" --${template} --path "$out"
   '';
 }
