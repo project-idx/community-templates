@@ -30,6 +30,7 @@
     chmod -R +w "$out"
     npm install nativescript
     ./node_modules/nativescript/bin/ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path "$out/"
+    cd "$out"; npm install -D nativescript
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
 }
