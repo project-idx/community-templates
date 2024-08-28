@@ -1,0 +1,26 @@
+.body {
+  margin: 40px;
+  color: #8B98A9;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.body h1 {
+  margin: 0;
+  font-size: 40px;
+  color: #FFA23E;
+}
+
+.root {
+  margin: 0 auto;
+  height: 100vh;
+  box-sizing: border-box;
+  display: grid;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.root > * {
+  grid-area: 1 / 1;
+  min-height: 0;
+}
