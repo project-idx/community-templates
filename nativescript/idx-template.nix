@@ -28,7 +28,7 @@
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
     npm install nativescript
     ./node_modules/nativescript/bin/ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path ${./dev}
-    shopt -s dotglob; cp -r ${./dev}/app/* "$out"
+    shopt -s dotglob; cp -r "${./dev}/$WS_NAME/*" "$out"
     chmod -R +w "$out"
     cd "$out"; npm install -D nativescript
     cd "$out"; npm install --package-lock-only --ignore-scripts
