@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-{ pkgs, template ? "js", ... }: {
+{ pkgs, template ? "js", ts ? false, ... }: {
   packages = [
     pkgs.nodejs_20
     pkgs.python3
@@ -28,7 +28,8 @@
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
     shopt -s dotglob; cp -r ${./dev}/* "$out"
     chmod -R +w "$out"
-    npm install -g nativescript
-    ns create "$WS_NAME" --${template} --path "$out"
+    npm install nativescript
+    ns create "$WS_NAME" --${template} ${if ts then "--ts" else ""} --path "$out"
+    cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
 }
