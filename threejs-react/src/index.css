@@ -1,0 +1,14 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color-scheme: dark;
+  color: white;
+  background-color: #10151D;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
