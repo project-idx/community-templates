@@ -48,17 +48,15 @@ services = {
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        installSdk = ''
-          npm install
-          node download.js
-        '';
         setupFlutterfire =''
          dart pub global activate flutterfire_cli
           export PATH="$PATH:/home/user/.pub-cache/bin"
         '';
-        installDependencies = ''
-        cd dart_movie_app
-        flutter pub get
+        installSdk = ''
+          npm install
+          npm run download:sdk
+          cd dart_movie_app
+          flutter pub get
         '';
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
@@ -68,9 +66,7 @@ services = {
       };
       onStart = {
         start = ''
-          cd proxy-web
-          npm install
-          node proxy.js
+          npm start:proxy
         '';
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
