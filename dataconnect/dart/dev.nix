@@ -55,7 +55,6 @@ services = {
         installSdk = ''
           npm install
           npm run download:sdk
-          cd dart_movie_app
           flutter pub get
         '';
         postgres = ''
@@ -66,7 +65,7 @@ services = {
       };
       onStart = {
         start = ''
-          npm start:proxy
+          npm run start:proxy
         '';
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
