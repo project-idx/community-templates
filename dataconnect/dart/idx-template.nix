@@ -11,6 +11,7 @@ idx-template \
 
   bootstrap = ''
     mkdir "$out"
+    echo "$WS_NAME" >> $out/.ws_name
     cp -r ${./flutter} "$out/.."
     export PATH="/home/user/flutter:$PATH"
     mkdir "$out"/.idx
