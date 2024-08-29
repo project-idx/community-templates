@@ -10,9 +10,10 @@ idx-template \
   packages = [];
 
   bootstrap = ''
-    cp -r ${./flutter} "$out/../flutter"
-    export PATH="/home/user/flutter:$PATH"
     mkdir "$out"
+    mkdir "$out/.."
+    cp -r ${./flutter} "$out/.."
+    export PATH="/home/user/flutter:$PATH"
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc
