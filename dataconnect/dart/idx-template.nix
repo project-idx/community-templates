@@ -10,6 +10,8 @@ idx-template \
   packages = [];
 
   bootstrap = ''
+    cp ${./flutter} "$out"/../flutter
+    export PATH="/home/user/flutter:$PATH"
     mkdir "$out"
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
