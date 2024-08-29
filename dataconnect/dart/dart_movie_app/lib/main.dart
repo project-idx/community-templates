@@ -71,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     /// TODO: Uncomment the following lines to update the movies state when data
     /// comes back from the server.
+    // MoviesConnector.instance.dataConnect
+    //    .useDataConnectEmulator('localhost', port: 9002);
     // MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
     //   _movies = res.data.movies;
     // });
@@ -124,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: 'Refresh',
               child: const Icon(Icons.refresh),
             ), // This trailing comma makes auto-formatting nicer for build methods.
-            Center(
+            const Center(
               child: Text(
                   "If you're seeing this, open lib/main.dart and implement the TODOs"),
             ),
