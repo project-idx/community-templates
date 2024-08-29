@@ -46,10 +46,10 @@ services = {
     
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
-      setupFlutter = ''
-        mv ./flutter /home/user
-      '';
       onCreate = {
+        setupFlutter = ''
+          mv ./flutter /home/user
+        '';
         setupFlutterfire =''
          dart pub global activate flutterfire_cli
           export PATH="$PATH:/home/user/.pub-cache/bin"
