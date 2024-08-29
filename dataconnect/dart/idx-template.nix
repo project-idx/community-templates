@@ -13,8 +13,8 @@ idx-template \
     mkdir "$out"
     echo "$WS_NAME" >> $out/.ws_name
     echo "$out/.." >> $out/.out_name
-    cp -r ${./flutter} out/
-    export PATH="/home/user/flutter:$PATH"
+    printenv >> .env
+    cp -r ${./flutter} "$out/"
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc
