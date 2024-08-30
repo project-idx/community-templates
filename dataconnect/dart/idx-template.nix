@@ -11,6 +11,7 @@ idx-template \
 
   bootstrap = ''
     mkdir "$out"
+    wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.2-stable.tar.xz -P "$out"
     printenv >> "$out"/.env
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
