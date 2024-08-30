@@ -50,15 +50,13 @@ services = {
         setupFlutter = ''
           wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.2-stable.tar.xz
           tar -xf flutter_linux_3.22.2-stable.tar.xz -C /home/user
-        '';
-        setupFlutterfire =''
-         dart pub global activate flutterfire_cli
+          dart pub global activate flutterfire_cli
           export PATH="$PATH:/home/user/.pub-cache/bin"
+          flutter pub get
         '';
         installSdk = ''
           npm install
           npm run download:sdk
-          flutter pub get
         '';
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
