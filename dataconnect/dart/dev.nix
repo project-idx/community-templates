@@ -18,6 +18,7 @@ processes = {
     pkgs.nodePackages.pnpm
     pkgs.jdk17
     pkgs.unzip
+    pkgs.flutter
   ];
   
   # Sets environment variables in the workspace
@@ -47,14 +48,12 @@ processes = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         setupFlutter = ''
-          tar -xf flutter_linux_3.22.2-stable.tar.xz -C /home/user
           dart pub global activate flutterfire_cli
-          export PATH="$PATH:/home/user/.pub-cache/bin"
-          flutter pub get
         '';
         installSdk = ''
           pnpm install
           pnpm run download:sdk
+          flutter pub get
         '';
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
