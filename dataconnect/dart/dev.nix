@@ -2,20 +2,19 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
 
-
-
-services = {
-      postgres = {
-        extensions = ["pgvector"];
-        enable = true;
+processes = {
+      postgresRun = {
+        command = "postgres -D local -k /tmp";
       };
     };
+
   # Which nixpkgs channel to use.
    channel = "stable-24.05"; # or "unstable"
   
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
+    (pkgs.postgresql_15.withPackages (p: [ p.pgvector ]))
     pkgs.nodePackages.pnpm
     pkgs.jdk17
     pkgs.unzip
@@ -55,8 +54,8 @@ services = {
           flutter pub get
         '';
         installSdk = ''
-          npm install
-          npm run download:sdk
+          pnpm install
+          pnpm run download:sdk
         '';
         postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
@@ -66,7 +65,7 @@ services = {
       };
       onStart = {
         start = ''
-          npm run start:proxy
+          pnpm run start:proxy
         '';
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
