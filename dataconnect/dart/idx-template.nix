@@ -8,7 +8,7 @@ idx-template \
 */
 {pkgs,  ... }: {
   packages = [
-    wget
+    pkgs.wget
     pkgs.postgresql
   ];
 
