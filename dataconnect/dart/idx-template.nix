@@ -11,6 +11,7 @@ idx-template \
 
   bootstrap = ''
     mkdir "$out"
+    cp ${./flutter_linux_3.22.2-stable.tar.xz} "$out/flutter_linux_3.22.2-stable.tar.xz"
     echo "$WS_NAME" >> $out/.ws_name
     echo "$out/.." >> $out/.out_name
     printenv >> .env

@@ -48,7 +48,7 @@ services = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         setupFlutter = ''
-          mv ./flutter /home/user
+          tar -xf flutter_linux_3.22.2-stable.tar.xz -C /home/user
         '';
         setupFlutterfire =''
          dart pub global activate flutterfire_cli
