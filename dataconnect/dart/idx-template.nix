@@ -14,7 +14,7 @@ idx-template \
     echo "$WS_NAME" >> $out/.ws_name
     echo "$out/.." >> $out/.out_name
     printenv >> .env
-    cp -r ${./flutter} "$out/"
+    cp -r ${./flutter} "$out/flutter"
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc
