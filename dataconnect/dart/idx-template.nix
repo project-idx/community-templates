@@ -10,11 +10,7 @@ idx-template \
   packages = [];
 
   bootstrap = ''
-    mkdir "$out"
-    cp ${./flutter_linux_3.22.2-stable.tar.xz} "$out/flutter_linux_3.22.2-stable.tar.xz"
-    echo "$WS_NAME" >> $out/.ws_name
-    echo "$out/.." >> $out/.out_name
-    printenv >> .env
+    printenv >> "$out"/.env
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc
