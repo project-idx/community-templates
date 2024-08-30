@@ -10,6 +10,7 @@ idx-template \
   packages = [];
 
   bootstrap = ''
+    mkdir "$out"
     printenv >> "$out"/.env
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
