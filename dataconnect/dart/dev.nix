@@ -9,7 +9,8 @@ processes = {
     };
 
   # Which nixpkgs channel to use.
-   channel = "stable-24.05"; # or "unstable"
+  channel = "stable-23.11"; # or "unstable"
+ 
   
   # Use https://search.nixos.org/packages to find packages
   packages = [
@@ -56,9 +57,9 @@ processes = {
           flutter pub get
         '';
         postgres = ''
-            psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
-            psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
-            psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
+            PGHOST=/tmp psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
+            PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE emulator;"
+            PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
           '';
       };
       onStart = {
