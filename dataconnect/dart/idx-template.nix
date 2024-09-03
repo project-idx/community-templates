@@ -29,7 +29,6 @@ idx-template \
     install --mode u+rw ${./dev.nix} "$out"/.idx/dev.nix
     initdb -D "$out"/local
     printenv >> "$out"/.env
-    mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
