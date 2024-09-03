@@ -19,7 +19,7 @@ idx-template \
 
   bootstrap = let flutter = pkgs.fetchzip {
     url = "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.1-stable.tar.xz";
-    hash = "";
+    hash = "sha256-hSKDAUhJgWGaTrVp49Ea9wjBNkaqdC5C3JaINIeeUWk=";
   };  in ''
   cp -rf ${flutter} flutter
   chmod -R u+w flutter
