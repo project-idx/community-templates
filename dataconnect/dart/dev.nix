@@ -19,13 +19,12 @@ processes = {
     pkgs.nodePackages.pnpm
     pkgs.jdk17
     pkgs.unzip
-    pkgs.flutter
   ];
   
   # Sets environment variables in the workspace
   env = {
     POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
-    PATH = ["/home/user/.pub-cache/bin"  "/home/user/flutter/bin"];
+    PATH = ["/home/user/.pub-cache/bin"  "/home/user/flutter/bin" "./.flutter-sdk/flutter/bin"];
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
