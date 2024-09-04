@@ -54,7 +54,7 @@
 #     }
 #   }
 # }
-query ListMovies() @auth(level: PUBLIC) {
+query ListMovies @auth(level: PUBLIC) {
     movies {
         id,
         title,

@@ -8,4 +8,4 @@ schema:
       database: "postgres"
       cloudSql:
         instanceId: "fdc-test-north1"
-connectorDirs: ["./default-connector"]
+connectorDirs: ["./movies"]
