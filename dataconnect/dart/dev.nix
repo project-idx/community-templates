@@ -7,10 +7,7 @@ processes = {
         command = "postgres -D local -k /tmp";
       };
       installDeps = {
-        command = "pnpm install";
-      };
-      proxyRun = {
-        command = "pnpm run start:proxy";
+        command = "./installDeps.sh";
       };
     };
 

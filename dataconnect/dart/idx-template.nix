@@ -22,6 +22,8 @@ idx-template \
   bootstrap = ''
     mkdir -p "$out"/.idx
     install --mode u+rw ${./dev.nix} "$out"/.idx/dev.nix
+    cp ${./installDeps.sh} "$out"/installDeps.sh
+    chmod +x "$out"/installDeps.sh
     initdb -D "$out"/local
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
