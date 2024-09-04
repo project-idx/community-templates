@@ -5,7 +5,7 @@
   "icon": "https://www.gstatic.com/images/branding/productlogos/flutter/v6/192px.svg",
   "publisher": "Rody Davis",
   "host": {
-    "virtualization": true
+    "virtualization": "true"
   },
   "params": [
     {
