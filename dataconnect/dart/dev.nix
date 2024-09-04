@@ -17,7 +17,6 @@ processes = {
     pkgs.nodejs_20
     (pkgs.postgresql_15.withPackages (p: [ p.pgvector ]))
     pkgs.nodePackages.pnpm
-    pkgs.jdk17
     pkgs.unzip
   ];
   
