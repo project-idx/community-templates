@@ -8,7 +8,7 @@ processes = {
       };
       proxyRun = {
 
-        command = "pnpm install && pnpm run start:proxy";
+        command = "'pnpm install && pnpm run start:proxy' &> out.txt";
       };
     };
 

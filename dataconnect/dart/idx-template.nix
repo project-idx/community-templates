@@ -14,6 +14,7 @@ idx-template \
     pkgs.gnutar
     pkgs.xz
     pkgs.git
+    pkgs.pnpm
     pkgs.busybox
   ];
 
