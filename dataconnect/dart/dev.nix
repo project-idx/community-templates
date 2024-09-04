@@ -64,11 +64,7 @@ processes = {
             PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
           '';
       };
-      onStart = {
-        start = ''
-          pnpm run start:proxy
-        '';
-      };
+     
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
     
