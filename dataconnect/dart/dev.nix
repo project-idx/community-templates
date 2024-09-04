@@ -7,8 +7,7 @@ processes = {
         command = "postgres -D local -k /tmp";
       };
       proxyRun = {
-
-        command = "'pnpm install && pnpm run start:proxy' &> out.txt";
+        command = "pnpm install && pnpm run start:proxy";
       };
     };
 
