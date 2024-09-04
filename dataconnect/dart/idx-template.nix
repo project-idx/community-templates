@@ -8,13 +8,14 @@ idx-template \
 */
 {pkgs,  ... }: {
   packages = [
+    pkgs.nodejs_20
     pkgs.wget
     pkgs.postgresql
     pkgs.curl
     pkgs.gnutar
     pkgs.xz
     pkgs.git
-    pkgs.pnpm
+    pkgs.nodePackages.pnpm
     pkgs.busybox
   ];
 
