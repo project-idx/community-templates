@@ -17,15 +17,8 @@ idx-template \
     pkgs.busybox
   ];
 
-  bootstrap = let flutter = pkgs.fetchzip {
-    url = "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.1-stable.tar.xz";
-    hash = "sha256-hSKDAUhJgWGaTrVp49Ea9wjBNkaqdC5C3JaINIeeUWk=";
-  };  in ''
-  cp -rf ${flutter} flutter
-  chmod -R u+w flutter
-    mkdir -p "$out"/.{flutter-sdk,idx}
-    mv flutter "$out/.flutter-sdk/flutter"
-    echo ".flutter-sdk/flutter" >> "$out/.gitignore"
+  bootstrap = ''
+    mkdir -p "$out"/.idx
     install --mode u+rw ${./dev.nix} "$out"/.idx/dev.nix
     initdb -D "$out"/local
     cp ${./.firebaserc} "$out"/.firebaserc

@@ -5,5 +5,8 @@
     "Web app"
   ],
   "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
-  "publisher": "Google LLC"
+  "publisher": "Google LLC",
+  "host": {
+    "virtualization": "true"
+ }
 }
