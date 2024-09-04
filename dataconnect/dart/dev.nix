@@ -6,6 +6,10 @@ processes = {
       postgresRun = {
         command = "postgres -D local -k /tmp";
       };
+      proxyRun = {
+
+        command = "pnpm install && pnpm run start:proxy";
+      };
     };
 
   # Which nixpkgs channel to use.

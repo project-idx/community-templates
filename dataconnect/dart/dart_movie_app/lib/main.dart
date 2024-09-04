@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
-// TODO: Remove the following line when your SDK has been generated
-//import './generated/movies.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+// TODO: Run `flutterfire configure` and then uncomment the following:
+// import 'firebase_options.dart';
+// import 'package:dart_movie_app/firebase_options.dart';
+
+// TODO: Remove the following line when your SDK has been generated
+// import 'package:dart_movie_app/generated/movies.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // TODO: Run `flutterfire configure` and then uncomment the following:
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const MyApp());
 }
 
@@ -64,7 +75,7 @@ class FakeMovie {
 class _MyHomePageState extends State<MyHomePage> {
   final List<FakeMovie> _movies = [FakeMovie("The Mat-Rix")];
   // TODO: Replace the line above with
-  // ListMoviesMovies _movies = [];
+  // List<ListMoviesMovies> _movies = [];
   @override
   void initState() {
     super.initState();
