@@ -1,11 +1,11 @@
 # This is a file for you to write an un-named mutation. 
 # Only one un-named mutation is allowed per file.
 mutation {
-	movie_insert(data: {
+	movie1: movie_insert(data: {
 		rating: 5 # Int
 		title: "The Matrix" # String
 	})
-	movie_insert(data: {
+	movie2: movie_insert(data: {
 		rating: 5 # Int
 		title: "The Godfather" # String
 	})

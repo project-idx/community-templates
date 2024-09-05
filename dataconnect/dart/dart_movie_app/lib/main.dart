@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
     //   setState(() {
     //     _movies = res.data.movies;
-    //   })
+    //   });
     // });
   }
 
