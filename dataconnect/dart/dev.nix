@@ -50,9 +50,6 @@ processes = {
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        setupFlutter = ''
-          dart pub global activate flutterfire_cli
-        '';
         installSdk = ''
           pnpm install
           pnpm run download:sdk
