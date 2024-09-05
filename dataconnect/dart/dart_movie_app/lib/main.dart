@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 // TODO: Run `flutterfire configure` and then uncomment the following:
 // import 'firebase_options.dart';
-// import 'package:dart_movie_app/firebase_options.dart';
 
 // TODO: Remove the following line when your SDK has been generated
 // import 'package:dart_movie_app/generated/movies.dart';
@@ -79,13 +78,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    // Get hostname by clicking on the open in new window
+    // Then, copy everything starting AFTER https:// until the starter slash.
+    // Ex: 9000-idx-testapp3d-1725552921112.cluster-rhptpnrfenhe4qarq36djxjqmg.cloudworkstations.dev
+    String hostName = '';
 
     /// TODO: Uncomment the following lines to update the movies state when data
     /// comes back from the server.
     // MoviesConnector.instance.dataConnect
-    //    .useDataConnectEmulator('localhost', port: 9002);
+    //    .useDataConnectEmulator(hostName, isSecure: true);
     // MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
-    //   _movies = res.data.movies;
+    //   setState(() {
+    //     _movies = res.data.movies;
+    //   })
     // });
   }
 
@@ -103,6 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    String text = _movies.length > 1
+        ? "Congrats on implementing the TODOs!"
+        : "If you're seeing this, open lib/main.dart and implement the TODOs!";
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -137,21 +145,19 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: 'Refresh',
               child: const Icon(Icons.refresh),
             ), // This trailing comma makes auto-formatting nicer for build methods.
-            const Center(
-              child: Text(
-                  "If you're seeing this, open lib/main.dart and implement the TODOs"),
+            Center(
+              child: Text(text),
             ),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                      child: Card(
-                          child: Padding(
-                              padding: EdgeInsets.all(50.0),
-                              child: Text(
-                                _movies[index].title,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ))));
+                  return Card(
+                      child: Padding(
+                          padding: EdgeInsets.all(50.0),
+                          child: Text(
+                            _movies[index].title,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )));
                 },
                 itemCount: _movies.length,
               ),
