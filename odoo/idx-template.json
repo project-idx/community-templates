@@ -5,7 +5,7 @@
     "Web app",
     "Backend"
   ],
-  "icon": "",
+  "icon": "https://odoocdn.com/openerp_website/static/src/img/assets/png/odoo_logo_inverted.png",
   "website": "https://odoo.com/",
   "publisher": "A.L.I.C.E",
   "params": [
