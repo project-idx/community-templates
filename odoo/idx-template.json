@@ -1,0 +1,24 @@
+{
+  "name": "Odoo",
+  "description": "A suite of web based open source business apps",
+  "categories": [
+    "Web app",
+    "Backend"
+  ],
+  "icon": "https://odoocdn.com/openerp_website/static/src/img/assets/png/odoo_logo_inverted.png",
+  "website": "https://odoo.com/",
+  "publisher": "A.L.I.C.E",
+  "params": [
+    {
+      "id": "version",
+      "name": "Version",
+      "type": "enum",
+      "default": "17",
+      "options": {
+        "17": "17",
+        "16": "16",
+        "15": "15"
+      }
+    }
+  ]
+}
