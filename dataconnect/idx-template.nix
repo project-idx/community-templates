@@ -7,7 +7,9 @@ idx-template \
 
 */
 {pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID", ... }: {
-  packages = [];
+  packages = [
+    pkgs.nodejs_20
+  ];
 
   bootstrap = ''
     mkdir "$out"
@@ -23,5 +25,6 @@ idx-template \
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
     sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' "$out"/.firebaserc
+    cd "$out" && npm install -g firebase-tools
   '';
 }
