@@ -7,7 +7,8 @@
   "params": [
     {
       "id": "projectId",
-      "description": "Firebase Project ID",
+      "name": "Firebase Project ID",
+      "description": "Find or create a project on firebase.google.com",
       "type": "text",
       "required": true
     },
