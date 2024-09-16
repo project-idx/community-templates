@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID_HERE", ... }: {
+{pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID", ... }: {
   packages = [];
 
   bootstrap = ''
