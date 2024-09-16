@@ -25,6 +25,6 @@ idx-template \
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
     sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' "$out"/.firebaserc
-    cd "$out" && npm install -g firebase-tools
+    # cd "$out" && npm install -g firebase-tools
   '';
 }
