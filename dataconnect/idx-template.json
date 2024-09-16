@@ -1,19 +1,25 @@
 {
   "name": "Data Connect",
   "description": "Build a new web app using Data Connect",
-  "categories": [
-    "Web app"
-  ],
+  "categories": ["Web app"],
   "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
   "publisher": "Google LLC",
-  "params": [{
-    "id": "sample",
-    "description": "Build a new web app using Data Connect",
-    "type": "enum",
-    "required": true,
-    "options": {
-      "nextjs-blank": "Next.js Blank",
-      "nextjs-email-app": "Next.js Email App"
+  "params": [
+    {
+      "id": "projectId",
+      "description": "Firebase Project ID",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sample",
+      "description": "Build a new web app using Data Connect",
+      "type": "enum",
+      "required": true,
+      "options": {
+        "nextjs-blank": "Next.js Blank",
+        "nextjs-email-app": "Next.js Email App"
+      }
     }
-  }]
+  ]
 }

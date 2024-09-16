@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, sample ? "nextjs-email-app", ... }: {
+{pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID_HERE", ... }: {
   packages = [];
 
   bootstrap = ''
@@ -22,5 +22,6 @@ idx-template \
     mkdir "$out"/.vscode
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
+    sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' "$out"/.firebaserc
   '';
 }

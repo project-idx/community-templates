@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": null
+    "default": "FIREBASE_PROJECT_ID_HERE"
   },
   "targets": {},
   "etags": {},

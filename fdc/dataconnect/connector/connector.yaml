@@ -1,6 +1,0 @@
-connectorId: default
-authMode: PUBLIC
-generate:
-  javascriptSdk:
-    outputDir: ../../app/generated/javascript/default
-    package: "@firebasegen/default"
