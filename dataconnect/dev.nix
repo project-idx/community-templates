@@ -32,6 +32,7 @@
       workspace = {
         onCreate = {
           update-firebase = "npm install -g firebase-tools";
+          update-dataconnect = "cd webapp && npm i firebase@dataconnect-preview";
           postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
