@@ -65,7 +65,7 @@ export default function Email({initialEmails, uid, host, firstEmail}: Props) {
 					</button>
 				</header>
 				{/* Email details */}
-				<div className="relative flex flex-col flex-grow p-8 pb-0 overflow-y-auto h-[400px]">
+				<div className="relative flex flex-col flex-grow p-8 pb-0 overflow-y-auto">
 					<div className="flex flex-col border-b pb-4">
 						{/* Metadata */}
 						<div className="flex items-baseline gap-2 justify-between mb-3">
