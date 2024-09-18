@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -82,6 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // Then, copy everything starting AFTER https:// until the starter slash.
     // Ex: 9000-idx-testapp3d-1725552921112.cluster-rhptpnrfenhe4qarq36djxjqmg.cloudworkstations.dev
     String hostName = '';
+    if (!kIsWeb) {
+      hostName = '172.17.0.1';
+    }
 
     /// TODO: Uncomment the following lines to update the movies state when data
     /// comes back from the server.
