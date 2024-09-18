@@ -11,7 +11,7 @@
 	"dependencies": {
 		"@email-app/email": "file:email-generated",
 		"firebase": "10.12.0-dataconnect-preview.388b61c7e",
-		"next": "14.1.3",
+		"next": "14.2.10",
 		"react": "^18",
 		"react-dom": "^18"
 	},
