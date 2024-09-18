@@ -51,7 +51,6 @@ processes = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         installSdk = ''
-          pnpm run download:sdk
           flutter pub get
         '';
         postgres = ''
