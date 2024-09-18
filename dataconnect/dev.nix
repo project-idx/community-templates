@@ -31,13 +31,12 @@
       workspace = {
         onCreate = {
           update-firebase = "npm install -g firebase-tools";
-          update-dataconnect = "cd webapp && npm i firebase@dataconnect-preview";
           postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "npm i --prefix=./webapp";
+          npm-install = "cd webapp && npm i && npm i firebase@dataconnect-preview";
         };
       };
       previews = {
