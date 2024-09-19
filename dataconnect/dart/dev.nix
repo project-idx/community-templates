@@ -35,8 +35,8 @@ processes = {
 
     extensions = let firebaseExt = pkgs.fetchurl {
     url =
-      "https://firebasestorage.googleapis.com/v0/b/getting-started-dart-storage.appspot.com/o/firebase-vscode-0.5.7-dart3.vsix?alt=media&token=7019cd11-d7d0-4039-b72d-426d7cb00d02";
-    hash = "sha256-/3ltrQCiwYm8WnOmNEGLwwOsli0broJhuR7hFKNGAMI=";
+      "https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/vsix%2Ffirebase-vscode-latest.vsix?alt=media";
+    hash = "";
     name = "firebase.vsix";
   }; in [
       "mtxr.sqltools"
