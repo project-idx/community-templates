@@ -20,7 +20,7 @@ export default function RootLayout({
 				<link rel="icon" href="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/favicon.ico" />
 			</head>
 			<body className="w-full">
-				<div className="relative bg-white grid grid-cols-3 overflow-hidden">
+				<div className="relative h-[600px] bg-white shadow-2xl grid grid-cols-3 overflow-hidden">
 					{children}
 				</div>
 			</body>
