@@ -1,11 +1,11 @@
-specVersion: "v1alpha"
+specVersion: "v1beta"
 serviceId: "local"
 location: "us-central1"
 schema:
   source: "./schema"
   datasource:
     postgresql:
-      database: "dataconnect"
+      database: "my-instance"
       cloudSql:
-        instanceId: "my-instance"
+        instanceId: "dataconnect"
 connectorDirs: ["./connector"]
