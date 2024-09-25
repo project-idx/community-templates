@@ -24,24 +24,21 @@
     pkgs.deno
   ];
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    PORT="9002";
+    HOST="0.0.0.0";
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       "denoland.vscode-deno"
     ];
-    workspace = {
-      onCreate = {
-        # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "main.ts" ];
-      };
-    };
     # Enable previews and customize configuration
     previews = {
       enable = true;
       previews = {
         web = {
-          command = ["PORT=$PORT" "HOST=0.0.0.0" "deno" "run" "--watch-hmr" "--allow-all" "main.ts"];
+          command = ["deno" "run" "--watch" "--allow-all" "main.ts"];
           manager = "web";
         };
       };
