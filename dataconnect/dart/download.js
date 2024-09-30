@@ -8,7 +8,7 @@ fs.mkdirSync(cachePath, { recursive: true });
 const fullZipPath = cachePath + zipName;
 const fullOutputPath = path.resolve('./');
 function getLatestStorageZip() {
-    const url = `https://firebasestorage.googleapis.com/v0/b/getting-started-dart-storage.appspot.com/o/${zipName}?alt=media`;
+    const url = `https://firebasestorage.googleapis.com/v0/b/getting-started-dart-storage.appspot.com/o/firebase_data_connect_0.0.6.zip?alt=media&token=814d7f55-2e0d-47a5-852b-f1eaa399fcc8`;
     return new Promise((resolve, reject) => {
         https.get(url, (res) => {
             const writeStream = fs.createWriteStream(fullZipPath);
