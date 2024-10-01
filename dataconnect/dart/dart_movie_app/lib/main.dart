@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
     /// comes back from the server.
     // MoviesConnector.instance.dataConnect
     //    .useDataConnectEmulator(hostName, isSecure: true);
-    // MoviesConnector.instance.listMovies.ref().subscribe().listen((res) {
+    // MoviesConnector.instance.listMovies.ref().build().subscribe().listen((res) {
     //   setState(() {
     //     _movies = res.data.movies;
     //   });
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _refreshData() {
     // Gets the data, then notifies the subscriber(s) of the new data.
     // TODO: Uncomment the following line to execute the query
-    // MoviesConnector.instance.listMovies.ref().execute();
+    // MoviesConnector.instance.listMovies.ref().build().execute();
   }
 
   @override
