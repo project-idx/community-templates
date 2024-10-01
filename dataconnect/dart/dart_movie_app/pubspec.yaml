@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   firebase_core: ^3.3.0
   firebase_data_connect:
-    path: ../firebase_data_connect
+    path: ./firebase_data_connect
   flutter_dotenv: ^5.1.0
 
 dev_dependencies:
