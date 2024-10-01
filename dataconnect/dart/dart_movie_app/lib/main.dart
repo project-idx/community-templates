@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 // TODO: Run `flutterfire configure` and then uncomment the following:
 // import 'firebase_options.dart';
 
@@ -10,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
   // TODO: Run `flutterfire configure` and then uncomment the following:
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
@@ -79,13 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    // Get hostname by clicking on the open in new window
-    // Then, copy everything starting AFTER https:// until the starter slash.
-    // Ex: 9000-idx-testapp3d-1725552921112.cluster-rhptpnrfenhe4qarq36djxjqmg.cloudworkstations.dev
-    String hostName = '';
-    if (!kIsWeb) {
-      hostName = '172.17.0.1';
-    }
+    String hostName = dotenv.env['HOST'];
+    // if (!kIsWeb) {
+    //   hostName = '172.17.0.1';
+    // }
 
     /// TODO: Uncomment the following lines to update the movies state when data
     /// comes back from the server.

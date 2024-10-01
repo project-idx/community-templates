@@ -10,7 +10,7 @@ processes = {
         command = "./installDeps.sh";
       };
       writeEnv = {
-        command = "echo \"ENV_VARIABLE=$WEB_HOST\" > .env";
+        command = "echo \"HOST=$WEB_HOST\" > .env";
       };
     };
 
