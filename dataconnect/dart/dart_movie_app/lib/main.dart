@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    String hostName = dotenv.env['HOST'];
+    String hostName = dotenv.env['HOST']!;
     // if (!kIsWeb) {
     //   hostName = '172.17.0.1';
     // }
