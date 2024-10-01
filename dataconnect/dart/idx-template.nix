@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs,  ... }: {
+{pkgs, projectId,  ... }: {
   packages = [
     pkgs.nodejs_20
     pkgs.wget
@@ -25,6 +25,7 @@ idx-template \
     cp ${./installDeps.sh} "$out"/installDeps.sh
     chmod +x "$out"/installDeps.sh
     initdb -D "$out"/local
+    sed -i 's/null/${projectId}/g' "$out"/.firebaserc
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     mkdir "$out"/.vscode

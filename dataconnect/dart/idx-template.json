@@ -6,5 +6,11 @@
   "publisher": "Google LLC",
   "host": {
     "virtualization": "true"
-  }
+  },
+  "params": [{
+    "id": "projectId",
+    "description": "Build a new web app using Data Connect",
+    "type": "text",
+    "required": true
+  }]
 }
