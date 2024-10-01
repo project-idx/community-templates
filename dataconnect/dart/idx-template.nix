@@ -26,6 +26,7 @@ idx-template \
     chmod +x "$out"/installDeps.sh
     initdb -D "$out"/local
     cp ${./.firebaserc} "$out"/.firebaserc
+    cp ${./firebase.json} "$out"/firebase.json
     sed -i 's/null/"${projectId}"/g' "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     mkdir "$out"/.vscode
