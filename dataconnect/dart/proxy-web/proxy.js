@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const EXT_PORT = 9002;
 const FLUTTER_PORT = 9003;
-const DATACONNECT_PORT = 9399;
+const DATACONNECT_PORT = 9400;
 const app = express();
 
 app.use(
