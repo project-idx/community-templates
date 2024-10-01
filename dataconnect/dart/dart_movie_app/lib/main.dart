@@ -81,7 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    String hostName = dotenv.env['HOST']!;
+    String PORT = '9400';
+    String hostName = '$PORT-${dotenv.env['HOST']!}';
     // if (!kIsWeb) {
     //   hostName = '172.17.0.1';
     // }
