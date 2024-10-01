@@ -9,6 +9,7 @@
   },
   "params": [{
     "id": "projectId",
+    "name": "Firebase Project ID",
     "description": "Build a new web app using Data Connect",
     "type": "text",
     "required": true
