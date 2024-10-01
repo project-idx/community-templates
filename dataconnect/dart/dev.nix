@@ -9,6 +9,9 @@ processes = {
       installDeps = {
         command = "./installDeps.sh";
       };
+      writeEnv = {
+        command = "echo 'ENV_VARIABLE=${WEB_HOST}' > .env"
+      };
     };
 
   # Which nixpkgs channel to use.
