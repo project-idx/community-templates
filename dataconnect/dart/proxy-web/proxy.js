@@ -10,7 +10,7 @@ app.use(
   createProxyMiddleware({
     target: `http://localhost:${FLUTTER_PORT}`,
     router: {
-      [`/v1alpha`]: `http://localhost:${DATACONNECT_PORT}`, // API on 8081 should support /api/* paths
+      [`/v1beta`]: `http://localhost:${DATACONNECT_PORT}`, // API on 8081 should support /api/* paths
     },
   })
 );
