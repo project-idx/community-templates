@@ -1,10 +1,15 @@
-# Required. The connector name of the Firebase Data Connect connector resource.
 connectorId: blank
 # Required. Accepted values are either "PUBLIC" or "ADMIN" (only "PUBLIC" for gated private
 # preview). If "ADMIN", the connector in this directory is an AdminConnector and its operations
 # are gated by IAM.
 authMode: PUBLIC
 generate:
+#   swiftSdk:
+#     outputDir: <Path where you want the generated SDK to be written to, relative to this file>
+#     package: "firebasegen/default"
+#   kotlinSdk:
+#     outputDir: <Path where you want the generated SDK to be written to, relative to this file>
+#     package: connectors.default
   javascriptSdk:
     # Create a custom package name for your generated SDK
     package: "@blank/generated"

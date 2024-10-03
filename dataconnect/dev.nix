@@ -9,7 +9,6 @@
     channel = "stable-24.05";
     packages = [
       pkgs.nodejs_20
-      pkgs.nodePackages.pnpm
     ];
     
     env = {
@@ -31,12 +30,13 @@
     idx = {
       workspace = {
         onCreate = {
+          update-firebase = "npm install -g firebase-tools";
           postgres = ''
             psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "pnpm i --prefix=./webapp";
+          npm-install = "cd webapp && npm i";
         };
       };
       previews = {

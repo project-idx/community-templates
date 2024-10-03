@@ -4,7 +4,7 @@ import { connectorConfig } from '@email-app/email'
 
 export default (host: string = 'localhost') => {
 	// Note: When connecting to a prod instance, please replace the empty config with your firebase config provided in the console.
-	const firebaseApp = initializeApp({ });
+	const firebaseApp = initializeApp({ projectId: 'FIREBASE_PROJECT_ID_HERE' });
 	const dataConnect = getDataConnect(firebaseApp, connectorConfig)
 	const isBrowser = typeof process !== 'undefined' && process.browser;
 
