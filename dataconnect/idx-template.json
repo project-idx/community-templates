@@ -4,6 +4,9 @@
   "categories": ["Web app"],
   "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
   "publisher": "Google LLC",
+  "host": {
+    "virtualization": "true"
+  },
   "params": [
     {
       "id": "projectId",
@@ -19,7 +22,8 @@
       "required": true,
       "options": {
         "nextjs-blank": "Next.js Blank",
-        "nextjs-email-app": "Next.js Email App"
+        "nextjs-email-app": "Next.js Email App",
+        "flutter-blank": "Flutter Blank"
       }
     }
   ]

@@ -1,25 +1,27 @@
-{ pkgs, ... }: 
-  let firebase-ext = pkgs.fetchurl {
-    url =
-      "https://firebasestorage.googleapis.com/v0/b/firemat-preview-drop/o/vsix%2Ffirebase-vscode-0.5.5-dart.vsix?alt=media&token=bce52dda-cfd7-4d7a-9be8-47ff0edc1441";
-    hash = "57b5592917db709cf2d73810affd4781";
-    name = "firebase.vsix";
-  };
-  in {
+{ pkgs, sample ? "nextjs-email-app", ... }: 
+  {
     channel = "stable-24.05";
     packages = [
       pkgs.nodejs_20
     ];
+    processes = {
+      writeEnv = {
+        command = "echo \"HOST=$WEB_HOST\" > .env";
+      };
+      installDeps = if sample == "flutter-blank" then { command = "./installDeps.sh"; } else {}
+    };
     
     env = {
       POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
+      PATH = ["/home/user/.pub-cache/bin"  "/home/user/flutter/bin"];
     };
   
     idx.extensions = [
       "mtxr.sqltools"
       "mtxr.sqltools-driver-pg"
+      ${if sample == "flutter-blank" then "Dart-Code.flutter" "Dart-Code.dart-code" else ""}
       "GraphQL.vscode-graphql-syntax"
-      "${firebase-ext}"
+      "GoogleCloudTools.firebase-dataconnect-vscode"
     ];
 
     services.postgres = {
@@ -36,12 +38,21 @@
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "cd webapp && npm i";
+          installDeps = ${if sample == "flutter-blank" then "flutter pub get" else "cd webapp && npm i"};
         };
       };
       previews = {
         enable = true;
-        previews = {
+        previews = if sample == "flutter-blank" then  {
+        web = {
+          command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "9003"];
+          manager = "flutter";
+        };
+        android = {
+          command = ["flutter" "run" "--machine" "-d" "android" "-d" "emulator-5554"];
+          manager = "flutter";
+        };
+      } else {
           web = {
             command = ["npm" "run" "dev" "--prefix" "./webapp" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
             manager = "web";
