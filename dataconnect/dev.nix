@@ -36,7 +36,7 @@
             psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
             psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
           '';
-          npm-install = "cd webapp && npm i && npm i firebase@dataconnect-preview";
+          npm-install = "cd webapp && npm i";
         };
       };
       previews = {
