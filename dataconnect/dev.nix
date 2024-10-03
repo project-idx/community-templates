@@ -8,7 +8,7 @@
       writeEnv = {
         command = "echo \"HOST=$WEB_HOST\" > .env";
       };
-      installDeps = if sample == "flutter-blank" then { command = "./installDeps.sh"; } else {}
+      installDeps = ${if sample == "flutter-blank" then { command = "./installDeps.sh"; } else {}};
     };
     
     env = {
