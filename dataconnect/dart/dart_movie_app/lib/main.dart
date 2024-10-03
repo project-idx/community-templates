@@ -81,16 +81,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    String PORT = '9000';
-    String hostName = '$PORT-${dotenv.env['HOST']!}';
-    // if (!kIsWeb) {
-    //   hostName = '172.17.0.1';
-    // }
+    int PORT = 443;
+    String hostName = '9000-${dotenv.env['HOST']!}';
+    if (!kIsWeb) {
+      hostName = '10.0.2.2';
+      PORT = 9400;
+    }
 
     /// TODO: Uncomment the following lines to update the movies state when data
     /// comes back from the server.
     // MoviesConnector.instance.dataConnect
-    //    .useDataConnectEmulator(hostName, isSecure: true);
+    //    .useDataConnectEmulator(hostName, PORT, isSecure: kIsWeb, automaticHostMapping: false);
     // MoviesConnector.instance.listMovies.ref().build().subscribe().listen((res) {
     //   setState(() {
     //     _movies = res.data.movies;
