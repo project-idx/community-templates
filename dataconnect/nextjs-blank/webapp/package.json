@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@blank/generated": "file:dataconnect-generated",
-		"firebase": "^10.12.4-dataconnect-preview.d986d4bf2",
+		"firebase": "^10.14.0",
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.5"
