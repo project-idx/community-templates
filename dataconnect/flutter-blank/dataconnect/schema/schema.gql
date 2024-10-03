@@ -1,0 +1,4 @@
+type Movie @table {
+    title: String!
+    rating: Int!
+}

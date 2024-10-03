@@ -1,0 +1,34 @@
+extend type Mutation {
+  """
+  Insert a single Movie into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  movie_insert(data: Movie_Data!): Movie_Key! @fdc_generated(from: "Movie", purpose: INSERT_SINGLE)
+  """
+  Insert Movie entries into the table. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  movie_insertMany(data: [Movie_Data!]!): [Movie_Key!]! @fdc_generated(from: "Movie", purpose: INSERT_MULTIPLE)
+  """
+  Insert or update a single Movie into the table, based on the primary key. Returns the key of the newly inserted Movie.
+  """
+  movie_upsert(data: Movie_Data!): Movie_Key! @fdc_generated(from: "Movie", purpose: UPSERT_SINGLE)
+  """
+  Insert or update Movie entries into the table, based on the primary key. Returns the key of the newly inserted Movie.
+  """
+  movie_upsertMany(data: [Movie_Data!]): [Movie_Key!]! @fdc_generated(from: "Movie", purpose: UPSERT_MULTIPLE)
+  """
+  Update a single Movie based on `id` or `key`, setting columns specified in `data`. Returns `null` if not found.
+  """
+  movie_update(id: UUID, key: Movie_Key, data: Movie_Data!): Movie_Key @fdc_generated(from: "Movie", purpose: UPDATE_SINGLE)
+  """
+  Update Movie entries matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  movie_updateMany(where: Movie_Filter, all: Boolean = false, data: Movie_Data!): Int! @fdc_generated(from: "Movie", purpose: UPDATE_MULTIPLE)
+  """
+  Delete a single Movie based on `id` or `key` and return its key (or `null` if not found).
+  """
+  movie_delete(id: UUID, key: Movie_Key): Movie_Key @fdc_generated(from: "Movie", purpose: DELETE_SINGLE)
+  """
+  Delete Movie entries matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  movie_deleteMany(where: Movie_Filter, all: Boolean = false): Int! @fdc_generated(from: "Movie", purpose: DELETE_MULTIPLE)
+}

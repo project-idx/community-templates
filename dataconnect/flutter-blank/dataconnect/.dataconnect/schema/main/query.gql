@@ -1,0 +1,10 @@
+extend type Query {
+  """
+  Look up a single Movie based on `id` or `key` and return selected fields (or `null` if not found).
+  """
+  movie(id: UUID, key: Movie_Key): Movie @fdc_generated(from: "Movie", purpose: QUERY_SINGLE)
+  """
+  List Movie entries in the table, optionally filtered by `where` conditions.
+  """
+  movies(where: Movie_Filter, orderBy: [Movie_Order!], offset: Int, limit: Int = 100): [Movie!]! @fdc_generated(from: "Movie", purpose: QUERY_MULTIPLE)
+}
