@@ -40,18 +40,14 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
+        fixPerms = ''
+          chmod +x runFlutter.sh
+        '';
         installSdk = ''
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
       };
-      onStart = {
-         PROXYDONOTCLOSE = ''
-          pnpm install
-          pnpm run start:proxy
-         '';
-      };
-     
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
     
@@ -60,7 +56,8 @@
       enable = true;
       previews = {
         web = {
-          command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "9003"];
+          
+          command = ["./runFlutter.sh"];
           manager = "flutter";
         };
         android = {
