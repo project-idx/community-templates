@@ -17,8 +17,9 @@
     },
     {
       "id": "sample",
-      "description": "Build a new web app using Data Connect",
+      "description": "Build a new app using Data Connect",
       "type": "enum",
+      "name": "Project Type",
       "required": true,
       "options": {
         "nextjs-blank": "Next.js Blank",
