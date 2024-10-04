@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-// TODO: Run `flutterfire configure` and then uncomment the following:
-// import 'firebase_options.dart';
 
 // TODO: Remove the following line when your SDK has been generated
 // import 'package:dart_movie_app/generated/movies.dart';
@@ -75,9 +73,7 @@ class FakeMovie {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<FakeMovie> _movies = [FakeMovie("The Mat-Rix")];
-  // TODO: Replace the line above with
-  // List<ListMoviesMovies> _movies = [];
+  List<ListMoviesMovies> _movies = [];
   @override
   void initState() {
     super.initState();
@@ -101,8 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _refreshData() {
     // Gets the data, then notifies the subscriber(s) of the new data.
-    // TODO: Uncomment the following line to execute the query
-    // MoviesConnector.instance.listMovies.ref().build().execute();
+    MoviesConnector.instance.listMovies.ref().build().execute();
   }
 
   @override
