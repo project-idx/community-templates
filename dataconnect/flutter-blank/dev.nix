@@ -1,13 +1,10 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
-
+  idx.internal.templates-cli.enable = true;
   processes = {
     writeEnv = {
       command = "echo \"HOST=$WEB_HOST\" > .env";
-    };
-    startProxy = {
-      command = "chmod +x ./startProxy.sh && ./startProxy.sh";
     };
   };
 
@@ -31,8 +28,6 @@
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
-
-
     extensions = [
       "mtxr.sqltools"
       "Dart-Code.flutter"
@@ -49,7 +44,12 @@
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
-        
+      };
+      onStart = {
+         PROXYDONOTCLOSE = ''
+          pnpm install
+          pnpm run start:proxy
+         '';
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook

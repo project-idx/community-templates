@@ -16,9 +16,16 @@ app.use(
 );
 
 app.listen(EXT_PORT, () => {
+  console.log(`
+    ====Firebase Data Connect Proxy Server========
+    ====Please DO NOT CLOSE=======================
+  `);
   console.log(
-    "Server listening on: " +
+    "Proxy Server Listening on: " +
     EXT_PORT
   );
-  console.log(`open https://${EXT_PORT}-idx-dartgithubtest-1724277324997.cluster-lqnxvk7thvfw4wbonsercicksm.cloudworkstations.dev`);
+  console.log(`
+    ==============================================
+    ==============================================
+  `);
 });
