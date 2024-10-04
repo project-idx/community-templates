@@ -121,15 +121,15 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Center(
+              child: Text(
+                  "Open the Firebase Data Connect Extension and click 'Start Emulators' to get started."),
+            ),
             FloatingActionButton(
               onPressed: _refreshData,
               tooltip: 'Refresh',
               child: const Icon(Icons.refresh),
             ), // This trailing comma makes auto-formatting nicer for build methods.
-            Center(
-              child: Text(
-                  "Open queries.gql and mutations.gql to add your own operations to get started"),
-            ),
           ],
         ),
       ),
