@@ -47,9 +47,9 @@ processes = {
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
-        writeEnv = {
-          command = "echo \"HOST=$WEB_HOST\" > .env";
-        };
+        writeEnv = ''
+          echo \"HOST=$WEB_HOST\" > .env
+        '';
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
