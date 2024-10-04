@@ -1,4 +1,2 @@
-pnpm install
-pnpm run start:proxy
 dart pub global activate flutterfire_cli
-flutterfire configure -a com.example.blank
+flutterfire configure -y -a com.example.blank

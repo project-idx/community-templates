@@ -3,11 +3,8 @@
 { pkgs, ... }: {
 
 processes = {
-      postgresRun = {
-        command = "postgres -D local -k /tmp";
-      };
       installDeps = {
-        command = "./installDeps.sh";
+        command = "pnpm install && pnpm run start:proxy";
       };
       writeEnv = {
         command = "echo \"HOST=$WEB_HOST\" > .env";
@@ -49,13 +46,8 @@ processes = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         installSdk = ''
-          flutter pub get
+          ./installDeps.sh
         '';
-        postgres = ''
-            PGHOST=/tmp psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
-            PGHOST=/tmp psql --dbname=postgres -c "CREATE DATABASE emulator;"
-            PGHOST=/tmp psql --dbname=emulator -c "CREATE EXTENSION vector;"
-          '';
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
