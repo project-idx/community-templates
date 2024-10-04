@@ -1,5 +1,7 @@
 dart pub global activate flutterfire_cli
-if ! [ firebase login --reauth ]; then
+fail() {
     echo "Unable to log in. Please re-run ./installDeps.sh to configure Flutter for your workstation."
-fi
+    exit 1
+}
+firebase login --reauth || fail
 flutterfire configure -y -a com.example.blank
