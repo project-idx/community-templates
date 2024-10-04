@@ -1,11 +1,7 @@
 {
   "name": "@firebase/dart-sample",
   "scripts": {
-    "download:sdk": "node download.js",
     "start:proxy": "node proxy-web/proxy.js"
-  },
-  "dependencies": {
-    "decompress": "^4.2.1"
   },
   "devDependencies": {
     "express": "^4.19.2",

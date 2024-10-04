@@ -3,9 +3,7 @@
 { pkgs, ... }: {
 
 processes = {
-      installDeps = {
-        command = "pnpm install && pnpm run start:proxy";
-      };
+      
       writeEnv = {
         command = "echo \"HOST=$WEB_HOST\" > .env";
       };
@@ -48,6 +46,10 @@ processes = {
         installSdk = ''
           chmod +x ./installDeps.sh
           ./installDeps.sh
+        '';
+        # TODO: Move this.
+        startProxy = ''
+          pnpm install && pnpm run start:proxy
         '';
       };
      
