@@ -23,6 +23,9 @@ idx-template \
       else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
       else "cp -r ${./flutter-blank}/* \"$out\""
     }
+    ${
+      if sample == "flutter-blank" then "rm \"$out\"/dev.nix" else ""
+    }
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
     mkdir "$out"/.vscode

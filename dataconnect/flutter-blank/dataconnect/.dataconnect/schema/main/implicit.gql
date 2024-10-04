@@ -1,3 +1,0 @@
-extend type Movie {
-  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Movie", purpose: IMPLICIT_KEY_FIELD)
-}

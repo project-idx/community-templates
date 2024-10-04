@@ -4,16 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-// TODO: Remove the following line when your SDK has been generated
-// import 'package:dart_movie_app/generated/movies.dart';
+import "firebase_options.dart";
+import 'package:blank/generated/blank.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
-  // TODO: Run `flutterfire configure` and then uncomment the following:
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  int PORT = 443;
+  String hostName = '9000-${dotenv.env['HOST']!}';
+  if (!kIsWeb) {
+    hostName = '10.0.2.2';
+    PORT = 9400;
+  }
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  BlankConnector.instance.dataConnect.useDataConnectEmulator(hostName, PORT,
+      isSecure: kIsWeb, automaticHostMapping: false);
   runApp(const MyApp());
 }
 
@@ -67,37 +74,14 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class FakeMovie {
-  FakeMovie(this.title);
-  String title;
-}
-
 class _MyHomePageState extends State<MyHomePage> {
-  List<ListMoviesMovies> _movies = [];
   @override
   void initState() {
     super.initState();
-    int PORT = 443;
-    String hostName = '9000-${dotenv.env['HOST']!}';
-    if (!kIsWeb) {
-      hostName = '10.0.2.2';
-      PORT = 9400;
-    }
-
-    /// TODO: Uncomment the following lines to update the movies state when data
-    /// comes back from the server.
-    // MoviesConnector.instance.dataConnect
-    //    .useDataConnectEmulator(hostName, PORT, isSecure: kIsWeb, automaticHostMapping: false);
-    // MoviesConnector.instance.listMovies.ref().build().subscribe().listen((res) {
-    //   setState(() {
-    //     _movies = res.data.movies;
-    //   });
-    // });
   }
 
   void _refreshData() {
-    // Gets the data, then notifies the subscriber(s) of the new data.
-    MoviesConnector.instance.listMovies.ref().build().execute();
+    // Add an execute call here
   }
 
   @override
@@ -108,9 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    String text = _movies.length > 1
-        ? "Congrats on implementing the TODOs!"
-        : "If you're seeing this, open lib/main.dart and implement the TODOs!";
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -146,22 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Icon(Icons.refresh),
             ), // This trailing comma makes auto-formatting nicer for build methods.
             Center(
-              child: Text(text),
+              child: Text(
+                  "Open queries.gql and mutations.gql to add your own operations to get started"),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                      child: Padding(
-                          padding: EdgeInsets.all(50.0),
-                          child: Text(
-                            _movies[index].title,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          )));
-                },
-                itemCount: _movies.length,
-              ),
-            )
           ],
         ),
       ),
