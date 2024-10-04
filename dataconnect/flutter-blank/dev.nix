@@ -3,11 +3,11 @@
 { pkgs, ... }: {
 
   processes = {
-      writeEnv = {
-        command = "echo \"HOST=$WEB_HOST\" > .env";
-      };
+    writeEnv = {
+      command = "echo \"HOST=$WEB_HOST\" > .env";
+    };
     startProxy = {
-      command = "pnpm install && pnpm run start:proxy";
+      command = "chmod +x ./startProxy.sh && ./startProxy.sh";
     };
   };
 
