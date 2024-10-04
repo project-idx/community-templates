@@ -3,6 +3,9 @@
 { pkgs, ... }: {
 
   processes = {
+      writeEnv = {
+        command = "echo \"HOST=$WEB_HOST\" > .env";
+      };
     startProxy = {
       command = "pnpm install && pnpm run start:proxy";
     };
@@ -46,9 +49,7 @@
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
-        writeEnv = ''
-          echo HOST=$WEB_HOST > .env
-        '';
+        
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
