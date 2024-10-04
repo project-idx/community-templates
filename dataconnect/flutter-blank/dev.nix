@@ -47,7 +47,7 @@
           ./installDeps.sh
         '';
         writeEnv = ''
-          echo \"HOST=$WEB_HOST\" > .env
+          echo HOST=$WEB_HOST > .env
         '';
       };
      
