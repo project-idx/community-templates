@@ -80,10 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  void _refreshData() {
-    // Add an execute call here
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -125,11 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
                   "Open the Firebase Data Connect Extension and click 'Start Emulators' to get started."),
             ),
-            FloatingActionButton(
-              onPressed: _refreshData,
-              tooltip: 'Refresh',
-              child: const Icon(Icons.refresh),
-            ), // This trailing comma makes auto-formatting nicer for build methods.
           ],
         ),
       ),
