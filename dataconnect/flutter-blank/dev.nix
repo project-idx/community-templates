@@ -3,10 +3,10 @@
 { pkgs, ... }: {
 
 processes = {
+    startProxy = ''
+        pnpm install && pnpm run start:proxy
+      '';     
       
-      writeEnv = {
-        command = "echo \"HOST=$WEB_HOST\" > .env";
-      };
     };
 
   # Which nixpkgs channel to use.
@@ -47,10 +47,9 @@ processes = {
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
-        # TODO: Move this.
-        startProxy = ''
-          pnpm install && pnpm run start:proxy
-        '';
+        writeEnv = {
+          command = "echo \"HOST=$WEB_HOST\" > .env";
+        };
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
