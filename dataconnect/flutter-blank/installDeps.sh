@@ -1,8 +1,9 @@
 #!/bin/bash
+is_logged_in=false
 dart pub global activate flutterfire_cli
-fail() {
-    echo "Unable to log in. Please re-run ./installDeps.sh to configure Flutter for your workstation."
-    exit 1
-}
-firebase login --reauth || fail
+while [ "$is_logged_in" = false ]
+do
+    firebase login --reauth && is_logged_in=true
+done
+echo "is_logged_in" is true!
 flutterfire configure -y -a com.example.blank
