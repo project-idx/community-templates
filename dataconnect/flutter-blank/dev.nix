@@ -2,12 +2,11 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
 
-processes = {
-    startProxy = ''
-        pnpm install && pnpm run start:proxy
-      '';     
-      
+  processes = {
+    startProxy = {
+      command = "pnpm install && pnpm run start:proxy";
     };
+  };
 
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
