@@ -1,7 +1,6 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
-  idx.internal.templates-cli.enable = true;
   processes = {
     writeEnv = {
       command = "echo \"HOST=$WEB_HOST\" > .env";
@@ -40,14 +39,18 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        fixPerms = ''
-          chmod +x runFlutter.sh
-        '';
         installSdk = ''
           chmod +x ./installDeps.sh
           ./installDeps.sh
         '';
       };
+      onStart = {
+         PROXYDONOTCLOSE = ''
+          pnpm install
+          pnpm run start:proxy
+         '';
+      };
+     
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
     
@@ -56,8 +59,7 @@
       enable = true;
       previews = {
         web = {
-          
-          command = ["./runFlutter.sh"];
+          command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "9003"];
           manager = "flutter";
         };
         android = {
