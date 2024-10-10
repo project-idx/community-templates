@@ -1,0 +1,8 @@
+{
+  "name": "Deno",
+  "description": "Deno, the open-source runtime for TypeScript and JavaScript. Features built-in dev tools, powerful platform APIs, and native support for TypeScript and JSX.",
+  "categories": ["Web app", "Backend"],
+  "icon": "",
+  "website": "https://deno.com/",
+  "publisher": "Rody Davis"
+}
