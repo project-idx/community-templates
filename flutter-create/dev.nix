@@ -5,13 +5,20 @@
   channel = "stable-23.11"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.nodePackages.firebase-tools
     pkgs.jdk17
     pkgs.unzip
     pkgs.flutter
   ];
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
+  };
+  services = {
+    postgres = {
+      extensions = ["pgvector"];
+      enable = true;
+    };
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -21,6 +28,10 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
+        installSdk = ''
+        npm install
+        node download.js
+        '';
         installDependencies = "flutter pub get";
         build-flutter = ''
           cd /home/user/myapp/android

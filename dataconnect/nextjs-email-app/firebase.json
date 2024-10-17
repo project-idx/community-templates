@@ -4,7 +4,7 @@
   },
   "emulators": {
     "dataconnect": {
-      "port": 9399
+      "port": 9400
     },
     "ui": {
       "enabled": false
