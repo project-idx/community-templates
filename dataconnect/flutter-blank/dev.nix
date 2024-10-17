@@ -1,6 +1,12 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
+  services.caddy = {
+    enable = true;
+    virtualHosts."localhost".extraConfig = ''
+      respond "Hello, world!"
+    '';
+  };
   processes = {
     writeEnv = {
       command = "echo \"HOST=$WEB_HOST\" > .env";
@@ -53,7 +59,7 @@
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
-    
+    # set up a proxy that routes requests from $PORT in IDX to 9003, and any FDC-like queries are automatically rerouted to FDC
     # Enable previews and customize configuration
     previews = {
       enable = true;

@@ -9,6 +9,7 @@ idx-template \
 {pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID", ... }: {
   packages = [
     pkgs.nodejs_20
+    pkgs.caddy
   ];
 
   bootstrap = ''
