@@ -1,0 +1,21 @@
+{
+  "name": "Leptos",
+  "description": "Build a new web app using Leptos",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "",
+  "publisher": "A.L.I.C.E",
+  "params": [
+    {
+      "id": "channel",
+      "name": "Channel",
+      "type": "enum",
+      "default": "stable",
+      "options": {
+        "stable": "Stable",
+        "nightly": "Nightly"
+      }
+    }
+  ]
+}
