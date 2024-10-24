@@ -1,12 +1,6 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
-  services.caddy = {
-    enable = true;
-    virtualHosts."localhost".extraConfig = ''
-      respond "Hello, world!"
-    '';
-  };
   processes = {
     writeEnv = {
       command = "echo \"HOST=$WEB_HOST\" > .env";
@@ -24,6 +18,7 @@
     pkgs.nodePackages.pnpm
     pkgs.jdk17
     pkgs.unzip
+    pkgs.caddy
   ];
   
   # Sets environment variables in the workspace
@@ -51,10 +46,9 @@
         '';
       };
       onStart = {
-         PROXYDONOTCLOSE = ''
-          pnpm install
-          pnpm run start:proxy
-         '';
+        startProxy = ''
+          caddy run
+        '';
       };
      
       # To run something each time the workspace is (re)started, use the `onStart` hook
