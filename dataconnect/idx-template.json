@@ -1,9 +1,12 @@
 {
   "name": "Data Connect",
   "description": "Build a new web app using Data Connect",
-  "categories": ["Web app"],
+  "categories": ["Web app", "Flutter app"],
   "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
   "publisher": "Google LLC",
+  "host": {
+    "virtualization": "true"
+  },
   "params": [
     {
       "id": "projectId",
@@ -14,12 +17,14 @@
     },
     {
       "id": "sample",
-      "description": "Build a new web app using Data Connect",
+      "description": "Build a new app using Data Connect",
       "type": "enum",
+      "name": "Project Type",
       "required": true,
       "options": {
         "nextjs-blank": "Next.js Blank",
-        "nextjs-email-app": "Next.js Email App"
+        "nextjs-email-app": "Next.js Email App",
+        "flutter-blank": "Flutter Blank"
       }
     }
   ]
