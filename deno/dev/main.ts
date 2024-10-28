@@ -15,5 +15,10 @@ Deno.serve({ hostname: HOST, port: PORT }, async (req) => {
     console.log("Body:", body);
   }
 
-  return new Response("Hello, World!");
+  return new Response("Hello, World!", {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html"
+    },
+  });
 });
