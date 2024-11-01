@@ -33,6 +33,7 @@
     extensions = [
       "denoland.vscode-deno"
     ];
+    default.openFiles = [ "main.ts" ];
     # Enable previews and customize configuration
     previews = {
       enable = true;
