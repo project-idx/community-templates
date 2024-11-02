@@ -33,9 +33,12 @@
     extensions = [
       "denoland.vscode-deno"
     ];
-    onCreate = {
-      default.openFiles = [ "main.ts" ];
-    }
+    workspace = {
+      onCreate = {
+        # Open editors for the following files by default, if they exist:
+        default.openFiles = ["main.ts"];
+      };
+    };
     # Enable previews and customize configuration
     previews = {
       enable = true;
