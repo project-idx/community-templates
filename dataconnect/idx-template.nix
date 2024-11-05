@@ -15,16 +15,17 @@ idx-template \
     mkdir "$out"
     mkdir "$out"/.idx
     ${
-      if sample == "flutter-blank" then "cp -r ${./flutter-blank}/dev.nix \"$out\"/.idx/dev.nix"
+    if sample == "flutter-blank" || sample != "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
       else "cp ${./dev.nix} \"$out\"/.idx/dev.nix"
     }
     ${
       if sample == "nextjs-email-app" then "cp -r ${./nextjs-email-app}/* \"$out\""
       else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
-      else "cp -r ${./flutter-blank}/* \"$out\""
+      else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
+      else "cp -r ${./flutter-movie}/* \"$out\""
     }
     ${
-      if sample == "flutter-blank" then "rm \"$out\"/dev.nix" else ""
+      if sample == "flutter-blank" || sample == "flutter-movie" then "rm \"$out\"/dev.nix" else ""
     }
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
@@ -33,7 +34,7 @@ idx-template \
     chmod -R u+w "$out"
     sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' "$out"/.firebaserc
     ${
-      if sample != "flutter-blank" then "sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' \"$out\"/webapp/src/data-connect/index.tsx"
+    if sample != "flutter-blank" && sample != "flutter-movie" then "sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' \"$out\"/webapp/src/data-connect/index.tsx"
       else ""
     }
   '';

@@ -24,7 +24,8 @@
       "options": {
         "nextjs-blank": "Next.js Blank",
         "nextjs-email-app": "Next.js Email App",
-        "flutter-blank": "Flutter Blank"
+        "flutter-blank": "Flutter Blank",
+        "flutter-movie": "Flutter Movie App"
       }
     }
   ]

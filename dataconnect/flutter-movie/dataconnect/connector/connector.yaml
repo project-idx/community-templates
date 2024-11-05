@@ -1,0 +1,5 @@
+connectorId: movies
+generate:
+  dartSdk:
+    outputDir: ../../lib/generated/dart/connector
+    package: movies

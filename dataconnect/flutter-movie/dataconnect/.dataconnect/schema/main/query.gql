@@ -1,0 +1,293 @@
+extend type Query {
+  """
+  ✨ Look up a single `Actor` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  actor(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Actor_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Actor_FirstRow
+  ): Actor @fdc_generated(from: "Actor", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `FavoriteMovie` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  favorite_movie(
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteMovie_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteMovie_FirstRow
+  ): FavoriteMovie @fdc_generated(from: "FavoriteMovie", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Movie` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  movie(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Movie_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Movie_FirstRow
+  ): Movie @fdc_generated(from: "Movie", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `MovieActor` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  movieActor(
+    """
+    The key used to identify the object.
+    """
+    key: MovieActor_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MovieActor_FirstRow
+  ): MovieActor @fdc_generated(from: "MovieActor", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `MovieMetadata` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  movieMetadata(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MovieMetadata_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MovieMetadata_FirstRow
+  ): MovieMetadata @fdc_generated(from: "MovieMetadata", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Review` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  review(
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+  ): Review @fdc_generated(from: "Review", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: String
+
+    """
+    ✨ `_expr` server value variant of `id` (The unique ID of the object.)
+    """
+    id_expr: String_Expr
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ List `Actor` objects in the table, optionally filtered by `where` conditions.
+  """
+  actors(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Actor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Actor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Actor!]! @fdc_generated(from: "Actor", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `FavoriteMovie` objects in the table, optionally filtered by `where` conditions.
+  """
+  favorite_movies(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: FavoriteMovie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [FavoriteMovie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [FavoriteMovie!]! @fdc_generated(from: "FavoriteMovie", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Movie` objects in the table, optionally filtered by `where` conditions.
+  """
+  movies(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Movie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Movie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Movie!]! @fdc_generated(from: "Movie", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `MovieActor` objects in the table, optionally filtered by `where` conditions.
+  """
+  movieActors(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieActor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieActor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [MovieActor!]! @fdc_generated(from: "MovieActor", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `MovieMetadata` objects in the table, optionally filtered by `where` conditions.
+  """
+  movieMetadatas(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieMetadata_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieMetadata_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [MovieMetadata!]! @fdc_generated(from: "MovieMetadata", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Review` objects in the table, optionally filtered by `where` conditions.
+  """
+  reviews(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Review!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table, optionally filtered by `where` conditions.
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+}

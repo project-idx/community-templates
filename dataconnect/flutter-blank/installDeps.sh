@@ -1,5 +1,4 @@
 #!/bin/bash
-is_logged_in=false
 dart pub global activate flutterfire_cli
 npm install -g firebase-tools
 firebase login
