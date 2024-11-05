@@ -15,7 +15,7 @@ idx-template \
     mkdir "$out"
     mkdir "$out"/.idx
     ${
-    if sample == "flutter-blank" || sample != "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
+    if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
       else "cp ${./dev.nix} \"$out\"/.idx/dev.nix"
     }
     ${
