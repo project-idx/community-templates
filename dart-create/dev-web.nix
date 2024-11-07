@@ -21,17 +21,17 @@
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
         install-dependencies = "dart pub get";
-        # install-cli = "dart pub global activate webdev";
+        install-cli = "dart pub global activate webdev";
       };
     };
-    # previews = {
-    #   enable = true;
-    #   previews = {
-    #     web = {
-    #       command = ["webdev" "serve" "--auto=refresh" "--hostname" "0.0.0.0" "--no-launch-in-chrome" "web:$PORT"];
-    #       manager = "web";
-    #     };
-    #   };
-    # };
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = ["webdev" "serve" "--auto=refresh" "--hostname" "0.0.0.0" "--no-launch-in-chrome" "web:$PORT"];
+          manager = "web";
+        };
+      };
+    };
   };
 }
