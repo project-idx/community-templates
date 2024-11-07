@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
     return await FirebaseAuth.instance.signInWithPopup(googleProvider);
   }
 
-  Future<UserCredential> signInWithGoogleOnMobile() async {
+  Future<void> signInWithGoogleOnMobile() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -35,7 +35,35 @@ class _LoginState extends State<Login> {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    try {
+      await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (_) {
+      showFirebaseAlert();
+    }
+  }
+
+  void showFirebaseAlert() {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Firebase Authentication'),
+          content: const Text(
+              'There was an error trying to authenticate. Did you follow: https://firebase.google.com/docs/auth/flutter/federated-auth#google'),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void logIn() async {
