@@ -34,7 +34,10 @@ class _MovieDetailPage extends State<MovieDetailPage> {
                     ? CircularProgressIndicator()
                     : Column(
                         children: [
-                          Image.network(_movie!.imageUrl),
+                          Image.network(
+                            _movie!.imageUrl,
+                            height: 400,
+                          ),
                           Center(
                             child: Text(
                               _movie!.description!,
