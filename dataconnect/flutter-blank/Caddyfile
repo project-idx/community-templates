@@ -1,4 +1,0 @@
-:9002 {
-    reverse_proxy /v1beta* http://localhost:9400
-    reverse_proxy /* http://localhost:9003
-}

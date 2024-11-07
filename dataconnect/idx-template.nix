@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, sample ? "nextjs-email-app", projectId ? "FIREBASE_PROJECT_ID", ... }: {
+{pkgs, sample ? "nextjs-movie-app", ... }: {
   packages = [
     pkgs.nodejs_20
   ];
@@ -20,7 +20,7 @@ idx-template \
     }
     
     ${
-      if sample == "nextjs-email-app" then "cp -r ${./nextjs-email-app}/* \"$out\""
+      if sample == "nextjs-movie-app" then "cp -r ${./nextjs-movie-app}/* \"$out\""
       else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
       else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
       else "cp -r ${./flutter-movie}/* \"$out\""
@@ -36,10 +36,5 @@ idx-template \
     mkdir "$out"/.vscode
     cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
-    sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' "$out"/.firebaserc
-    ${
-    if sample != "flutter-blank" && sample != "flutter-movie" then "sed -i 's/FIREBASE_PROJECT_ID_HERE/${projectId}/g' \"$out\"/webapp/src/data-connect/index.tsx"
-      else ""
-    }
   '';
 }

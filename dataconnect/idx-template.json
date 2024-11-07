@@ -1,20 +1,13 @@
 {
   "name": "Data Connect",
   "description": "Build a new web app using Data Connect",
-  "categories": ["Web app", "Flutter app"],
+  "categories": ["Web app", "Flutter app", "Databases"],
   "icon": "https://www.gstatic.com/monospace/240513/logo_firebase.svg",
   "publisher": "Google LLC",
   "host": {
     "virtualization": "true"
   },
   "params": [
-    {
-      "id": "projectId",
-      "name": "Firebase Project ID",
-      "description": "Find or create a project on firebase.google.com",
-      "type": "text",
-      "required": true
-    },
     {
       "id": "sample",
       "description": "Build a new app using Data Connect",
@@ -23,7 +16,7 @@
       "required": true,
       "options": {
         "nextjs-blank": "Next.js Blank",
-        "nextjs-email-app": "Next.js Email App",
+        "nextjs-movie-app": "Next.js Movie App",
         "flutter-blank": "Flutter Blank",
         "flutter-movie": "Flutter Movie App"
       }
