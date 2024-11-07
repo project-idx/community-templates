@@ -9,20 +9,6 @@
   },
   "params": [
     {
-      "id": "template",
-      "name": "Template",
-      "type": "enum",
-      "default": "app",
-      "options": {
-        "app": "App",
-        "module": "Module",
-        "package": "Package",
-        "plugin": "Plugin",
-        "plugin_ffi": "Plugin (FFI)",
-        "skeleton": "Skeleton"
-      }
-    },
-    {
       "id": "repo",
       "name": "Git Repo",
       "type": "text",
