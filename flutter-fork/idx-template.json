@@ -13,12 +13,6 @@
       "name": "Git Repo",
       "type": "text",
       "default": "https://github.com/flutter/flutter"
-    },
-    {
-      "id": "branch",
-      "name": "Git Branch",
-      "type": "text",
-      "default": "stable"
     }
   ]
 }
