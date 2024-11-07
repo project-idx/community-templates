@@ -1,12 +1,7 @@
 {
   "projects": {
-    "default": "FIREBASE_PROJECT_ID_HERE"
+    "default": null
   },
   "targets": {},
-  "etags": {},
-  "dataconnectEmulatorConfig": {
-    "postgres": {
-      "localConnectionString": "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable"
-    }
-  }
+  "etags": {}
 }
