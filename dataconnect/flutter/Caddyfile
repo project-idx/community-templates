@@ -1,7 +1,7 @@
 :9002 {
-    reverse_proxy /v1beta* http://localhost:9400
+    reverse_proxy /v1beta* http://localhost:9403
     reverse_proxy /* http://localhost:9003 {
-        header_up  Cross-Origin-Embedder-Policy unsafe-none
-        header_up cross-origin-opener-policy same-origin-allow-popups
+        header_down Cross-Origin-Embedder-Policy unsafe-none
+        header_down cross-origin-opener-policy same-origin-allow-popups
     }
 }

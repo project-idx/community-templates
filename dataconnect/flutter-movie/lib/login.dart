@@ -12,12 +12,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  Future<UserCredential> signInWithGoogleOnWeb() async {
+  Future<void> signInWithGoogleOnWeb() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+    try {
+      await FirebaseAuth.instance.signInWithPopup(googleProvider);
+    } catch (_) {
+      showFirebaseAlert();
+    }
   }
 
   Future<void> signInWithGoogleOnMobile() async {
@@ -43,13 +47,18 @@ class _LoginState extends State<Login> {
   }
 
   void showFirebaseAlert() {
+    String text = kIsWeb
+        ? "Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings"
+        : """Did you add your SHA1 key to your app in the console?
+        You can get your key by running the following in your android directory: 
+        ./gradlew signingReport
+        """;
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Firebase Authentication'),
-          content: const Text(
-              'There was an error trying to authenticate. Did you follow: https://firebase.google.com/docs/auth/flutter/federated-auth#google'),
+          content: Text('There was an error trying to authenticate. $text'),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(

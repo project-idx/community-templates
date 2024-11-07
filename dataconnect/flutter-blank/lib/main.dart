@@ -14,7 +14,7 @@ void main() async {
   String hostName = '9000-${dotenv.env['HOST']!}';
   if (!kIsWeb) {
     hostName = '10.0.2.2';
-    PORT = 9400;
+    PORT = 9403;
   }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

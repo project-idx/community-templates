@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app_clone/firebase_options.dart';
@@ -9,12 +10,17 @@ import 'package:movie_app_clone/movie_detail_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  int port = 443;
+  String hostName = Uri.base.host;
+  if (!kIsWeb) {
+    hostName = '10.0.2.2';
+    port = 9403;
+  }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   MovieConnectorConnector.instance.dataConnect
-      .useDataConnectEmulator('127.0.0.1', 9401);
-
+      .useDataConnectEmulator(hostName, port, isSecure: true);
   runApp(const MyApp());
 }
 
@@ -103,17 +109,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late ListMoviesMovies _currentMovie;
 
+  bool showMessage = true;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    MovieConnectorConnector.instance
-        .listMovies()
-        .ref()
-        .subscribe()
-        .listen((res) {
+    MovieConnectorConnector.instance.listMovies().ref().subscribe().listen(
+        (res) {
       setState(() {
         _movies = res.data.movies;
+        showMessage = res.data.movies.isEmpty;
+      });
+    }, onError: (_) {
+      setState(() {
+        showMessage = true;
       });
     });
   }
@@ -124,99 +133,109 @@ class _MyHomePageState extends State<MyHomePage> {
         body: SafeArea(
             child: Container(
                 padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                      child: Row(
+                child: showMessage
+                    ? Column(children: [
+                        Row(children: [
+                          Text(
+                              "Please Open the Firebase Data Connect Extension, Start Emulators, and Run moviedata_insert.gql Locally.")
+                        ]),
+                      ])
+                    : Column(
                         children: [
-                          Icon(Icons.account_circle),
-                          const SizedBox(width: 10),
-                          Text(FirebaseAuth.instance.currentUser!.email!),
-                        ],
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        SearchAnchor(builder: (BuildContext context,
-                            SearchController controller) {
-                          return SearchBar(
-                            controller: controller,
-                            leading: Icon(Icons.search),
-                            onTap: () => controller.openView(),
-                            onChanged: (_) => controller.openView(),
-                            hintText: "Search for a movie",
-                          );
-                        }, suggestionsBuilder: (BuildContext context,
-                            SearchController controller) async {
-                          List<ListTile> movies = await MovieConnectorConnector
-                              .instance
-                              .listMovies()
-                              .execute()
-                              .then(
-                                (value) => value.data.movies
-                                    .map((e) => ListTile(
-                                        title: Text(e.title),
-                                        onTap: () {
-                                          setState(() {
-                                            _currentMovie = e;
-                                          });
-                                          controller.closeView(e.title);
-                                        }))
-                                    .toList(),
-                              );
-                          return movies;
-                          // print(movies.length);
-                        }),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Popular Movies",
-                            style: TextStyle(
-                              fontSize: 20,
+                          Container(
+                            padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                            child: Row(
+                              children: [
+                                Icon(Icons.account_circle),
+                                const SizedBox(width: 10),
+                                Text(FirebaseAuth.instance.currentUser!.email!),
+                              ],
                             ),
-                            textAlign: TextAlign.left,
                           ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                    Container(
-                        width: double.infinity,
-                        height: 320,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            final movie = _movies[index];
-                            return GestureDetector(
-                                onTap: () => context.pushNamed('MovieDetail',
-                                    pathParameters: {'id': movie.id}),
-                                child: Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image.network(
-                                        movie.imageUrl,
-                                        height: 300.0,
-                                        width: 200.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      movie.title,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
-                                ));
-                          },
-                          itemCount: _movies.length,
-                        )),
-                  ],
-                ))));
+                          Column(
+                            children: [
+                              SearchAnchor(builder: (BuildContext context,
+                                  SearchController controller) {
+                                return SearchBar(
+                                  controller: controller,
+                                  leading: Icon(Icons.search),
+                                  onTap: () => controller.openView(),
+                                  onChanged: (_) => controller.openView(),
+                                  hintText: "Search for a movie",
+                                );
+                              }, suggestionsBuilder: (BuildContext context,
+                                  SearchController controller) async {
+                                List<ListTile> movies =
+                                    await MovieConnectorConnector.instance
+                                        .listMovies()
+                                        .execute()
+                                        .then(
+                                          (value) => value.data.movies
+                                              .map((e) => ListTile(
+                                                  title: Text(e.title),
+                                                  onTap: () {
+                                                    setState(() {
+                                                      _currentMovie = e;
+                                                    });
+                                                    controller
+                                                        .closeView(e.title);
+                                                  }))
+                                              .toList(),
+                                        );
+                                return movies;
+                                // print(movies.length);
+                              }),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Popular Movies",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                          Container(
+                              width: double.infinity,
+                              height: 320,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  final movie = _movies[index];
+                                  return GestureDetector(
+                                      onTap: () => context.pushNamed(
+                                          'MovieDetail',
+                                          pathParameters: {'id': movie.id}),
+                                      child: Column(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            child: Image.network(
+                                              movie.imageUrl,
+                                              height: 300.0,
+                                              width: 200.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            movie.title,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ));
+                                },
+                                itemCount: _movies.length,
+                              )),
+                        ],
+                      ))));
   }
 }

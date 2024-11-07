@@ -42,11 +42,8 @@
     "source": "dataconnect"
   },
   "emulators": {
-    "auth": {
-      "port": 9321
-    },
     "dataconnect": {
-      "port": 9401
+      "port": 9403
     },
     "ui": {
       "enabled": false
