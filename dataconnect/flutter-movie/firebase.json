@@ -1,43 +1,4 @@
 {
-  "flutter": {
-    "platforms": {
-      "android": {
-        "default": {
-          "projectId": "movie-app-dart",
-          "appId": "1:958807142248:android:f2deee6df336e4efe270dd",
-          "fileOutput": "android/app/google-services.json"
-        }
-      },
-      "ios": {
-        "default": {
-          "projectId": "movie-app-dart",
-          "appId": "1:958807142248:ios:ee0c5f6246aeb45fe270dd",
-          "uploadDebugSymbols": false,
-          "fileOutput": "ios/Runner/GoogleService-Info.plist"
-        }
-      },
-      "macos": {
-        "default": {
-          "projectId": "movie-app-dart",
-          "appId": "1:958807142248:ios:ee0c5f6246aeb45fe270dd",
-          "uploadDebugSymbols": false,
-          "fileOutput": "macos/Runner/GoogleService-Info.plist"
-        }
-      },
-      "dart": {
-        "lib/firebase_options.dart": {
-          "projectId": "movie-app-dart",
-          "configurations": {
-            "android": "1:958807142248:android:f2deee6df336e4efe270dd",
-            "ios": "1:958807142248:ios:ee0c5f6246aeb45fe270dd",
-            "macos": "1:958807142248:ios:ee0c5f6246aeb45fe270dd",
-            "web": "1:958807142248:web:236fede384126aa2e270dd",
-            "windows": "1:958807142248:web:cf2d9c31c38c27f1e270dd"
-          }
-        }
-      }
-    }
-  },
   "dataconnect": {
     "source": "dataconnect"
   },
