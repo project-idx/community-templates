@@ -14,7 +14,6 @@ void main() async {
   );
   MovieConnectorConnector.instance.dataConnect
       .useDataConnectEmulator('127.0.0.1', 9401);
-  FirebaseAuth.instance.useAuthEmulator('localhost', 9321);
 
   runApp(const MyApp());
 }

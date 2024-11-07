@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -11,7 +12,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  Future<UserCredential> logIn() async {
+  Future<UserCredential> signInWithGoogleOnWeb() async {
+    // Create a new provider
+    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+  }
+
+  Future<UserCredential> signInWithGoogleOnMobile() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -29,6 +38,17 @@ class _LoginState extends State<Login> {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+  void logIn() async {
+    if (kIsWeb) {
+      await signInWithGoogleOnWeb();
+    } else {
+      await signInWithGoogleOnMobile();
+    }
+    if (mounted) {
+      context.goNamed('Home');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +59,7 @@ class _LoginState extends State<Login> {
             TextButton(
               child: const Text("Sign in"),
               onPressed: () {
-                logIn().then(
-                  (value) {
-                    if (context.mounted) {
-                      context.goNamed('Home');
-                    }
-                  },
-                );
+                logIn();
               },
             ),
           ],
