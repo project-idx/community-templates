@@ -12,6 +12,13 @@ do
 done
 
 projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')
+while [ -z "$projectId"]
+do
+    echo "Couldn't find project ID in .firebaserc. Waiting 5s before checking again"
+    sleep 5s # Waits 5 seconds.
+    projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')
+done
+# TODO(mtewani): Add a check for project ID.
 echo "Using ProjectID: $projectId"
 flutterfire configure -y -a com.example.blank
 flutter pub get
