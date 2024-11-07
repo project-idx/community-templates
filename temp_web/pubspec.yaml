@@ -1,0 +1,16 @@
+name: temp_web
+description: An absolute bare-bones web app.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.6.0-216.1.beta
+
+# Add regular dependencies here.
+dependencies:
+  web: ^0.5.1
+
+dev_dependencies:
+  build_runner: ^2.4.8
+  build_web_compilers: ^4.0.9
+  lints: ^4.0.0
