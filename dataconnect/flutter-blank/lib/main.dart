@@ -9,18 +9,17 @@ import 'package:blank/generated/blank.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: '.env');
-  int PORT = 443;
-  String hostName = '9000-${dotenv.env['HOST']!}';
+  int port = 443;
+  String hostName = Uri.base.host;
   if (!kIsWeb) {
     hostName = '10.0.2.2';
-    PORT = 9403;
+    port = 9403;
   }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  BlankConnector.instance.dataConnect.useDataConnectEmulator(hostName, PORT,
-      isSecure: kIsWeb, automaticHostMapping: false);
+  MovieConnectorConnector.instance.dataConnect
+      .useDataConnectEmulator(hostName, port, isSecure: true);
   runApp(const MyApp());
 }
 

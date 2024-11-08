@@ -19,11 +19,9 @@ do
     sleep 5s # Waits 5 seconds.
     projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')
 done
+echo "Using ProjectID: $projectId"
 dart pub global activate flutterfire_cli
 export PATH=~/.global_modules/bin:$PATH
-
-# TODO(mtewani): Add a check for project ID.
-echo "Using ProjectID: $projectId"
 flutterfire configure -y -a com.example.blank
 flutter pub get
 firebase dataconnect:sdk:generate
