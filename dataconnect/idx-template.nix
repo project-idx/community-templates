@@ -13,6 +13,7 @@ idx-template \
 
   bootstrap = ''
     mkdir "$out"
+    chmod -R u+w "$out"
     mkdir "$out"/.idx
     ${
     if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
@@ -25,7 +26,6 @@ idx-template \
       else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
       else "cp -r ${./flutter-movie}/* \"$out\""
     }
-    chmod 777 $out
     ${
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/installDeps.sh \"$out\"/" else ""
     }
