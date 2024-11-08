@@ -1,0 +1,6 @@
+# Dev environment
+pip
+autopep8
+
+# App
+openai==1.11.1
