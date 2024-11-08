@@ -48,7 +48,10 @@ class _LoginState extends State<Login> {
 
   void showFirebaseAlert() {
     String text = kIsWeb
-        ? "Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings"
+        ? """
+        Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings
+        then open the preview in a new tab:
+        """
         : """Did you add your SHA1 key to your app in the console?
         You can get your key by running the following in your android directory: 
         ./gradlew signingReport
@@ -58,7 +61,15 @@ class _LoginState extends State<Login> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Firebase Authentication'),
-          content: Text('There was an error trying to authenticate. $text'),
+          content: Row(
+            children: [
+              SelectableText(
+                  'There was an error trying to authenticate. $text'),
+              kIsWeb
+                  ? const Image(image: AssetImage('assets/open-in-new-tab.png'))
+                  : SizedBox()
+            ],
+          ),
           actions: <Widget>[
             TextButton(
               style: TextButton.styleFrom(

@@ -1,7 +1,6 @@
 #!/bin/bash
 npm install -g firebase-tools
 export PATH=~/.global_modules/bin:$PATH
-~/.global_modules/bin/firebase dataconnect:sdk:generate
 while [ ! -f ./.firebaserc ]
 do
     echo "============================================================================================================================================="
