@@ -22,6 +22,7 @@ done
 echo "Using ProjectID: $projectId"
 dart pub global activate flutterfire_cli
 export PATH=~/.global_modules/bin:$PATH
-flutterfire configure -y -a com.example.blank
+$endName=$(ls android/app/src/main/kotlin/com/example)
+flutterfire configure -y -a com.example.$endName
 flutter pub get
 firebase dataconnect:sdk:generate
