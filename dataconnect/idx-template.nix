@@ -23,7 +23,7 @@ idx-template \
       if sample == "nextjs-movie-app" then "cp -r ${./nextjs-movie-app}/* \"$out\""
       else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
       else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
-      else "cp -r ${./flutter-movie}/* \"$out\""
+      else "install --mode u+rw ${./flutter-movie}/* \"$out\""
     }
     ${
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/installDeps.sh \"$out\"/" else ""
