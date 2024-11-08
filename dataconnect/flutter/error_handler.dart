@@ -34,8 +34,7 @@ class ErrorContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
-              child: Text(
-                  "Open the Firebase Data Connect Extension and click 'Start Emulators' to get started."),
+              child: Text("Try running ./installDeps.sh to set up flutterfire"),
             ),
           ],
         ),
