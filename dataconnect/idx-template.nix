@@ -26,6 +26,7 @@ idx-template \
       else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
       else "cp -r ${./flutter-movie}/* \"$out\""
     }
+    chmod -R u+w "$out"
     ${
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/installDeps.sh \"$out\"/" else ""
     }
