@@ -32,7 +32,7 @@ idx-template \
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/Caddyfile \"$out\"/" else ""
     }
     ${
-      if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
+      if sample == "flutter-blank" || sample == "flutter-movie" then "install --mode u+rw ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
     }
     cp ${./.firebaserc} "$out"/.firebaserc
     cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
