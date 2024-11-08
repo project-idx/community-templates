@@ -8,6 +8,8 @@ import 'package:movie_app_clone/generated/movie_connector.dart';
 import 'package:movie_app_clone/login.dart';
 import 'package:movie_app_clone/movie_detail_page.dart';
 
+import 'error_handler.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   int port = 443;
@@ -16,12 +18,16 @@ void main() async {
     hostName = '10.0.2.2';
     port = 9403;
   }
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  MovieConnectorConnector.instance.dataConnect
-      .useDataConnectEmulator(hostName, port, isSecure: true);
-  runApp(const MyApp());
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    MovieConnectorConnector.instance.dataConnect
+        .useDataConnectEmulator(hostName, port, isSecure: true);
+    runApp(const MyApp());
+  } catch (_) {
+    runApp(const ShowError());
+  }
 }
 
 final _router = GoRouter(
