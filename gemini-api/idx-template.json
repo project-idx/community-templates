@@ -1,0 +1,19 @@
+{
+  "name": "Gemini API",
+  "description": "Start a simple generative AI app with the Gemini API",
+  "categories": ["AI & ML"],
+  "icon": "https://www.gstatic.com/monospace/231128/logo_gemini_512.png",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Environment",
+      "type": "enum",
+      "default": "open-ai-node",
+      "options": {
+        "open-ai-python": "OpenAI Library (Python)",
+        "open-ai-node": "OpenAI Library (Node.js)"
+      }
+    }
+  ]
+}
