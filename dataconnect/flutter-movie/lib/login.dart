@@ -66,7 +66,10 @@ class _LoginState extends State<Login> {
               SelectableText(
                   'There was an error trying to authenticate. $text'),
               kIsWeb
-                  ? const Image(image: AssetImage('assets/open-in-new-tab.png'))
+                  ? const Image(
+                      image: AssetImage('assets/open-in-new-tab.png'),
+                      width: 100,
+                    )
                   : SizedBox()
             ],
           ),
