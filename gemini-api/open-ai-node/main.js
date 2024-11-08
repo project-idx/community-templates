@@ -23,3 +23,5 @@ const response = await openai.chat.completions.create({
 });
 
 console.log(response.choices[0].message);
+
+// Run in the terminal: npm run dev

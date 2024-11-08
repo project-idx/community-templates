@@ -19,19 +19,9 @@
       onCreate = {
         npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "index.html" "main.js" ];
+        default.openFiles = [ "main.js" ];
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
-    };
-    # Enable previews and customize configuration
-    previews = {
-      enable = true;
-      previews = {
-        web = {
-          command = ["npm" "run" "dev" "--" "--port" "$PORT"];
-          manager = "web";
-        };
-      };
     };
   };
 }

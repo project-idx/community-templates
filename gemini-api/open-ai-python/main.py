@@ -11,6 +11,7 @@ client = OpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/"
 )
 
+# Run in the terminal: source .venv/bin/activate && python main.py
 if __name__ == "__main__":
     response = client.chat.completions.create(
         model="gemini-1.5-flash",
