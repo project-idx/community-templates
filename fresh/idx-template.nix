@@ -20,9 +20,9 @@
   ];
   bootstrap = ''
     mkdir "$out"
+    deno run -A -r https://fresh.deno.dev "$out" ${if docker then "--docker" else "" } ${if vscode then "--vscode" else "" } --${styling}
     mkdir -p "$out/.idx/"
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
-    deno run -A -r https://fresh.deno.dev "$out" ${if docker then "--docker" else "" } ${if vscode then "--vscode" else "" } --${styling}
     chmod -R +w "$out"
   '';
 }
