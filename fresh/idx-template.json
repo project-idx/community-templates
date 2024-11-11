@@ -10,12 +10,11 @@
       "id": "styling",
       "name": "What style manager do you want to use?",
       "type": "enum",
-      "default": "",
+      "default": "tailwind",
       "required": true,
       "options": {
-        "--tailwind": "Tailwind",
-        "--twind": "Twind",
-        "": "None"
+        "tailwind": "Tailwind",
+        "twind": "Twind"
       }
     },
     {
