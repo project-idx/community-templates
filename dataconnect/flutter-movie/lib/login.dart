@@ -48,8 +48,7 @@ class _LoginState extends State<Login> {
 
   void showFirebaseAlert() {
     String text = kIsWeb
-        ? """
-        Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings
+        ? """Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings
         then open the preview in a new tab:
         """
         : """Did you add your SHA1 key to your app in the console?
@@ -61,7 +60,7 @@ class _LoginState extends State<Login> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Firebase Authentication'),
-          content: Row(
+          content: Column(
             children: [
               SelectableText(
                   'There was an error trying to authenticate. $text'),

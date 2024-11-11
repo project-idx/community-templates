@@ -13,7 +13,7 @@ projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')
 while [ -z "$projectId" ]
 do
     echo "============================================================================================================================================="
-    echo "Couldn't find project ID in .firebaserc. Please open the Data Connect plugin and Connect a firebase project. Waiting 5s before checking again"
+    echo "Couldn't find project ID in .firebaserc. Please open the Data Connect extension and Connect a firebase project. Waiting 5s before checking again"
     echo "============================================================================================================================================="
     sleep 5s # Waits 5 seconds.
     projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')

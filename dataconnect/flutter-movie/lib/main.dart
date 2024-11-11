@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? Column(children: [
                         Row(children: [
                           Text(
-                              "Please Open the Firebase Data Connect Extension, Start Emulators, and Run moviedata_insert.gql Locally.")
+                              "Please Open the Firebase Data Connect Extension, Start Emulators, and Run moviedata_insert.gql Locally and then refresh the page.")
                         ]),
                       ])
                     : Column(
