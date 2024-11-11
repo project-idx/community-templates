@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-{ pkgs, styling ? "tailwind", docker ? true, vscode ? true, ... }: {
+{ pkgs, styling ? "", docker ? true, vscode ? true, ... }: {
   packages = [
     pkgs.deno
   ];
@@ -22,7 +22,7 @@
     mkdir "$out"
     mkdir -p "$out/.idx/"
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
-    deno run -A -r https://fresh.deno.dev "$out" ${if docker then "--docker" else "" } ${if vscode then "--vscode" else "" } --${styling}
+    deno run -A -r https://fresh.deno.dev "$out" ${if docker then "--docker" else "" } ${if vscode then "--vscode" else "" } ${styling}
     chmod -R +w "$out"
   '';
 }
