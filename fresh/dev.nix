@@ -36,7 +36,7 @@
     workspace = {
       onCreate = {
         # Open editors for the following files by default, if they exist:
-        default.openFiles = ["main.ts"];
+        default.openFiles = ["routes/index.tsx"];
       };
     };
     # Enable previews and customize configuration
@@ -44,7 +44,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["deno" "run" "--watch" "--allow-all" "main.ts"];
+          command = ["deno" "task" "start"];
           manager = "web";
         };
       };
