@@ -1,0 +1,28 @@
+{
+  "name": "Fresh",
+  "description": "Fresh is a next generation web framework, built for speed, reliability, and simplicity.",
+  "categories": ["Web app", "Backend"],
+  "icon": "https://camo.githubusercontent.com/e75e4ce02448da3d2fad73976384697fd41f3c6f4a14ff96bf1267cdbfea3976/68747470733a2f2f66726573682e64656e6f2e6465762f6c6f676f2e737667",
+  "website": "https://fresh.deno.dev",
+  "publisher": "Rody Davis",
+  "params": [
+    {
+      "id": "styling",
+      "name": "What style manager do you want to use?",
+      "type": "enum",
+      "default": "tailwind",
+      "required": true,
+      "options": {
+        "tailwind": "Tailwind",
+        "twind": "Twind"
+      }
+    },
+    {
+      "id": "docker",
+      "name": "Setup for Docker Deployment?",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  ]
+}
