@@ -18,13 +18,6 @@
       }
     },
     {
-      "id": "vscode",
-      "name": "Setup for VSCode?",
-      "type": "boolean",
-      "default": true,
-      "required": false
-    },
-    {
       "id": "docker",
       "name": "Setup for Docker Deployment?",
       "type": "boolean",
