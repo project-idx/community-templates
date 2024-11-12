@@ -1,0 +1,318 @@
+extend type Actor {
+  """
+  ✨ List `MovieActor` objects in a one-to-many relationship (where `MovieActor`.`actor` is this object).
+  """
+  movieActors_on_actor(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieActor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieActor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [MovieActor!]! @fdc_generated(from: "MovieActor.actor", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Movie` objects using `MovieActor` as the join table (a `MovieActor` object exists where its `actor` is this and its `movie` is that).
+  """
+  movies_via_MovieActor(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieActor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieActor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Movie!]! @fdc_generated(from: "MovieActor", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+}
+extend type Movie {
+  """
+  ✨ List `FavoriteMovie` objects in a one-to-many relationship (where `FavoriteMovie`.`movie` is this object).
+  """
+  favorite_movies_on_movie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: FavoriteMovie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [FavoriteMovie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [FavoriteMovie!]! @fdc_generated(from: "FavoriteMovie.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `MovieActor` objects in a one-to-many relationship (where `MovieActor`.`movie` is this object).
+  """
+  movieActors_on_movie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieActor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieActor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [MovieActor!]! @fdc_generated(from: "MovieActor.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `MovieMetadata` objects in a one-to-many relationship (where `MovieMetadata`.`movie` is this object).
+  """
+  movieMetadatas_on_movie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieMetadata_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieMetadata_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [MovieMetadata!]! @fdc_generated(from: "MovieMetadata.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`movie` is this object).
+  """
+  reviews_on_movie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Review!]! @fdc_generated(from: "Review.movie", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Actor` objects using `MovieActor` as the join table (a `MovieActor` object exists where its `movie` is this and its `actor` is that).
+  """
+  actors_via_MovieActor(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MovieActor_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MovieActor_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Actor!]! @fdc_generated(from: "MovieActor", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `User` objects using `FavoriteMovie` as the join table (a `FavoriteMovie` object exists where its `movie` is this and its `user` is that).
+  """
+  users_via_FavoriteMovie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: FavoriteMovie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [FavoriteMovie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [User!]! @fdc_generated(from: "FavoriteMovie", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `User` objects using `Review` as the join table (a `Review` object exists where its `movie` is this and its `user` is that).
+  """
+  users_via_Review(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [User!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+}
+extend type User {
+  """
+  ✨ List `FavoriteMovie` objects in a one-to-many relationship (where `FavoriteMovie`.`user` is this object).
+  """
+  favorite_movies_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: FavoriteMovie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [FavoriteMovie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [FavoriteMovie!]! @fdc_generated(from: "FavoriteMovie.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`user` is this object).
+  """
+  reviews_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Review!]! @fdc_generated(from: "Review.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Movie` objects using `FavoriteMovie` as the join table (a `FavoriteMovie` object exists where its `user` is this and its `movie` is that).
+  """
+  movies_via_FavoriteMovie(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: FavoriteMovie_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [FavoriteMovie_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Movie!]! @fdc_generated(from: "FavoriteMovie", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+  """
+  ✨ List `Movie` objects using `Review` as the join table (a `Review` object exists where its `user` is this and its `movie` is that).
+  """
+  movies_via_Review(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Movie!]! @fdc_generated(from: "Review", purpose: QUERY_MULTIPLE_MANY_TO_MANY)
+}

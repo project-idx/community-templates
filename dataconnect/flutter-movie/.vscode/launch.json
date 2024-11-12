@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "movie_app_clone",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "emulator-5554"]
+        },
+        {
+            "name": "movie_app_clone (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "movie_app_clone (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "firebase_data_connect",
+            "cwd": "firebase_data_connect",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "firebase_data_connect (profile mode)",
+            "cwd": "firebase_data_connect",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "firebase_data_connect (release mode)",
+            "cwd": "firebase_data_connect",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

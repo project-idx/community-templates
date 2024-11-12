@@ -1,0 +1,40 @@
+extend type FavoriteMovie {
+  """
+  ✨ Implicit foreign key field based on `FavoriteMovie`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: String! @fdc_generated(from: "FavoriteMovie.user", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `FavoriteMovie`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
+  """
+  movieId: UUID! @fdc_generated(from: "FavoriteMovie.movie", purpose: IMPLICIT_REF_FIELD)
+}
+extend type MovieActor {
+  """
+  ✨ Implicit foreign key field based on `MovieActor`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
+  """
+  movieId: UUID! @fdc_generated(from: "MovieActor.movie", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `MovieActor`.`actor`. It must match the value of `Actor`.`id`. See `@ref` for how to customize it.
+  """
+  actorId: UUID! @fdc_generated(from: "MovieActor.actor", purpose: IMPLICIT_REF_FIELD)
+}
+extend type MovieMetadata {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "MovieMetadata", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `MovieMetadata`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
+  """
+  movieId: UUID! @fdc_generated(from: "MovieMetadata.movie", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Review {
+  """
+  ✨ Implicit foreign key field based on `Review`.`movie`. It must match the value of `Movie`.`id`. See `@ref` for how to customize it.
+  """
+  movieId: UUID! @fdc_generated(from: "Review.movie", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: String! @fdc_generated(from: "Review.user", purpose: IMPLICIT_REF_FIELD)
+}
