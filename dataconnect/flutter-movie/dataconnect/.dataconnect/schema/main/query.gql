@@ -171,6 +171,30 @@ extend type Query {
     limit: Int = 100
   ): [FavoriteMovie!]! @fdc_generated(from: "FavoriteMovie", purpose: QUERY_MULTIPLE)
   """
+  ✨ List `Genre` objects in the table, optionally filtered by `where` conditions.
+  """
+  genres(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Genre_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Genre_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+  ): [Genre!]! @fdc_generated(from: "Genre", purpose: QUERY_MULTIPLE)
+  """
   ✨ List `Movie` objects in the table, optionally filtered by `where` conditions.
   """
   movies(

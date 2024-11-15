@@ -1,6 +1,6 @@
 {
-    "name": "movie_app_clone",
-    "short_name": "movie_app_clone",
+    "name": "dataconnect",
+    "short_name": "dataconnect",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

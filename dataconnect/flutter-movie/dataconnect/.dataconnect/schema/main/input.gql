@@ -293,6 +293,62 @@ input FavoriteMovie_Order {
   user: User_Order
 }
 """
+✨ Generated filter input type for table 'Genre'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Genre_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Genre_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Genre_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Genre_Filter!]
+  """
+  ✨ Generated from Field `Genre`.`genre` of type `String`
+  """
+  genre: String_Filter
+}
+"""
+✨ Generated first-row input type for table 'Genre'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Genre_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Genre_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Genre_Filter
+}
+"""
+✨ Generated list filter input type for table 'Genre'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Genre_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Genre_Filter
+}
+"""
+✨ Generated order input type for table 'Genre'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Genre_Order {
+  """
+  ✨ Generated from Field `Genre`.`genre` of type `String`
+  """
+  genre: OrderDirection
+}
+"""
 ✨ Generated data input type for table 'Movie'. It includes all necessary fields for creating or upserting rows into table.
 """
 input Movie_Data {
@@ -977,6 +1033,14 @@ input User_Data {
   """
   id_expr: String_Expr
   """
+  ✨ Generated from Field `User`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `User`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
   ✨ Generated from Field `User`.`username` of type `String!`
   """
   username: String
@@ -1005,6 +1069,10 @@ input User_Filter {
   ✨ Generated from Field `User`.`id` of type `String!`
   """
   id: String_Filter
+  """
+  ✨ Generated from Field `User`.`name` of type `String!`
+  """
+  name: String_Filter
   """
   ✨ Generated from Field `User`.`username` of type `String!`
   """
@@ -1073,6 +1141,10 @@ input User_Order {
   ✨ Generated from Field `User`.`id` of type `String!`
   """
   id: OrderDirection
+  """
+  ✨ Generated from Field `User`.`name` of type `String!`
+  """
+  name: OrderDirection
   """
   ✨ Generated from Field `User`.`username` of type `String!`
   """

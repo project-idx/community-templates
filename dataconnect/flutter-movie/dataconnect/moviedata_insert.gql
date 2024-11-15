@@ -597,9 +597,9 @@ movieActor_insertMany(
 )
   user_insertMany(
     data: [
-      { id: "SnLgOC3lN4hcIl69s53cW0Q8R1T2", username: "sherlock_h" }
-      { id: "fep4fXpGWsaRpuphq9CIrBIXQ0S2", username: "hercule_p" }
-      { id: "TBedjwCX0Jf955Uuoxk6k74sY0l1", username: "jane_d" }
+      { id: "SnLgOC3lN4hcIl69s53cW0Q8R1T2", username: "sherlock_h", name: "Sherlock Holmes" }
+      { id: "fep4fXpGWsaRpuphq9CIrBIXQ0S2", username: "hercule_p", name: "Hercule Poirot" }
+      { id: "TBedjwCX0Jf955Uuoxk6k74sY0l1", username: "jane_d", name: "Jane Doe" }
     ]
   )
 

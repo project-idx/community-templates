@@ -1,11 +1,12 @@
-specVersion: "v1alpha"
-serviceId: "fdc-quickstart-web"
+specVersion: "v1beta"
+serviceId: "dataconnect"
 location: "us-central1"
 schema:
   source: "./schema"
   datasource:
     postgresql:
-      database: "fdc-quickstart-web"
+      database: "fdcdb"
       cloudSql:
-        instanceId: "fdc-quickstart-web"
-connectorDirs: ["./movie-connector"]
+        instanceId: "dataconnect-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

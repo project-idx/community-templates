@@ -34,7 +34,7 @@ type MovieMetadata
 # TODO: Fill out Actor table
 type Actor @table {
   id: UUID!
-  imageUrl: String! 
+  imageUrl: String!
   name: String! @col(name: "name", dataType: "varchar(30)")
 }
 
@@ -46,8 +46,9 @@ type User
   @table {
   id: String! @col(name: "user_auth")
   username: String! @col(name: "username", dataType: "varchar(50)")
+  name: String!
   # The following are generated from the @ref in the Review table
-  # reviews_on_user 
+  # reviews_on_user
   # movies_via_Review
 }
 
@@ -76,6 +77,13 @@ type MovieActor @table(key: ["movie", "actor"]) {
   # actorId: UUID! <- this is created by the implied  @ref, see: implicit.gql
 
   role: String! # "main" or "supporting"
+}
+
+type Genre @view(sql: """
+SELECT DISTINCT genre from "movie"
+"""
+) {
+  genre: String
 }
 
 # Join table for many-to-many relationship for users and favorite movies

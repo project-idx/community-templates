@@ -1,9 +1,0 @@
-mutation {
-  user_insertMany(data: [
-    {
-      id: "c9SSY7DC0Rqx9XLNh2E2qhLUJE3L",
-      username: "mtewani1"
-    }
-  ])
-    
-}
