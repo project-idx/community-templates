@@ -1,6 +1,8 @@
 import 'package:dataconnect/movies_connector/movies.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 
 class Login extends StatefulWidget {
@@ -14,6 +16,8 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
+  final String link =
+      "https://firebase.corp.google.com/project/${Firebase.app().options.projectId}/authentication/providers";
   Widget _buildForm() {
     return Form(
         key: _formKey,
@@ -81,8 +85,26 @@ class _LoginState extends State<Login> {
       }
     } catch (_) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('There was an error when creating a user.')));
+        showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+                  title: const Text('AlertDialog Title'),
+                  content: Column(children: [
+                    Text('There was an error when creating a user.'),
+                    TextButton(
+                        onPressed: () {
+                          launchUrl(Uri.parse(link));
+                        },
+                        child: Text(
+                            'Click here to check if you have the email/password login sign in enabled in the Firebase Console.'))
+                  ]),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ));
       }
     }
   }

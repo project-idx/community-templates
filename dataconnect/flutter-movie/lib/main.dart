@@ -11,6 +11,7 @@ import 'movies_connector/movies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -50,15 +51,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<ListMoviesMovies> _topMovies = [];
   List<ListMoviesMovies> _latestMovies = [];
+  bool _showMessage = true;
 
   @override
   void initState() {
     super.initState();
 
     MovieState.getTopTenMovies().then((res) {
-      setState(() {
-        _topMovies = res.data.movies;
-      });
+      if (res.data.movies.isNotEmpty) {
+        if (mounted) {
+          setState(() {
+            _showMessage = false;
+            _topMovies = res.data.movies;
+          });
+        }
+      }
     });
 
     MovieState.getTopTenMovies().then((res) {
@@ -68,31 +75,36 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _showMovie() {
+    return Column(
+      children: <Widget>[
+        ListMovies(
+            title: 'Top 10 Movies',
+            movies: _topMovies
+                .map(
+                  (e) => Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
+                )
+                .toList()),
+        ListMovies(
+            title: 'Latest Movies',
+            movies: _latestMovies
+                .map(
+                  (e) => Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
+                )
+                .toList()),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            ListMovies(
-                title: 'Top 10 Movies',
-                movies: _topMovies
-                    .map(
-                      (e) =>
-                          Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
-                    )
-                    .toList()),
-            ListMovies(
-                title: 'Latest Movies',
-                movies: _latestMovies
-                    .map(
-                      (e) =>
-                          Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
-                    )
-                    .toList()),
-          ],
-        ),
+        child: _showMessage
+            ? Text(
+                'Go to the Firebase Data Connect extension, and click start Emulators. Then run moviedata_insert.gql. Then, refresh the page.')
+            : _showMovie(),
       )),
     );
   }

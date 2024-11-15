@@ -26,7 +26,6 @@ class _ProfileState extends State<Profile>
   List<GetCurrentUserUserReviews> _reviews = [];
   String? _displayName;
   final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-  StreamSubscription<QueryResult<GetCurrentUserData, void>>? _listener;
 
   @override
   void initState() {
@@ -38,7 +37,7 @@ class _ProfileState extends State<Profile>
         });
       }
     });
-    _listener = MovieState.subscribeToCurrentUser().listen((res) {
+    MovieState.subscribeToCurrentUser().listen((res) {
       if (mounted) {
         setState(() {
           _displayName = res.data.user!.name;
@@ -48,12 +47,6 @@ class _ProfileState extends State<Profile>
         });
       }
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _listener?.cancel();
   }
 
   _refresh() {
