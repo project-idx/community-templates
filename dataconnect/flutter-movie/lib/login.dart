@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +16,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String _url = "";
   Future<void> signInWithGoogleOnWeb() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
@@ -46,12 +51,41 @@ class _LoginState extends State<Login> {
     }
   }
 
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(Uri.parse(_url))) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
+  void goToFirebaseConsole() {
+    String projectId = Firebase.app().options.projectId;
+    _url =
+        "https://console.firebase.google.com/project/$projectId/authentication/settings";
+    _launchUrl();
+  }
+
+  void goToCloudConsole() {
+    _url =
+        "https://cloud.google.com/apis/credentials?referrer=search&project=$projectId";
+    String projectId = Firebase.app().options.projectId;
+  }
+
   void showFirebaseAlert() {
-    String text = kIsWeb
-        ? """Add ${Uri.base.host} to your list of OAuth redirect providers here: https://console.firebase.google.com/project/_/authentication/settings
-        then open the preview in a new tab:
-        """
-        : """Did you add your SHA1 key to your app in the console?
+    List<Widget> webWidgets = [
+      SelectableText(
+          'Add ${Uri.base.host} to your list of Authorized Domains here: '),
+      TextButton(
+          onPressed: goToFirebaseConsole,
+          child: Text(
+              "https://console.firebase.google.com/project/$projectId/authentication/settings")),
+      Text(
+          "Then, please add https://${Uri.base.host} to your list of redirect uri's here: "),
+      TextButton(
+          onPressed: goToCloudConsole,
+          child: Text(
+              "https://cloud.google.com/apis/credentials?referrer=search&project=$projectId"))
+    ];
+    String text = """Did you add your SHA1 key to your app in the console?
         You can get your key by running the following in your android directory: 
         ./gradlew signingReport
         """;
@@ -60,16 +94,23 @@ class _LoginState extends State<Login> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Firebase Authentication'),
-          content: Column(
+          content: Row(
             children: [
-              SelectableText(
-                  'There was an error trying to authenticate. $text'),
-              kIsWeb
-                  ? const Image(
-                      image: AssetImage('assets/open-in-new-tab.png'),
-                      width: 100,
-                    )
-                  : SizedBox()
+              ...(kIsWeb
+                  ? webWidgets
+                  : [
+                      SelectableText(
+                          'There was an error trying to authenticate. $text')
+                    ]),
+
+              // kIsWeb
+              //     ?[const Text("then open the preview in a new tab:"),
+              //     const Image(
+              //         image: AssetImage('assets/open-in-new-tab.png'),
+              //         width: 400,
+              //         )
+              //       ]
+              //     : const SizedBox()
             ],
           ),
           actions: <Widget>[
