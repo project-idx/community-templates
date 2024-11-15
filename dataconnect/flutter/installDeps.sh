@@ -10,7 +10,7 @@ do
 done
 
 projectId=$(cat ./.firebaserc | grep -o '"default": "[^"]*' |  grep -o '[^"]*$')
-while [ -z "$projectId" ] ||  [ "$projectId" != "monospace-2" ]
+while [ -z "$projectId" ] ||  [ "$projectId" == "monospace-2" ]
 do
     echo "========================================================================================================================================================="
     echo "Couldn't find project ID in .firebaserc. Please open the Firebase Data Connect Extension and Connect a firebase project. Waiting 5s before checking again"
