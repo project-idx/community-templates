@@ -7,6 +7,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'util/auth.dart';
 import 'movies_connector/movies.dart';
 
 void main() async {
@@ -15,6 +17,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await Auth.instance.init();
   int port = 443;
   String hostName = Uri.base.host;
   if (!kIsWeb) {

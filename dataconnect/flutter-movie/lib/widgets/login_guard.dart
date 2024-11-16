@@ -1,38 +1,33 @@
 import 'package:dataconnect/util/auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginGuard extends StatefulWidget {
-  const LoginGuard({super.key, required this.widgetToGuard, this.message});
+class LoginGuard extends StatelessWidget {
+  const LoginGuard({
+    super.key,
+    required this.builder,
+    this.message,
+  });
 
-  final Widget widgetToGuard;
-
+  final WidgetBuilder builder;
   final String? message;
 
   @override
-  State<LoginGuard> createState() => _LoginGuardState();
-}
-
-class _LoginGuardState extends State<LoginGuard> {
-  bool isLoggedIn = false;
-  @override
-  void initState() {
-    super.initState();
-    Auth.isLoggedIn().then((value) {
-      setState(() {
-        isLoggedIn = value;
-      });
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (isLoggedIn) {
-      return widget.widgetToGuard;
-    }
-    if (widget.message == null) {
-      return const SizedBox();
-    }
-    return Text(
-        'Please visit the Profile page to log in before ${widget.message}');
+    return ValueListenableBuilder(
+      valueListenable: Auth.instance,
+      builder: (context, state, _) {
+        final isLoggedIn = Auth.instance.isLoggedIn;
+        if (!isLoggedIn) {
+          if (message == null) {
+            return const SizedBox();
+          }
+          return Text(
+            'Please visit the profile page'
+            'to log in before $message',
+          );
+        }
+        return builder(context);
+      },
+    );
   }
 }

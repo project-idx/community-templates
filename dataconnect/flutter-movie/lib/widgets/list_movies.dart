@@ -1,19 +1,20 @@
-import 'package:dataconnect/models/movie.dart';
-import 'package:dataconnect/movies_connector/movies.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ListMovies extends StatefulWidget {
-  const ListMovies({super.key, required this.movies, required this.title});
+import '/models/movie.dart';
+
+class ListMovies extends StatelessWidget {
+  const ListMovies({
+    super.key,
+    required this.movies,
+    required this.title,
+  });
 
   final List<Movie> movies;
   final String title;
-  @override
-  State<ListMovies> createState() => _ListMoviesState();
-}
 
-class _ListMoviesState extends State<ListMovies> {
-  Widget _buildMovieList(String title, List<Movie> movies) {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,54 +40,45 @@ class _ListMoviesState extends State<ListMovies> {
                   scrollDirection: Axis.horizontal,
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
-                    return _buildMovieItem(movies[index]);
+                    final movie = movies[index];
+                    return Container(
+                      width: 150, // Adjust the width as needed
+                      padding: const EdgeInsets.all(4.0),
+                      child: Card(
+                        child: InkWell(
+                          onTap: () {
+                            context.push("/movies/${movie.id}");
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AspectRatio(
+                                aspectRatio:
+                                    9 / 16, // 9:16 aspect ratio for the image
+                                child: Image.network(
+                                  movie.imageUrl,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  movie.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),
       ],
     );
-  }
-
-  void _visitDetail(String id) {
-    context.push("/movies/$id");
-  }
-
-  Widget _buildMovieItem(Movie movie) {
-    return Container(
-      width: 150, // Adjust the width as needed
-      padding: const EdgeInsets.all(4.0),
-      child: Card(
-        child: InkWell(
-            onTap: () {
-              _visitDetail(movie.id);
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AspectRatio(
-                  aspectRatio: 9 / 16, // 9:16 aspect ratio for the image
-                  child: Image.network(
-                    movie.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    movie.title,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            )),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _buildMovieList(widget.title, widget.movies);
   }
 }

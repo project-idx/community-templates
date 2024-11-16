@@ -1,9 +1,8 @@
-import 'package:dataconnect/movies_connector/movies.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -14,74 +13,21 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  String _username = '';
-  String _password = '';
+  final _username = TextEditingController();
+  final _password = TextEditingController();
   final String link =
       "https://firebase.corp.google.com/project/${Firebase.app().options.projectId}/authentication/providers";
-  Widget _buildForm() {
-    return Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                  hintText: "Username", border: OutlineInputBorder()),
-              onChanged: (value) {
-                setState(() {
-                  _username = value;
-                });
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 30),
-            TextFormField(
-              obscureText: true,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                  hintText: "Password", border: OutlineInputBorder()),
-              onChanged: (value) {
-                setState(() {
-                  _password = value;
-                });
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a password';
-                }
-
-                return null;
-              },
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    logIn();
-                  }
-                },
-                child: const Text('Sign In')),
-            Text('Don\'t have an account?'),
-            ElevatedButton(
-                onPressed: () {
-                  context.go('/signup');
-                },
-                child: const Text('Sign Up')),
-          ],
-        ));
-  }
-
-  logIn() async {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Signing In')));
+  Future<void> logIn(BuildContext context) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = GoRouter.of(context);
+    messenger.showSnackBar(const SnackBar(content: Text('Signing In')));
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _username, password: _password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _username.text,
+        password: _password.text,
+      );
       if (mounted) {
-        context.go('/home');
+        navigator.go('/home');
       }
     } catch (_) {
       if (mounted) {
@@ -113,13 +59,62 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-              padding: EdgeInsets.all(30),
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Center(
+            child: Form(
+              key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [_buildForm()],
-              ))),
+                children: [
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: "Username",
+                      border: OutlineInputBorder(),
+                    ),
+                    controller: _username,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  TextFormField(
+                    obscureText: true,
+                    autocorrect: false,
+                    decoration: const InputDecoration(
+                      hintText: "Password",
+                      border: OutlineInputBorder(),
+                    ),
+                    controller: _password,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
+                      }
+                      return null;
+                    },
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          logIn(context);
+                        }
+                      },
+                      child: const Text('Sign In')),
+                  const Text("Don't have an account?"),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.go('/signup');
+                    },
+                    child: const Text('Sign Up'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

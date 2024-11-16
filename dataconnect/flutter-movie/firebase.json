@@ -6,9 +6,6 @@
     "dataconnect": {
       "port": 9403
     },
-    "auth": {
-      "port": 9404
-    },
     "ui": {
       "enabled": false
     },
