@@ -22,6 +22,7 @@ var router = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
+            GoRoute(path: '/', redirect: (context, path) => homePath.path),
             GoRoute(
               path: homePath.path,
               builder: (context, state) => const MyHomePage(),

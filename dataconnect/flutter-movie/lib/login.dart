@@ -40,13 +40,19 @@ class _LoginState extends State<Login> {
                   content: Column(children: [
                     Text('There was an error when logging in user. $message'),
                     shouldLaunch
+                        ? const Text('Open the app in a new tab:')
+                        : const SizedBox(),
+                    shouldLaunch
+                        ? Image.asset('assets/open-in-new-tab.png')
+                        : const SizedBox(),
+                    shouldLaunch
                         ? TextButton(
                             onPressed: () {
                               launchUrl(Uri.parse(link),
                                   webOnlyWindowName: '_blank');
                             },
                             child: const Text(
-                                'Click here to check if you have the email/password login sign in enabled in the Firebase Console.'))
+                                'Click here to enable Firebase Auth in the Firebase Console.'))
                         : const SizedBox()
                   ]),
                   actions: <Widget>[
