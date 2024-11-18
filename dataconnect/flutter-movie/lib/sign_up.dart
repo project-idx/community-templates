@@ -1,9 +1,9 @@
 import 'package:dataconnect/movies_connector/movies.dart';
+import 'package:dataconnect/widgets/auth_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -81,7 +81,7 @@ class _SignUpState extends State<SignUp> {
                     signUp();
                   }
                 },
-                child: Text('Submit'))
+                child: const Text('Submit'))
           ],
         ));
   }
@@ -98,28 +98,11 @@ class _SignUpState extends State<SignUp> {
       if (mounted) {
         context.go('/home');
       }
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (mounted) {
-        showDialog<String>(
-            context: context,
-            builder: (BuildContext context) => AlertDialog(
-                  title: const Text('AlertDialog Title'),
-                  content: Column(children: [
-                    Text('There was an error when signing up.'),
-                    TextButton(
-                        onPressed: () {
-                          launchUrl(Uri.parse(link));
-                        },
-                        child: Text(
-                            'Click here to check if you have the email/password login sign in enabled in the Firebase Console.'))
-                  ]),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'OK'),
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ));
+        String message = e.message!;
+        bool shouldLaunch = e.code.contains('operation-not-allowed');
+        AuthDialog.showAuthDialog(context, message, shouldLaunch);
       }
     }
   }

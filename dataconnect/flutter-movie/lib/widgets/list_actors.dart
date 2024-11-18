@@ -1,3 +1,4 @@
+import 'package:dataconnect/widgets/list_title.dart';
 import 'package:flutter/material.dart';
 
 class Actor {
@@ -28,10 +29,7 @@ class ListActors extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          ListTitle(title: title),
           Expanded(
               child: ListView.builder(
             scrollDirection: Axis.horizontal,

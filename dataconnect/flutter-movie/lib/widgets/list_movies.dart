@@ -1,3 +1,4 @@
+import 'package:dataconnect/widgets/list_title.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,12 +21,7 @@ class ListMovies extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
+            padding: const EdgeInsets.all(8.0), child: ListTitle(title: title)),
         movies.isEmpty
             ? Padding(
                 padding: const EdgeInsets.all(10.0),
