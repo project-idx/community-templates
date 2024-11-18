@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
   final _password = TextEditingController();
   final String link =
       "https://firebase.corp.google.com/project/${Firebase.app().options.projectId}/authentication/providers";
-  Future<void> logIn(BuildContext context) async {
+  Future<void> logIn() async {
     final messenger = ScaffoldMessenger.of(context);
     final navigator = GoRouter.of(context);
     messenger.showSnackBar(const SnackBar(content: Text('Signing In')));
@@ -29,20 +29,25 @@ class _LoginState extends State<Login> {
       if (mounted) {
         navigator.go('/home');
       }
-    } catch (_) {
+    } on FirebaseAuthException catch (e) {
       if (mounted) {
+        String message = e.message!;
+        bool shouldLaunch = e.code.contains('operation-not-allowed');
         showDialog<String>(
             context: context,
             builder: (BuildContext context) => AlertDialog(
                   title: const Text('AlertDialog Title'),
                   content: Column(children: [
-                    Text('There was an error when creating a user.'),
-                    TextButton(
-                        onPressed: () {
-                          launchUrl(Uri.parse(link));
-                        },
-                        child: Text(
-                            'Click here to check if you have the email/password login sign in enabled in the Firebase Console.'))
+                    Text('There was an error when logging in user. $message'),
+                    shouldLaunch
+                        ? TextButton(
+                            onPressed: () {
+                              launchUrl(Uri.parse(link),
+                                  webOnlyWindowName: '_blank');
+                            },
+                            child: const Text(
+                                'Click here to check if you have the email/password login sign in enabled in the Firebase Console.'))
+                        : const SizedBox()
                   ]),
                   actions: <Widget>[
                     TextButton(
@@ -98,7 +103,7 @@ class _LoginState extends State<Login> {
                   ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          logIn(context);
+                          logIn();
                         }
                       },
                       child: const Text('Sign In')),
