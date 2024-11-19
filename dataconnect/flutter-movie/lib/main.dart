@@ -2,7 +2,6 @@ import 'package:dataconnect/models/movie.dart';
 import 'package:dataconnect/movie_state.dart';
 import 'package:dataconnect/router.dart';
 import 'package:dataconnect/widgets/list_movies.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,12 +19,14 @@ void main() async {
   await Auth.instance.init();
   int port = 443;
   String hostName = Uri.base.host;
+  bool isSecure = true;
   if (!kIsWeb) {
     hostName = '10.0.2.2';
     port = 9403;
+    isSecure = false;
   }
   MoviesConnector.instance.dataConnect
-      .useDataConnectEmulator(hostName, port, isSecure: true);
+      .useDataConnectEmulator(hostName, port, isSecure: isSecure);
   runApp(const MyApp());
 }
 
@@ -103,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: _showMessage
-            ? Text(
-                'Go to the Firebase Data Connect extension, and click start Emulators. Then run moviedata_insert.gql. Then, refresh the page.')
+            ? const Text(
+                'Go to the Firebase Data Connect extension, and click start Emulators. Then open dataconnect/moviedata_insert.gql and the click "Run(local)". Then, refresh the page.')
             : _showMovie(),
       )),
     );

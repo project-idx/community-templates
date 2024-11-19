@@ -75,7 +75,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
               onRefresh: () async {
-                MoviesConnector.instance.getCurrentUser().execute();
+                await MoviesConnector.instance.getCurrentUser().execute();
               },
             );
           });
