@@ -19,20 +19,22 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     isSetup = true;
+
+    await Auth.instance.init();
+    int port = 443;
+    String hostName = Uri.base.host;
+    bool isSecure = true;
+    if (!kIsWeb) {
+      hostName = '10.0.2.2';
+      port = 9403;
+      isSecure = false;
+    }
+    MoviesConnector.instance.dataConnect
+        .useDataConnectEmulator(hostName, port, isSecure: isSecure);
   } catch (_) {
     // The user hasn't run ./installDeps.sh yet
   }
-  await Auth.instance.init();
-  int port = 443;
-  String hostName = Uri.base.host;
-  bool isSecure = true;
-  if (!kIsWeb) {
-    hostName = '10.0.2.2';
-    port = 9403;
-    isSecure = false;
-  }
-  MoviesConnector.instance.dataConnect
-      .useDataConnectEmulator(hostName, port, isSecure: isSecure);
+
   runApp(const MyApp());
 }
 
