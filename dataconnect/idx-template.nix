@@ -13,7 +13,7 @@ idx-template \
 
   bootstrap = let 
     platformPrefix = if platform == "web" then "nextjs" else "flutter";
-    suffix = if platform == "web" && appType == "movie" then "movie-app" else appType;
+    suffix = if platform == "web" && appType == "movie" then "movie-app" else if platform == "flutter" && appType == "quickstart" then "movie" else appType;
     sample = "${platformPrefix}-${suffix}";
     in ''
     mkdir "$out"
