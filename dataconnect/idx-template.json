@@ -23,7 +23,7 @@
       "id": "appType",
       "description": "Build a new app using Data Connect",
       "type": "enum",
-      "name": "appType",
+      "name": "App Type",
       "required": true,
       "options": {
         "blank": "Empty App",
