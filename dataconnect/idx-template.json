@@ -9,16 +9,25 @@
   },
   "params": [
     {
-      "id": "sample",
+      "id": "platform",
       "description": "Build a new app using Data Connect",
       "type": "enum",
-      "name": "Project Type",
+      "name": "Platform",
       "required": true,
       "options": {
-        "nextjs-blank": "Next.js Blank",
-        "nextjs-movie-app": "Next.js Movie App",
-        "flutter-blank": "Flutter Blank",
-        "flutter-movie": "Flutter Movie App"
+        "web": "Web",
+        "flutter": "Flutter"
+      }
+    },
+    {
+      "id": "appType",
+      "description": "Build a new app using Data Connect",
+      "type": "enum",
+      "name": "appType",
+      "required": true,
+      "options": {
+        "blank": "Empty App",
+        "quickstart": "Quickstart"
       }
     }
   ]

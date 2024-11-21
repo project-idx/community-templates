@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, sample ? "nextjs-movie-app", ... }: {
+{pkgs, platform ? "web", appType ? "blank" ... }: {
   packages = [
     pkgs.nodejs_20
   ];
@@ -15,6 +15,11 @@ idx-template \
     mkdir "$out"
     chmod -R u+w "$out"
     mkdir "$out"/.idx
+    sample = ${
+      if platform == "web" && appType == "blank" then "nextjs-blank" else if platform == "flutter" && appType == "blank" then "flutter-blank"
+      else if platform == "web" && appType == "movie" then "flutter-movie"
+      else "nextjs-blank"
+    }
     ${
     if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
       else "cp ${./dev.nix} \"$out\"/.idx/dev.nix"
