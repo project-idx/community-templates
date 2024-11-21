@@ -13,7 +13,7 @@ idx-template \
 
   bootstrap = let  sample = 
       if platform == "web" && appType == "blank" then "nextjs-blank" else if platform == "flutter" && appType == "blank" then "flutter-blank"
-      else if platform == "flutter" && appType == "movie" then "flutter-movie"
+      else if platform == "flutter" && appType == "quickstart" then "flutter-movie"
       else "nextjs-movie-app"
    ; in ''
     mkdir "$out"
