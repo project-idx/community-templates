@@ -6,7 +6,7 @@ idx-template \
   --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, platform ? "web", appType ? "blank" ... }: {
+{pkgs, platform ? "web", appType ? "blank", ... }: {
   packages = [
     pkgs.nodejs_20
   ];
