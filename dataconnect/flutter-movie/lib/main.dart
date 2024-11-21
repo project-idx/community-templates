@@ -10,12 +10,18 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'util/auth.dart';
 import 'movies_connector/movies.dart';
 
+bool isSetup = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    isSetup = true;
+  } catch (_) {
+    // The user hasn't run ./installDeps.sh yet
+  }
   await Auth.instance.init();
   int port = 443;
   String hostName = Uri.base.host;
@@ -103,9 +109,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-        child: _showMessage
-            ? const Text(
-                'Go to the Firebase Data Connect extension, and click start Emulators. Then open dataconnect/moviedata_insert.gql and the click "Run(local)". Then, refresh the page.')
+        child: _showMessage || !isSetup
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text(_showMessage
+                        ? 'Go to the Firebase Data Connect extension, and click start Emulators. Then open dataconnect/moviedata_insert.gql and the click "Run(local)". Then, refresh the page.'
+                        : 'Please open the terminal and run ./installDeps.sh to set up flutter with Firebase'),
+                  )
+                ],
+              )
             : _showMovie(),
       )),
     );

@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Installing the latest firebase-tools..."
 npm install -g firebase-tools
 export PATH=~/.global_modules/bin:$PATH
 while [ ! -f ./.firebaserc ]
