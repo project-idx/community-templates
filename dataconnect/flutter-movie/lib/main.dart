@@ -67,22 +67,24 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    MovieState.getTopTenMovies().then((res) {
-      if (res.data.movies.isNotEmpty) {
-        if (mounted) {
-          setState(() {
-            _showMessage = false;
-            _topMovies = res.data.movies;
-          });
+    if (isSetup) {
+      MovieState.getTopTenMovies().then((res) {
+        if (res.data.movies.isNotEmpty) {
+          if (mounted) {
+            setState(() {
+              _showMessage = false;
+              _topMovies = res.data.movies;
+            });
+          }
         }
-      }
-    });
-
-    MovieState.getTopTenMovies().then((res) {
-      setState(() {
-        _latestMovies = res.data.movies;
       });
-    });
+
+      MovieState.getTopTenMovies().then((res) {
+        setState(() {
+          _latestMovies = res.data.movies;
+        });
+      });
+    }
   }
 
   Widget _showMovie() {
@@ -118,9 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(30.0),
-                    child: Text(_showMessage
+                    child: Text(isSetup
                         ? 'Go to the Firebase Data Connect extension, and click start Emulators. Then open dataconnect/moviedata_insert.gql and the click "Run(local)". Then, refresh the page.'
-                        : 'Please open the terminal and run ./installDeps.sh to set up flutter with Firebase'),
+                        : 'Please open the terminal and run ./installDeps.sh to set up Flutter with Firebase'),
                   )
                 ],
               )
