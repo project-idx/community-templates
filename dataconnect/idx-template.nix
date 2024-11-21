@@ -11,11 +11,11 @@ idx-template \
     pkgs.nodejs_20
   ];
 
-  bootstrap = let  sample = 
-      if platform == "web" && appType == "blank" then "nextjs-blank" else if platform == "flutter" && appType == "blank" then "flutter-blank"
-      else if platform == "flutter" && appType == "quickstart" then "flutter-movie"
-      else "nextjs-movie-app"
-   ; in ''
+  bootstrap = let 
+    platformPrefix = if platform == "web" then "nextjs" else "flutter";
+    suffix = if platform == "web" && appType == "movie" then "movie-app" else appType;
+    sample = "${platformPrefix}-${suffix}";
+    in ''
     mkdir "$out"
     chmod -R u+w "$out"
     mkdir "$out"/.idx
