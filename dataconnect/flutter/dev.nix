@@ -23,7 +23,7 @@
   
   # Sets environment variables in the workspace
   env = {
-    POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
+    FIREBASE_DATACONNECT_POSTGRESQL_STRING =  "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
     PATH = ["/home/user/.pub-cache/bin"  "/home/user/flutter/bin" "./.flutter-sdk/flutter/bin"];
   };
   idx = {
@@ -40,6 +40,11 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
+        postgres = ''
+          psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'mypassword';"
+          psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
+          psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
+        '';
         installSdk = ''
           chmod +x ./installDeps.sh
           ./installDeps.sh

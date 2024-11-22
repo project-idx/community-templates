@@ -6,7 +6,7 @@
     ];
     
     env = {
-      POSTGRESQL_CONN_STRING = "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
+      FIREBASE_DATACONNECT_POSTGRESQL_STRING =  "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
     };
   
     idx.extensions = [
