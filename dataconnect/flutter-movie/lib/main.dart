@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: Text(isSetup
-                        ? 'Go to the Firebase Data Connect extension, and click start Emulators. Then open dataconnect/moviedata_insert.gql and the click "Run(local)". Then, refresh the page.'
+                        ? 'Go to the Firebase Data Connect extension, and click start Emulators. ${_latestMovies.isEmpty ? 'Then open dataconnect/moviedata_insert.gql and the click "Run(local)".' : ''}  Then, refresh the page.'
                         : 'Please open the terminal and run ./installDeps.sh to set up Flutter with Firebase. Then, refresh the page.'),
                   )
                 ],

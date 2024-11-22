@@ -93,26 +93,26 @@ packages:
     dependency: transitive
     description:
       name: firebase_app_check
-      sha256: b5b3c1df2698d6b6bd183f27fb10fbf61f9a0a564d8ccba3d87d0e0760a9ffea
+      sha256: "0b7e85c11fbdaada02d01f5cc5b5feffda4983d229806c30cadcc013c2fa3c1f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1+4"
+    version: "0.3.1+6"
   firebase_app_check_platform_interface:
     dependency: transitive
     description:
       name: firebase_app_check_platform_interface
-      sha256: "8dbb826d99c67512212331331461ee142e46645740f1c1209706ca2f72958e57"
+      sha256: "21ba031a28e62e12eddf8c39852607c3d04673fdfd75c3ed7f913e5802eb7d8e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0+38"
+    version: "0.1.0+40"
   firebase_app_check_web:
     dependency: transitive
     description:
       name: firebase_app_check_web
-      sha256: d9cf8d7e7eb904399784ecdc21ac66119ff2a93181bd7a3f8ab43e8220ad0be8
+      sha256: "36de135e9e0cc1554d3e3f73b437d3ff6be7132f2ef0a9999d0c6e414fa3d04b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.2.0+2"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -165,10 +165,10 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_data_connect
-      sha256: "0893243bf24fbb7ae82a53b751a85e8fa6c5096ddff380eccb0c1efa11029f5c"
+      sha256: dfc62553159f203714e887babf76c21b21ca850d03f60a334b16e7ab03183ab6
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.2+1"
+    version: "0.1.2+4"
   fixnum:
     dependency: transitive
     description:
@@ -196,7 +196,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_web_plugins:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
