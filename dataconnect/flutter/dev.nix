@@ -50,10 +50,6 @@ services.postgres = {
           psql --dbname=postgres -c "CREATE DATABASE dataconnect;"
           psql --dbname=dataconnect -c "CREATE EXTENSION vector;"
         '';
-        installSdk = ''
-          chmod +x ./installDeps.sh
-          ./installDeps.sh
-        '';
       };
       onStart = {
         startProxy = ''
