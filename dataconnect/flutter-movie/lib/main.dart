@@ -119,15 +119,59 @@ class _MyHomePageState extends State<MyHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Text(isSetup
-                        ? 'Go to the Firebase Data Connect extension, and click start Emulators. ${_latestMovies.isEmpty ? 'Then open dataconnect/moviedata_insert.gql and the click "Run(local)".' : ''}  Then, refresh the page.'
-                        : 'Please open the terminal and run ./installDeps.sh to set up Flutter with Firebase. Then, refresh the page.'),
-                  )
+                      padding: const EdgeInsets.all(30.0),
+                      child: isSetup
+                          ? Text(
+                              'Go to the Firebase Data Connect extension, and click start Emulators. ${_latestMovies.isEmpty ? 'Then open dataconnect/moviedata_insert.gql and the click "Run(local)".' : ''}  Then, refresh the page.')
+                          : const BulletList(bullets: [
+                              'Open The Firebase Data Connect Extension',
+                              'Sign In',
+                              'Run "flutterfire configure -y -a com.example.dataconnect"'
+                            ]))
                 ],
               )
             : _showMovie(),
       )),
     );
+  }
+}
+
+class BulletList extends StatelessWidget {
+  const BulletList({super.key, required this.bullets});
+
+  final List<String> bullets;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.fromLTRB(16, 15, 16, 16),
+        child: Column(
+            children: bullets
+                .map((bullet) => Row(children: [
+                      const Text(
+                        '\u2022',
+                        style: TextStyle(
+                          fontSize: 16,
+                          height: 1.55,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Expanded(
+                        child: Text(
+                          bullet,
+                          textAlign: TextAlign.left,
+                          softWrap: true,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black.withOpacity(0.6),
+                            height: 1.55,
+                          ),
+                        ),
+                      )
+                    ]))
+                .toList()));
   }
 }
