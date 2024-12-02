@@ -1,4 +1,7 @@
 {
+  "dataconnect": {
+    "source": "./dataconnect"
+  },
   "emulators": {
     "dataconnect": {
       "port": 9399
