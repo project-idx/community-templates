@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDataConnect, connectDataConnectEmulator } from 'firebase/data-connect'
-import { connectorConfig } from '@blank/generated'
+import { connectorConfig } from '@firebasegen/default-connector'
 
 export default (host: string = 'localhost') => {
 	// Note: When connecting to a prod instance, please replace the empty config with your firebase config provided in the console.
