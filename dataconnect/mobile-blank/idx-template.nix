@@ -16,5 +16,6 @@ idx-template \
     chmod -R u+w "$out"
     mkdir "$out"/.idx
     cp ${./dev.nix} "$out"/.idx/dev.nix
+    cp ${./README.md} "$out"/README.md
   '';
 }
