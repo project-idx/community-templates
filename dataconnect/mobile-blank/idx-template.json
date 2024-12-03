@@ -1,0 +1,34 @@
+{
+  "name": "Data Connect",
+  "description": "Build a new web app using Data Connect",
+  "categories": ["Web app", "Flutter app", "Databases"],
+  "icon": "https://www.gstatic.com/monospace/240513/logo_firebase.svg",
+  "publisher": "Google LLC",
+  "host": {
+    "virtualization": "true"
+  },
+  "params": [
+    {
+      "id": "platform",
+      "description": "Build a new app using Data Connect",
+      "type": "enum",
+      "name": "Platform",
+      "required": true,
+      "options": {
+        "web": "Web",
+        "flutter": "Flutter"
+      }
+    },
+    {
+      "id": "appType",
+      "description": "Build a new app using Data Connect",
+      "type": "enum",
+      "name": "App Type",
+      "required": true,
+      "options": {
+        "blank": "Empty App",
+        "quickstart": "Quickstart"
+      }
+    }
+  ]
+}
