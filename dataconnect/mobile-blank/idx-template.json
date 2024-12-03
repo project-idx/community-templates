@@ -6,29 +6,5 @@
   "publisher": "Google LLC",
   "host": {
     "virtualization": "true"
-  },
-  "params": [
-    {
-      "id": "platform",
-      "description": "Build a new app using Data Connect",
-      "type": "enum",
-      "name": "Platform",
-      "required": true,
-      "options": {
-        "web": "Web",
-        "flutter": "Flutter"
-      }
-    },
-    {
-      "id": "appType",
-      "description": "Build a new app using Data Connect",
-      "type": "enum",
-      "name": "App Type",
-      "required": true,
-      "options": {
-        "blank": "Empty App",
-        "quickstart": "Quickstart"
-      }
-    }
-  ]
+  }
 }
