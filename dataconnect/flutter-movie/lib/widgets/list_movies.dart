@@ -5,14 +5,15 @@ import 'package:go_router/go_router.dart';
 import '/models/movie.dart';
 
 class ListMovies extends StatelessWidget {
-  const ListMovies({
-    super.key,
-    required this.movies,
-    required this.title,
-  });
+  const ListMovies(
+      {super.key,
+      required this.movies,
+      this.title,
+      this.scrollDirection = Axis.horizontal});
 
   final List<Movie> movies;
-  final String title;
+  final String? title;
+  final Axis scrollDirection;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,11 @@ class ListMovies extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-            padding: const EdgeInsets.all(8.0), child: ListTitle(title: title)),
+        title != null
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTitle(title: title!))
+            : const SizedBox(),
         movies.isEmpty
             ? Padding(
                 padding: const EdgeInsets.all(10.0),
