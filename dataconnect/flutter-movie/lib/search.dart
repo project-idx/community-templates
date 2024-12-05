@@ -1,9 +1,7 @@
 import 'package:dataconnect/models/movie.dart';
 import 'package:dataconnect/movies_connector/movies.dart';
-import 'package:dataconnect/widgets/list_actors.dart';
-import 'package:dataconnect/widgets/list_movies.dart';
+import 'package:dataconnect/widgets/display_movie.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -14,20 +12,10 @@ class Search extends StatefulWidget {
 
 class SearchFormState {
   String title = '';
-  int maxYear = 2024;
-  int minYear = 1900;
-  double minRating = 1.0;
-  double maxRating = 5.0;
-  String genre = '';
   @override
   String toString() {
     return {
       'title': title,
-      'maxYear': maxYear,
-      'minYear': minYear,
-      'minRating': minRating,
-      'maxRating': maxRating,
-      'genre': genre
     }.toString();
   }
 }
@@ -56,7 +44,7 @@ class _SearchState extends State<Search> {
             Row(
               children: [
                 Expanded(
-                  flex: 4,
+                  flex: 6,
                   child: TextFormField(
                     initialValue: _searchFormState.title,
                     decoration: const InputDecoration(hintText: 'Title'),
@@ -75,8 +63,9 @@ class _SearchState extends State<Search> {
                   flex: 1,
                   child: IconButton(
                     icon: const Icon(Icons.search),
-                    onPressed:
-                        _formKey.currentState!.validate() ? _searchMovie : null,
+                    onPressed: _formKey.currentState?.validate() == true
+                        ? _searchMovie
+                        : null,
                   ),
                 ),
               ],
@@ -87,17 +76,15 @@ class _SearchState extends State<Search> {
 
   Widget _buildResults() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ListMovies(
-            scrollDirection: Axis.vertical,
-            movies: _resultsMovieMatchingTitle
-                .map((e) =>
-                    Movie(id: e.id, title: e.title, imageUrl: e.imageUrl))
-                .toList()),
-      ],
-    );
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: _resultsMovieMatchingTitle.map(
+          (e) {
+            final Movie movie =
+                Movie(id: e.id, title: e.title, imageUrl: e.imageUrl);
+            return DisplayMovie(movie: movie);
+          },
+        ).toList());
   }
 
   @override
