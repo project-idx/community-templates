@@ -1,6 +1,7 @@
 import 'package:dataconnect/models/movie.dart';
 import 'package:dataconnect/movies_connector/movies.dart';
 import 'package:dataconnect/widgets/display_movie.dart';
+import 'package:dataconnect/widgets/horizontal_movie.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
@@ -82,7 +83,7 @@ class _SearchState extends State<Search> {
           (e) {
             final Movie movie =
                 Movie(id: e.id, title: e.title, imageUrl: e.imageUrl);
-            return DisplayMovie(movie: movie);
+            return HorizontalMovie(movie: movie);
           },
         ).toList());
   }
