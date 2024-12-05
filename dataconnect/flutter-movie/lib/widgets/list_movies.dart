@@ -37,7 +37,7 @@ class ListMovies extends StatelessWidget {
             : SizedBox(
                 height: 300, // Adjust the height as needed
                 child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                  scrollDirection: scrollDirection,
                   itemCount: movies.length,
                   itemBuilder: (context, index) {
                     final movie = movies[index];
