@@ -1,6 +1,5 @@
 import 'package:dataconnect/models/movie.dart';
 import 'package:dataconnect/movies_connector/movies.dart';
-import 'package:dataconnect/widgets/display_movie.dart';
 import 'package:dataconnect/widgets/horizontal_movie.dart';
 import 'package:flutter/material.dart';
 

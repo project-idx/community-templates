@@ -13,13 +13,18 @@ class HorizontalMovie extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            leading: Image.network(movie.imageUrl),
+            leading: SizedBox(
+                width: 150,
+                child: Image.network(movie.imageUrl, fit: BoxFit.fitWidth)),
             onTap: () {
               context.push("/movies/${movie.id}");
             },
-            title: Text(movie.title),
+            title: Text(
+              movie.title,
+              overflow: TextOverflow.ellipsis,
+            ),
             subtitle: movie.description != null
-                ? Text(movie.description!)
+                ? Text(movie.description!, overflow: TextOverflow.ellipsis)
                 : const Text(''),
           ),
         ],
