@@ -87,35 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  Widget _showMovie() {
-    return Column(
-      children: <Widget>[
-        ListMovies(
-            title: 'Top 10 Movies',
-            movies: _topMovies
-                .map(
-                  (e) => Movie(
-                      id: e.id,
-                      title: e.title,
-                      imageUrl: e.imageUrl,
-                      description: e.description),
-                )
-                .toList()),
-        ListMovies(
-            title: 'Latest Movies',
-            movies: _latestMovies
-                .map(
-                  (e) => Movie(
-                      id: e.id,
-                      title: e.title,
-                      imageUrl: e.imageUrl,
-                      description: e.description),
-                )
-                .toList()),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,7 +109,32 @@ class _MyHomePageState extends State<MyHomePage> {
                             ]))
                 ],
               )
-            : _showMovie(),
+            : Column(
+                children: <Widget>[
+                  ListMovies(
+                      title: 'Top 10 Movies',
+                      movies: _topMovies
+                          .map(
+                            (e) => Movie(
+                                id: e.id,
+                                title: e.title,
+                                imageUrl: e.imageUrl,
+                                description: e.description),
+                          )
+                          .toList()),
+                  ListMovies(
+                      title: 'Latest Movies',
+                      movies: _latestMovies
+                          .map(
+                            (e) => Movie(
+                                id: e.id,
+                                title: e.title,
+                                imageUrl: e.imageUrl,
+                                description: e.description),
+                          )
+                          .toList()),
+                ],
+              ),
       )),
     );
   }

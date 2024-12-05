@@ -37,6 +37,9 @@ class ListMoviesByPartialTitleVariablesBuilder {
    String imageUrl;
 
   
+   String? description;
+
+  
   
     
     
@@ -80,8 +83,18 @@ class ListMoviesByPartialTitleVariablesBuilder {
   
 
         
+        ,
+      
+        description = json['description'] == null ? null : 
+ 
+    nativeFromJson<String>(json['description'])
+  
+
+        
         
        {
+      
+        
       
         
       
@@ -143,6 +156,16 @@ class ListMoviesByPartialTitleVariablesBuilder {
 ;
       
     
+      
+        if (description != null) {
+          json['description'] = 
+  
+    nativeToJson<String?>(description)
+    
+;
+        }
+      
+    
     return json;
   }
 
@@ -157,6 +180,8 @@ class ListMoviesByPartialTitleVariablesBuilder {
        this.rating,
     
       required this.imageUrl,
+    
+       this.description,
     
   });
 }

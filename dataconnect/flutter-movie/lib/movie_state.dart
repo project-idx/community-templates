@@ -25,6 +25,12 @@ class MovieState {
         .execute();
   }
 
+  static searchByPartialTitle(String input) {
+    return MoviesConnector.instance
+        .listMoviesByPartialTitle(input: input)
+        .execute();
+  }
+
   static Stream<QueryResult<GetMovieByIdData, GetMovieByIdVariables>>
       subscribeToMovieById(String id) {
     return MoviesConnector.instance.getMovieById(id: id).ref().subscribe();
