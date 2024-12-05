@@ -94,14 +94,22 @@ class _MyHomePageState extends State<MyHomePage> {
             title: 'Top 10 Movies',
             movies: _topMovies
                 .map(
-                  (e) => Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
+                  (e) => Movie(
+                      id: e.id,
+                      title: e.title,
+                      imageUrl: e.imageUrl,
+                      description: e.description),
                 )
                 .toList()),
         ListMovies(
             title: 'Latest Movies',
             movies: _latestMovies
                 .map(
-                  (e) => Movie(id: e.id, title: e.title, imageUrl: e.imageUrl),
+                  (e) => Movie(
+                      id: e.id,
+                      title: e.title,
+                      imageUrl: e.imageUrl,
+                      description: e.description),
                 )
                 .toList()),
       ],
@@ -162,9 +170,9 @@ class BulletList extends StatelessWidget {
                           bullet,
                           textAlign: TextAlign.left,
                           softWrap: true,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
-                            color: Colors.black.withOpacity(0.6),
+                            color: Colors.white,
                             height: 1.55,
                           ),
                         ),

@@ -8,7 +8,6 @@ class DisplayMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150, // Adjust the width as needed
       padding: const EdgeInsets.all(4.0),
       child: Card(
         child: InkWell(

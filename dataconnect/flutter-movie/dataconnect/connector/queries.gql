@@ -246,6 +246,7 @@ query ListMoviesByPartialTitle($input: String!) @auth(level: PUBLIC) {
     genre
     rating
     imageUrl
+    description
   }
 }
 
