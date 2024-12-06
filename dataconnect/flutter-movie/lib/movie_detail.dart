@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:dataconnect/movie_state.dart';
 import 'package:dataconnect/movies_connector/movies.dart';
+import 'package:dataconnect/widgets/list_actors.dart';
 import 'package:dataconnect/widgets/login_guard.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class MovieDetail extends StatefulWidget {
@@ -169,86 +169,22 @@ class _MovieDetailState extends State<MovieDetail> {
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 125,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Main Actors",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                        Expanded(
-                            child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            GetMovieByIdMovieMainActors actor =
-                                data!.movie!.mainActors[index];
-                            return Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CircleAvatar(
-                                      radius: 30,
-                                      child: ClipOval(
-                                          child:
-                                              Image.network(actor.imageUrl))),
-                                  Text(
-                                    actor.name,
-                                    overflow: TextOverflow.ellipsis,
-                                  )
-                                ]);
-                          },
-                          itemCount: data!.movie!.mainActors.length,
-                        ))
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 125,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Supporting Actors",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              GetMovieByIdMovieSupportingActors actor =
-                                  data!.movie!.supportingActors[index];
-                              return InkWell(
-                                child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      CircleAvatar(
-                                          radius: 30,
-                                          child: ClipOval(
-                                              child: Image.network(
-                                                  actor.imageUrl))),
-                                      Text(
-                                        actor.name,
-                                        overflow: TextOverflow.ellipsis,
-                                      )
-                                    ]),
-                                onTap: () {
-                                  context.push("/actors/${actor.id}");
-                                },
-                              );
-                            },
-                            itemCount: data!.movie!.mainActors.length,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  ListActors(
+                      actors: data!.movie!.mainActors
+                          .map((actor) => Actor(
+                              imageUrl: actor.imageUrl,
+                              name: actor.name,
+                              id: actor.id))
+                          .toList(),
+                      title: "Main Actors"),
+                  ListActors(
+                      actors: data!.movie!.supportingActors
+                          .map((actor) => Actor(
+                              imageUrl: actor.imageUrl,
+                              name: actor.name,
+                              id: actor.id))
+                          .toList(),
+                      title: "Supporting Actors"),
                   Text("Rating: $_ratingValue"),
                   Slider(
                     value: _ratingValue,

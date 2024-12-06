@@ -1,3 +1,4 @@
+import 'package:dataconnect/movies_connector/movies.dart';
 import 'package:dataconnect/widgets/auth_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +25,23 @@ class _LoginState extends State<Login> {
         email: _username.text,
         password: _password.text,
       );
+      final isLoggedIn =
+          await MoviesConnector.instance.getCurrentUser().execute();
+      if (isLoggedIn.data.user == null) {
+        await MoviesConnector.instance
+            .upsertUser(username: _username.text, name: _username.text)
+            .execute();
+      }
       if (mounted) {
         navigator.go('/home');
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
-        String message = e.message!;
-        bool shouldLaunch = e.code.contains('operation-not-allowed');
+        String message = e.code.contains('configuration-not-found')
+            ? 'Email/Password authentication has not been enabled'
+            : e.message!;
+        bool shouldLaunch = e.code.contains('operation-not-allowed') ||
+            e.code.contains('configuration-not-found');
         AuthDialog.showAuthDialog(context, message, shouldLaunch);
       }
     }

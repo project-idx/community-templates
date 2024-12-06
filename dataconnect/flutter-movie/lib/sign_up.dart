@@ -17,8 +17,6 @@ class _SignUpState extends State<SignUp> {
   String _username = '';
   String _password = '';
   String _name = '';
-  final String link =
-      "https://console.firebase.google.com/project/${Firebase.app().options.projectId}/overview/authentication/providers";
 
   signUp() async {
     ScaffoldMessenger.of(context)
@@ -34,8 +32,11 @@ class _SignUpState extends State<SignUp> {
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
-        String message = e.message!;
-        bool shouldLaunch = e.code.contains('operation-not-allowed');
+        String message = e.code.contains('configuration-not-found')
+            ? 'Email/Password authentication has not been enabled'
+            : e.message!;
+        bool shouldLaunch = e.code.contains('operation-not-allowed') ||
+            e.code.contains('configuration-not-found');
         AuthDialog.showAuthDialog(context, message, shouldLaunch);
       }
     }
