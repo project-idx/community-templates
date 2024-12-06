@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: isSetup
                           ? Text(
                               'Go to the Firebase Data Connect extension, and click start Emulators. ${_latestMovies.isEmpty ? 'Then open dataconnect/moviedata_insert.gql and the click "Run(local)".' : ''}  Then, refresh the page.')
-                          : const BulletList(bullets: [
+                          : const NumberedList(bullets: [
                               'Open The Firebase Data Connect Extension',
                               'Sign In',
                               'Run "flutterfire configure -y -a com.example.dataconnect"'
@@ -140,8 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class BulletList extends StatelessWidget {
-  const BulletList({super.key, required this.bullets});
+class NumberedList extends StatelessWidget {
+  const NumberedList({super.key, required this.bullets});
 
   final List<String> bullets;
 
@@ -152,10 +152,12 @@ class BulletList extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 15, 16, 16),
         child: Column(
             children: bullets
-                .map((bullet) => Row(children: [
-                      const Text(
-                        '\u2022',
-                        style: TextStyle(
+                .asMap()
+                .keys
+                .map((index) => Row(children: [
+                      Text(
+                        "$index.",
+                        style: const TextStyle(
                             fontSize: 16, height: 1.55, color: Colors.white),
                       ),
                       const SizedBox(
@@ -163,7 +165,7 @@ class BulletList extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          bullet,
+                          bullets[index],
                           textAlign: TextAlign.left,
                           softWrap: true,
                           style: const TextStyle(
