@@ -103,9 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? Text(
                               'Go to the Firebase Data Connect extension, and click start Emulators. ${_latestMovies.isEmpty ? 'Then open dataconnect/moviedata_insert.gql and the click "Run(local)".' : ''}  Then, refresh the page.')
                           : const NumberedList(bullets: [
-                              'Open The Firebase Data Connect Extension',
-                              'Sign In',
-                              'Run "flutterfire configure -y -a com.example.dataconnect"'
+                              'Make sure you already have a Firebase Project',
+                              'In the sidebar, open The Firebase Data Connect Extension',
+                              'Sign into your google account associated with your firebase project',
+                              'Select your firebase project',
+                              'Open a new terminal (by clicking the + icon below) and Run "flutterfire configure -y -a com.example.dataconnect"',
+                              'Refresh this preview page'
                             ]))
                 ],
               )
@@ -156,7 +159,7 @@ class NumberedList extends StatelessWidget {
                 .keys
                 .map((index) => Row(children: [
                       Text(
-                        "$index.",
+                        "${index + 1}.",
                         style: const TextStyle(
                             fontSize: 16, height: 1.55, color: Colors.white),
                       ),

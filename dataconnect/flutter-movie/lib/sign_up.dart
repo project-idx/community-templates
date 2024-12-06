@@ -18,7 +18,7 @@ class _SignUpState extends State<SignUp> {
   String _password = '';
   String _name = '';
   final String link =
-      "https://firebase.corp.google.com/project/${Firebase.app().options.projectId}/authentication/providers";
+      "https://console.firebase.google.com/project/${Firebase.app().options.projectId}/overview/authentication/providers";
 
   signUp() async {
     ScaffoldMessenger.of(context)
