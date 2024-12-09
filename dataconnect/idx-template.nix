@@ -22,7 +22,7 @@ idx-template \
     
     ${
     if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
-      else "cp ./${sample}/dev.nix \"$out\"/.idx/dev.nix"
+      else "cp ${./nextjs-movie-app}/dev.nix \"$out\"/.idx/dev.nix"
     }
     
     ${
