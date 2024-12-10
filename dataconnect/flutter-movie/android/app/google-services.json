@@ -1,0 +1,28 @@
+{
+    "project_info": {
+      "project_id": "mockproject-1234",
+      "project_number": "123456789000",
+      "name": "FirebaseQuickstarts",
+      "firebase_url": "https://mockproject-1234.firebaseio.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "123456789000",
+          "client_id": "android:com.example.dataconnect",
+          "client_type": 1,
+          "android_client_info": {
+            "package_name": "com.example.dataconnect",
+            "certificate_hash": []
+          }
+        },
+        "api_key": [
+          {
+            "current_key": "AIzbSzCn1"
+          }
+        ]
+      }
+    ],
+    "client_info": [],
+    "ARTIFACT_VERSION": "1"
+  }
