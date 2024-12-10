@@ -25,7 +25,7 @@ class Profile extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             }
-            final displayName = res.data.user!.name;
+            final displayName = FirebaseAuth.instance.currentUser!.displayName;
             final favoriteMovies =
                 res.data.user!.favoriteMovies.map((e) => e.movie).toList();
             final reviews = res.data.user!.reviews;

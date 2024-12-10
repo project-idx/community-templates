@@ -24,9 +24,8 @@ class _SignUpState extends State<SignUp> {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _username, password: _password);
-      await MoviesConnector.instance
-          .upsertUser(username: _username, name: _name)
-          .execute();
+      await FirebaseAuth.instance.currentUser!.updateDisplayName(_name);
+      await MoviesConnector.instance.upsertUser(username: _username).execute();
       if (mounted) {
         context.go('/home');
       }

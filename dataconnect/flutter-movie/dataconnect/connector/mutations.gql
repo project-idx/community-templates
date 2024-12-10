@@ -1,9 +1,8 @@
-mutation UpsertUser($username: String!, $name: String!) @auth(level: USER) {
+mutation UpsertUser($username: String!) @auth(level: USER) {
   user_upsert(
     data: {
       id_expr: "auth.uid"
       username: $username
-      name: $name
     }
   )
 }

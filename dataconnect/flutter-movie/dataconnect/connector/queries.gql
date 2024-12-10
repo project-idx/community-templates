@@ -114,7 +114,6 @@ query GetCurrentUser @auth(level: USER) {
   user(key: { id_expr: "auth.uid" }) {
     id
     username
-    name
     reviews: reviews_on_user {
       id
       rating

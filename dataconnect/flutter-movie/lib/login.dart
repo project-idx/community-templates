@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
           await MoviesConnector.instance.getCurrentUser().execute();
       if (isLoggedIn.data.user == null) {
         await MoviesConnector.instance
-            .upsertUser(username: _username.text, name: _username.text)
+            .upsertUser(username: _username.text)
             .execute();
       }
       if (mounted) {

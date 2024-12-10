@@ -26,9 +26,6 @@ class GetCurrentUserVariablesBuilder {
    String username;
 
   
-   String name;
-
-  
    List<GetCurrentUserUserReviews> reviews;
 
   
@@ -51,14 +48,6 @@ class GetCurrentUserVariablesBuilder {
         username = 
  
     nativeFromJson<String>(json['username'])
-  
-
-        
-        ,
-      
-        name = 
- 
-    nativeFromJson<String>(json['name'])
   
 
         
@@ -97,8 +86,6 @@ class GetCurrentUserVariablesBuilder {
       
         
       
-        
-      
     }
 
 
@@ -117,14 +104,6 @@ class GetCurrentUserVariablesBuilder {
       json['username'] = 
   
     nativeToJson<String>(username)
-    
-;
-      
-    
-      
-      json['name'] = 
-  
-    nativeToJson<String>(name)
     
 ;
       
@@ -157,8 +136,6 @@ class GetCurrentUserVariablesBuilder {
       required this.id,
     
       required this.username,
-    
-      required this.name,
     
       required this.reviews,
     

@@ -46,7 +46,6 @@ type User
   @table {
   id: String! @col(name: "user_auth")
   username: String! @col(name: "username", dataType: "varchar(50)")
-  name: String!
   # The following are generated from the @ref in the Review table
   # reviews_on_user
   # movies_via_Review
