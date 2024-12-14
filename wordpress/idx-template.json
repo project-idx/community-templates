@@ -1,0 +1,45 @@
+{
+  "name": "WordPress",
+  "description": "The open source publishing platform of choice for millions of websites worldwide—from creators and small businesses to enterprises.",
+  "categories": ["Web app", "Backend", "CMS", "SQLite"],
+  "icon": "https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png",
+  "website": "https://wordpress.org/",
+  "publisher": "Rody Davis",
+  "params": [
+    {
+      "id": "siteUrl",
+      "name": "Site URL",
+      "type": "text",
+      "default": "example.com",
+      "required": true
+    },
+    {
+      "id": "siteTitle",
+      "name": "Site Title",
+      "type": "text",
+      "default": "Example",
+      "required": true
+    },
+    {
+      "id": "username",
+      "name": "Admin Username",
+      "type": "text",
+      "default": "root",
+      "required": true
+    },
+    {
+      "id": "password",
+      "name": "Admin Password",
+      "type": "text",
+      "default": "password",
+      "required": true
+    },
+    {
+      "id": "email",
+      "name": "Admin Email",
+      "type": "text",
+      "default": "info@wp-cli.org",
+      "required": true
+    }
+  ]
+}
