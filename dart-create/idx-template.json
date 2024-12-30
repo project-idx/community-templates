@@ -1,0 +1,25 @@
+{
+  "name": "Dart",
+  "description": "Dart create template",
+  "categories": ["Mobile"],
+  "icon": "https://www.gstatic.com/images/branding/productlogos/dart/v6/192px.svg",
+  "publisher": "Rody Davis",
+  "host": {
+    "virtualization": "true"
+  },
+  "params": [
+    {
+      "id": "template",
+      "name": "Template",
+      "type": "enum",
+      "default": "web",
+      "options": {
+        "cli": "CLI",
+        "console": "Console",
+        "package": "Package",
+        "server-shelf": "Server (Shelf)",
+        "web": "Web"
+      }
+    }
+  ]
+}
