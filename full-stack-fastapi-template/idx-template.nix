@@ -4,7 +4,6 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.python3
-    pkgs.uv
     pkgs.pipx
   ];
   bootstrap = ''    
