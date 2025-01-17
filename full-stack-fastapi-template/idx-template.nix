@@ -4,11 +4,11 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.python3
-    pkgs.pipx
+    pkgs.copier
   ];
   bootstrap = ''    
     mkdir "$out"
-    pipx run copier copy -l https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
+    copier copy -l https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
     cp -rf ${./.} "$out"
     mkdir -p "$out/.idx/"
     cp -rf ${./dev.nix} "$out/.idx/dev.nix"
