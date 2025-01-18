@@ -57,7 +57,7 @@
       # Runs when the workspace is (re)started
       onStart = {
         # Example: start a background task to watch and re-build backend code
-        start-db = "cd my-awesome-project && docker compose start db prestart";
+        start-db = "cd my-awesome-project && docker compose up db prestart";
         start-backend = "cd my-awesome-project/backend/ && uv sync && source .venv/bin/activate && fastapi dev app/main.py";
         run-tests = "cd my-awesome-project/backend/ && uv sync && source .venv/bin/activate && ./scripts/test.sh";
         # run-smoke = "curl http://localhost:8000/api/v1/utils/health-check/";
