@@ -1,7 +1,7 @@
 # FastAPI Full Template bootstrap for Project IDX
 
 - [Project IDX](https://developers.google.com/idx): A cloud-based development environment by Google that offers a browser-first workspace for coding, featuring built-in AI assistance and seamless integration with development tools
-- [FastAPI Full Template](https://github.com/project-idx/community-templates/tree/main/full-stack-fastapi-template): A production-ready project generator for FastAPI applications that includes user management, authentication, SQLAlchemy models, and Docker configuration out of the box
+- [FastAPI Full Template](https://fastapi.tiangolo.com/project-generation/): A production-ready project generator for FastAPI applications that includes user management, authentication, SQLAlchemy models, and Docker configuration out of the box
 
 ## Dependencies
 
