@@ -1,0 +1,8 @@
+{
+  "name": "Full Stack FastAPI Template",
+  "description": "Full stack, modern web application template. Using FastAPI, React, SQLModel, PostgreSQL, Docker, GitHub Actions, automatic HTTPS and more.",
+  "categories": ["Web app", "Backend"],
+  "icon": "",
+  "website": "https://github.com/fastapi/full-stack-fastapi-template",
+  "publisher": "FastAPI"
+}
