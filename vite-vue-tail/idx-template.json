@@ -1,0 +1,6 @@
+{
+  "name": "vite-vue-tail",
+  "description": "A Vue 3 + Vite + Tailwind CSS v4 + TypeScript starter template for modern web development.",
+  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+  "params": []
+}
