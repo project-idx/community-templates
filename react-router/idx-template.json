@@ -1,0 +1,24 @@
+{
+    "name": "React Router",
+    "description": "React Router is a multi-strategy router for React bridging the gap from React 18 to React 19. You can use it maximally as a React framework or minimally as a library with your own architecture.",
+    "categories": [
+        "Web app"
+    ],
+    "icon": "https://avatars.githubusercontent.com/u/64235328",
+    "website": "https://reactrouter.com/",
+    "publisher": "Yifan Zhang",
+    "params": [
+        {
+            "id": "template",
+            "name": "Template",
+            "type": "enum",
+            "default": "default",
+            "options": {
+                "default": "default",
+                "minimal": "minimal",
+                "javascript": "javascript",
+                "library": "library"
+            }
+        }
+    ]
+}
