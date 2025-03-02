@@ -2,7 +2,7 @@
 
 Installed all prerequisites for a Jekyll project. More information at: https://jekyllrb.com/docs/
 
-<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2FDKAMX%2Fproject-idx_community-templates%2Ftree%2Fjekyll%2Fjekyll-quickstart">
+<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2Fproject-idx%2Fcommunity-templates%2Ftree%2Fmain%2Fjekyll-quickstart">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
