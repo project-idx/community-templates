@@ -1,0 +1,25 @@
+---
+model: googleai/gemini-1.5-flash
+config:
+    temperature: 0.9
+input:
+    schema:
+        photoUrl: string
+        userPrompt: string
+output:
+    schema:
+        recipe: string
+        tags(array): string
+---
+
+You're an expert chef.  Make sure to follow all instructions.
+
+The user has asked 
+====
+{{userPrompt}} 
+====
+
+and provided this image: 
+====
+{{media url=photoUrl}}
+====
