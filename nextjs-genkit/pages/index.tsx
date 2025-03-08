@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FormEvent, useCallback, useMemo, useState } from "react";
+import { FormEvent, useCallback, useMemo, useRef, useState } from "react";
 import markdownit from 'markdown-it';
 import '../styles/home.css';
 
@@ -24,12 +24,13 @@ export default function Home() {
 	const [tags, setTags] = useState<string[]>([]);
 	const [output, setOutput] = useState('(Recipe will appear here)');
 	const [chosenImage, setImage] = useState<string>(images[0].src);
-	const [userPrompt, setPrompt] = useState<string>('Provide an example recipe for the baked goods in the image');
+	const promptRef = useRef<HTMLInputElement>(null);
 
 	const onSubmit = useCallback(async (ev: FormEvent<HTMLFormElement>) => {
 		ev.preventDefault();
 		setOutput("Generating...");
 		setTags([]);
+		const userPrompt = promptRef!.current!.value;
 		await fetch("/api/generate", {
 			method: "POST",
 			body: JSON.stringify({
@@ -86,11 +87,10 @@ export default function Home() {
 					}
 				</div>
 				<div className="prompt-box">
-					<input name="prompt" placeholder="Enter instructions here" type="text"
-						value={userPrompt}
-						onChange={(ev) => {
-							setPrompt(ev.target.value);
-						}}
+					<input
+						ref={promptRef}
+						name="prompt" placeholder="Enter instructions here" type="text"
+						defaultValue="Provide an example recipe for the baked goods in the image"
 					/>
 					<button type="submit">Go</button>
 				</div>
