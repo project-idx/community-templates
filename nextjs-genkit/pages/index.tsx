@@ -23,14 +23,14 @@ export default function Home() {
 
 	const [tags, setTags] = useState<string[]>([]);
 	const [output, setOutput] = useState('(Recipe will appear here)');
-	const [chosenImage, setImage] = useState<string>(images[0].src);
-	const promptRef = useRef<HTMLInputElement>(null);
-
+	
 	const onSubmit = useCallback(async (ev: FormEvent<HTMLFormElement>) => {
 		ev.preventDefault();
 		setOutput("Generating...");
 		setTags([]);
-		const userPrompt = promptRef!.current!.value;
+		const data = new FormData(ev.currentTarget);
+		const userPrompt = data.get("prompt") as string;
+		const chosenImage = data.get("chosenImage") as string;
 		await fetch("/api/generate", {
 			method: "POST",
 			body: JSON.stringify({
@@ -73,10 +73,7 @@ export default function Home() {
 						images.map((image, index) => {
 							return (
 								<label className="image-choice" key={index}>
-									<input type="radio" name="chosenImage" value={image.src}
-										onChange={() => setImage(image.src)}
-										checked={chosenImage === image.src}
-									/>
+									<input type="radio" name="chosenImage" value={image.src}/>
 									<Image
 										src={image.src} alt={image.alt}
 										width={300} height={300}
@@ -88,7 +85,6 @@ export default function Home() {
 				</div>
 				<div className="prompt-box">
 					<input
-						ref={promptRef}
 						name="prompt" placeholder="Enter instructions here" type="text"
 						defaultValue="Provide an example recipe for the baked goods in the image"
 					/>
