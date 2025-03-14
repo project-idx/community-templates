@@ -10,7 +10,7 @@
   services.docker.enable = true;
   idx = {
     previews = {
-      enable = true;
+      enable = false;
       previews = {
         web = {
           command = [ "functions-framework --target my_cloud_function --debug" ];
@@ -29,7 +29,7 @@
           source .venv/bin/activate 
           pip install -r requirements.txt";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "main.py" ];
+        default.openFiles = [ "README.md" "main.py" ];
       };
     };
   };
