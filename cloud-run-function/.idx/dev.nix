@@ -29,7 +29,7 @@
           source .venv/bin/activate 
           pip install -r requirements.txt";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "README.md" "main.py" ];
+        default.openFiles = [ "main.py" "README.md"];
       };
     };
   };
