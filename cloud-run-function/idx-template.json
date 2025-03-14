@@ -1,0 +1,15 @@
+ {
+  "name": "Python Google Cloud Run Function",
+  "description": "A template for developing Python-based Google Cloud Run functions.",
+  "categories": ["Backend"],
+  "icon": "https://icon.icepanel.io/GCP/svg/Cloud-Functions.svg",
+  "params": [
+    {
+      "id": "functionName",
+      "name": "Function Name",
+      "type": "text",
+      "default": "my_cloud_function",
+      "required": true
+    }
+  ]
+}
