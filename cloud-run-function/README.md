@@ -26,9 +26,11 @@ functions-framework --target my_cloud_function --debug
 
 ## Deployment Basics
 
-You can perform your first deployment by running the following command:
+You can perform your first deployment by running the following commands. First initialize your gcloud cli and just follow the steps. If you're not sure which region to pick, select the closest one to you or just us-central1.
 
 ```bash
+gcloud init
+
 gcloud run deploy python-http-function \
       --source . \
       --function my_first_cloud_function \
