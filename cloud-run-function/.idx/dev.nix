@@ -3,11 +3,11 @@
   channel = "stable-24.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.python312
-    pkgs.python312Packages.pip
+    pkgs.python3
   ];
   # Sets environment variables in the workspace
   env = {};
+  services.docker.enable = true;
   idx = {
     previews = {
       enable = true;
@@ -24,8 +24,10 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        install =
-          "python -m venv .venv && source .venv/bin/activate &&  pip install -r requirements.txt";
+        create-venv =
+          "python -m venv .venv 
+          source .venv/bin/activate 
+          pip install -r requirements.txt";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "main.py" ];
       };
