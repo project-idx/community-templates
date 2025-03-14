@@ -5,9 +5,6 @@
   packages = [
     pkgs.python312
     pkgs.python312Packages.pip
-    pkgs.python312Packages.functions-framework
-    pkgs.python312Packages.flask
-    pkgs.python312Packages.google-cloud-error-reporting
   ];
   # Sets environment variables in the workspace
   env = {};
