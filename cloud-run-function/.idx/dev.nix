@@ -10,10 +10,9 @@
   services.docker.enable = true;
   idx = {
     previews = {
-      enable = false;
       previews = {
         web = {
-          command = [ "functions-framework --target my_cloud_function --debug" ];
+          command = [ "./devserver.sh" ];
           env = { PORT = "$PORT"; };
           manager = "web";
         };
@@ -27,7 +26,8 @@
         create-venv =
           "python -m venv .venv 
           source .venv/bin/activate 
-          pip install -r requirements.txt";
+          pip install -r requirements.txt
+          chmod 777 ./devserver.sh";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [ "main.py" "README.md"];
       };
