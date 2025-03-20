@@ -1,0 +1,4 @@
+# Dev environment
+functions-framework==3.*
+flask==3.*
+google-cloud-error-reporting==1.*
