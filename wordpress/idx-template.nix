@@ -35,5 +35,6 @@
     cp -r ${./dev}/src/wp-config.php "$out"
     cp -r ${./dev}/README.md "$out/README.md"
     cd "$out"; wp core install --url=${siteUrl} --title=${siteTitle} --admin_user=${username} --admin_password=${password} --admin_email=${email}
+    chmod -R +w "$out"
   '';
 }
