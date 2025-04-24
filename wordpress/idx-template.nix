@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-{ pkgs, siteUrl ? "example.com", siteTitle ? "Example", username ? "root", password ? "password", email ? "info@wp-cli.org", ... }: {
+{ pkgs, siteUrl ? "0.0.0.0:9000", siteTitle ? "Example", username ? "root", password ? "password", email ? "info@wp-cli.org", ... }: {
   packages = [
     pkgs.go
     pkgs.python3
