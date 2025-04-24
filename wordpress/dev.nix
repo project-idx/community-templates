@@ -25,6 +25,15 @@
     extensions = [
       # "vscodevim.vim"
     ];
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = ["wp" "server" "--port=$PORT" "--host=0.0.0.0"];
+          manager = "web";
+        };
+      };
+    };
     # Workspace lifecycle hooks
     workspace = {
       # Runs when a workspace is first created
