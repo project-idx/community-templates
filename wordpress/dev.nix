@@ -42,7 +42,7 @@
       };
       # Runs when the workspace is (re)started
       onStart = {
-        # start-server = "wp server --port=$PORT --host=0.0.0.0";
+        start-server = "wp server --port=$PORT --host=0.0.0.0";
       };
     };
   };
