@@ -1,0 +1,21 @@
+{
+	"name": "Gleam",
+	"description": "A statically typed language for the Erlang virtual machine.",
+	"icon": "https://gleam.run/images/lucy/lucy.svg",
+	"repository": "https://github.com/project-idx/community-templates/tree/main/gleam",
+	"maintainers": [
+		{
+			"name": "Malix",
+			"email": "alixbrunetcontact@gmail.com"
+		}
+	],
+	"category": "Languages",
+	"templates": [
+		{
+			"name": "Basic",
+			"description": "A basic Gleam project.",
+			"path": "/gleam"
+		}
+	],
+	"samples": []
+}
